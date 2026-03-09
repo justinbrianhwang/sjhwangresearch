@@ -1,0 +1,107 @@
+/* ============================================
+   PUBLICATIONS DATA
+   출판물을 추가/수정/삭제하려면 이 파일을 편집하세요
+   ============================================ */
+
+const PUBLICATIONS = [
+  {
+    year: "2026",
+    title: "Functional Recovery of Deep Neural Networks via Logit-Based External Calibration",
+    authors: "Sunjun Hwang, Jihyuk Ha",
+    venue: "KICS 2026",
+    status: "Accepted",
+    links: [
+      { label: "Paper", url: "#" },
+    ],
+  },
+  {
+    year: "2026",
+    title: "Adversarial Robustness Analysis of Deep Learning-Based Automatic Modulation Classification in Wireless Communication",
+    authors: "Sunjun Hwang, Eunho Choi, Dohyun Hwang",
+    venue: "IEEE ICAIIC 2026",
+    status: "Accepted",
+    links: [
+      { label: "Paper", url: "#" },
+    ],
+  },
+  {
+    year: "2026",
+    title: "Design and Implementation of an FPGA-Based Real-Time Voice Risk Detection System",
+    authors: "Sunjun Hwang, Seunghui Ye",
+    venue: "KCS 2026",
+    status: "Accepted",
+    links: [
+      { label: "Paper", url: "#" },
+    ],
+  },
+  {
+    year: "2026",
+    title: "Quantum-Secured Hybrid Communication System for Tactical Military Networks: Implementation and Performance Analysis of BB84 Protocol Based on PennyLane",
+    authors: "Sunjun Hwang",
+    venue: "JKICS 2026 (Journal)",
+    status: "Accepted",
+    links: [
+      { label: "Paper", url: "#" },
+    ],
+  },
+  {
+    year: "2026",
+    title: "Quantum Noise-based Adversarial Attack on Diffusion Models and Analysis of Defense Mechanisms",
+    authors: "Sunjun Hwang",
+    venue: "KIIT-JICS 2026",
+    status: "Accepted",
+    links: [
+      { label: "Paper", url: "#" },
+    ],
+  },
+  {
+    year: "2025",
+    title: "Logit-based Knowledge Distillation for Heterogeneous Medical Image Federated Learning",
+    authors: "Sunjun Hwang, Wooseok Wang, Jaehoon Lee",
+    venue: "Proceedings of KIIT Conference, 2025",
+    status: "Accepted",
+    links: [
+      { label: "Paper", url: "#" },
+    ],
+  },
+  {
+    year: "2025",
+    title: "Post-hoc Defense with Knowledge Distillation in Federated Learning: An Empirical Study against FGSM and PGD Attacks",
+    authors: "Sunjun Hwang, Hongjoon Jun, Wooseok Wang, Jaehoon Lee",
+    venue: "Proceedings of KICS Conference, 2025",
+    status: "Accepted",
+    links: [
+      { label: "Paper", url: "#" },
+    ],
+  },
+  {
+    year: "2025",
+    title: "Classification of Pneumonia in Chest X-rays Using a Hybrid Neural Network Based on a 3-Qubit Quantum Circuit",
+    authors: "Sunjun Hwang",
+    venue: "KSII Conference, 2025",
+    status: "Accepted",
+    links: [
+      { label: "Paper", url: "#" },
+    ],
+  },
+  {
+    year: "2025",
+    title: "Performance Comparison of 8 Deep Learning Models for Seismic Signal Denoising",
+    authors: "Sunjun Hwang, Sehee Park, Kangmin Ko, Jiyun Baik",
+    venue: "Proceedings of KIIT Conference, 2025",
+    status: "Published",
+    links: [
+      { label: "Paper", url: "#" },
+    ],
+  },
+  {
+    year: "2025",
+    title: "A Study on Robustness Enhancement and Multi-Adversarial Attacks in Vision Transformer-based Image Classification Models",
+    authors: "Sunjun Hwang, Hongjoon Jun, Sunje Kuem",
+    venue: "Proceedings of KIIT Conference, 2025",
+    status: "Published",
+    links: [
+      { label: "Paper", url: "#" },
+    ],
+  },
+];

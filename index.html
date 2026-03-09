@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sunjun Hwang - Open Research Portal | AI Security, Quantum Computing, Autonomous Driving">
+  <meta name="author" content="Sunjun Hwang">
+  <title>Sunjun Hwang | Research Portal</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS: Variables & Base -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <!-- CSS: Sections -->
+  <link rel="stylesheet" href="css/sections/hero.css">
+  <link rel="stylesheet" href="css/sections/overview.css">
+  <link rel="stylesheet" href="css/sections/areas.css">
+  <link rel="stylesheet" href="css/sections/projects.css">
+  <link rel="stylesheet" href="css/sections/experiments.css">
+  <link rel="stylesheet" href="css/sections/publications.css">
+  <link rel="stylesheet" href="css/sections/talks.css">
+  <link rel="stylesheet" href="css/sections/timeline.css">
+  <link rel="stylesheet" href="css/sections/future.css">
+  <link rel="stylesheet" href="css/sections/collaborations.css">
+  <link rel="stylesheet" href="css/sections/mobile.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔬</text></svg>">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="#hero" class="nav__logo">
+        🔬 <span>Research</span><span class="nav__logo-accent">Portal</span>
+      </a>
+      <div class="nav__lang">
+        <button class="lang-btn lang-btn--active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ko">KR</button>
+      </div>
+      <button class="nav__toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav__links">
+        <a href="#overview" class="nav__link">Overview</a>
+        <a href="#areas" class="nav__link">Areas</a>
+        <a href="#projects" class="nav__link">Projects</a>
+        <a href="#experiments" class="nav__link">Experiments</a>
+        <a href="#publications" class="nav__link">Publications</a>
+        <a href="#talks" class="nav__link">Talks</a>
+        <a href="#timeline" class="nav__link">Timeline</a>
+        <a href="#future" class="nav__link">Future</a>
+        <a href="#collaborations" class="nav__link">Collaborations</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content (섹션들이 JS로 여기에 로드됩니다) -->
+  <main id="main-content"></main>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer"></footer>
+
+  <!-- Data Files (순서 중요: main.js 전에 로드) -->
+  <script src="js/data/profile.js"></script>
+  <script src="js/data/research-areas.js"></script>
+  <script src="js/data/projects.js"></script>
+  <script src="js/data/publications.js"></script>
+  <script src="js/data/talks.js"></script>
+  <script src="js/data/timeline-data.js"></script>
+  <script src="js/data/future-research.js"></script>
+  <script src="js/data/collaborations.js"></script>
+
+  <!-- JS: i18n (번역 시스템 - 데이터 파일 다음, 기능 파일 전에 로드) -->
+  <script src="js/i18n.js"></script>
+
+  <!-- JS: Features -->
+  <script src="js/navigation.js"></script>
+  <script src="js/progress.js"></script>
+  <script src="js/timeline.js"></script>
+
+  <!-- JS: Main (마지막에 로드) -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>
