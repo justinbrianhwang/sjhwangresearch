@@ -30,6 +30,7 @@ const PROFILE = {
     scholar: "https://scholar.google.com/citations?hl=ko&user=6X2EVE0AAAAJ",
     email: "mailto:sunjun7559@gmail.com",
     linkedin: "https://www.linkedin.com/in/sunjunhwang/",
-    website: "https://www.sjhwangcv.com/",
+    cv: "https://www.sjhwangcv.com/",
+    website: "https://www.sjhwang.com/",
   },
 };
