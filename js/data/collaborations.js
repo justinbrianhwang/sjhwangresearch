@@ -16,6 +16,7 @@ const COLLABORATIONS = [
       { name: { en: "Prof. Yohan Ko", ko: "고요한 교수님" }, role: { en: "Advisor", ko: "지도교수" } },
       { name: { en: "Hyojun Lee", ko: "이효준" }, role: { en: "Researcher", ko: "연구원" } },
       { name: { en: "Hyunjun Kim", ko: "김현준" }, role: { en: "Researcher", ko: "연구원" } },
+      { name: { en: "Soyeong Park", ko: "박소영" }, role: { en: "Researcher", ko: "연구원" } },
     ],
     topics: ["AI Security", "Federated Learning", "Autonomous Driving", "Quantum Computing"],
   },
