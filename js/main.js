@@ -382,6 +382,7 @@ function renderFooter() {
           <a href="${PROFILE.links.scholar}" class="footer__link" target="_blank">Google Scholar</a>
           <a href="${PROFILE.links.email}" class="footer__link">Email</a>
           <a href="${PROFILE.links.linkedin}" class="footer__link" target="_blank">LinkedIn</a>
+          ${PROFILE.links.cv ? `<a href="${PROFILE.links.cv}" class="footer__link" target="_blank">CV</a>` : ''}
           ${PROFILE.links.website ? `<a href="${PROFILE.links.website}" class="footer__link" target="_blank">Website</a>` : ''}
         </div>
       </div>
