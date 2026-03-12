@@ -1,0 +1,28 @@
+<!-- ============================================
+     RESEARCH MAP SECTION
+     연구 분야 간 관계를 시각적으로 표현
+     ============================================ -->
+<section id="research-map" class="section research-map">
+  <div class="container">
+    <h2 class="section__title"></h2>
+    <p class="section__subtitle"></p>
+
+    <div class="rmap">
+      <!-- SVG connections drawn by JS -->
+      <svg class="rmap__svg" id="rmap-svg"></svg>
+
+      <!-- Center node -->
+      <div class="rmap__node rmap__node--center" data-node="center">
+        <div class="rmap__node-inner rmap__node-inner--center">
+          <span class="rmap__node-label" id="rmap-center-label"></span>
+        </div>
+      </div>
+
+      <!-- Area nodes rendered by JS -->
+      <div id="rmap-nodes"></div>
+    </div>
+
+    <!-- Legend -->
+    <div class="rmap__legend" id="rmap-legend"></div>
+  </div>
+</section>

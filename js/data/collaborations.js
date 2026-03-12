@@ -6,7 +6,7 @@
 const COLLABORATIONS = [
   {
     name: "RAISE LAB",
-    logo: "assets/logos/RAISE LAB.png",  // 이미지 파일 경로 (없으면 폴백 이모지 표시)
+    logo: "assets/logos/RAISE LAB_current research.png",  // 이미지 파일 경로 (없으면 폴백 이모지 표시)
     type: "Research Lab",
     description: {
       en: "Research lab in the School of Computer Science at Yonsei University. Conducting core research in AI security, federated learning, autonomous driving, and quantum computing.",
@@ -36,7 +36,7 @@ const COLLABORATIONS = [
   },
   {
     name: "DH Soft",
-    logo: "assets/logos/DH Soft Logo.png",
+    logo: "assets/logos/dhsoft logo Project.png",
     type: "Industry Partner",
     description: {
       en: "Medical AI company specializing in healthcare document automation. Collaborated on OCR-based medical document processing projects.",

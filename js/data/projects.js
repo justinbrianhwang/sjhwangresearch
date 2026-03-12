@@ -38,7 +38,7 @@ const PROJECTS = [
     progress: 20,
     status: "active",
     startDate: "2025",
-    teamLogos: ["assets/logos/RAISE LAB_current research.png"],
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/RAISE LAB_current research.png"],
     tags: ["Quantum ML", "VQC", "Hybrid Network", "PennyLane"],
   },
   {
@@ -50,7 +50,7 @@ const PROJECTS = [
     progress: 25,
     status: "active",
     startDate: "2025",
-    teamLogos: ["assets/logos/RAISE LAB_current research.png", "assets/logos/MPS LAB_current research.webp"],
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/RAISE LAB_current research.png", "assets/logos/MPS LAB_current research.webp"],
     tags: ["LLM", "Autonomous Driving", "Decision Making"],
   },
   {
@@ -62,7 +62,7 @@ const PROJECTS = [
     progress: 10,
     status: "active",
     startDate: "2025",
-    teamLogos: ["assets/logos/RAISE LAB_current research.png"],
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/RAISE LAB_current research.png"],
     tags: ["Federated Learning", "Domain Shift", "Autonomous Driving"],
   },
   {
@@ -76,5 +76,17 @@ const PROJECTS = [
     startDate: "2025",
     teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/Permillion Logos.png"],
     tags: ["TDA", "Medical Data", "Topological Analysis", "Healthcare"],
+  },
+  {
+    title: { en: "Quantum Tunneling Mathematical Modeling & Simulation", ko: "양자 터널링 수학적 모델링 시뮬레이션" },
+    description: {
+      en: "Mathematical modeling and simulation of quantum tunneling phenomena. Implementing numerical solutions and visualizations using C++ for quantum mechanical barrier penetration problems.",
+      ko: "양자 터널링 현상의 수학적 모델링 및 시뮬레이션. C++을 활용한 양자역학적 장벽 투과 문제의 수치 해석 및 시각화 구현."
+    },
+    progress: 2,
+    status: "active",
+    startDate: "2025",
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
+    tags: ["C++", "Modeling", "Simulation", "Quantum Tunneling"],
   },
 ];

@@ -12,6 +12,7 @@ const PAST_PROJECTS = [
     },
     year: "2024",
     outcome: { en: "Completed", ko: "완료" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/Korea it academi.png"],
     tags: ["Time Series", "Prediction", "Weather Data", "Energy"],
   },
   {
@@ -22,6 +23,7 @@ const PAST_PROJECTS = [
     },
     year: "2024",
     outcome: { en: "Completed", ko: "완료" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/RAISE LAB_current research.png", "assets/logos/dhsoft logo Project.png", "assets/logos/yonsei logo.png"],
     tags: ["OCR", "LLM", "Medical Document", "NLP"],
   },
   {
@@ -32,6 +34,7 @@ const PAST_PROJECTS = [
     },
     year: "2024",
     outcome: { en: "Completed → Follow-up accepted at KCS 2026", ko: "완료 → 후속 연구 KCS 2026 채택" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
     tags: ["Voice Analysis", "Risk Detection", "Audio Classification"],
   },
   {
@@ -42,6 +45,7 @@ const PAST_PROJECTS = [
     },
     year: "2024",
     outcome: { en: "Completed", ko: "완료" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
     tags: ["LLM", "Search Optimization", "NLP", "UX"],
   },
   {
@@ -52,6 +56,7 @@ const PAST_PROJECTS = [
     },
     year: "2025",
     outcome: { en: "Completed", ko: "완료" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
     tags: ["Side-Channel Attack", "Security", "Model Comparison", "Hardware"],
   },
   {
@@ -62,6 +67,7 @@ const PAST_PROJECTS = [
     },
     year: "2025",
     outcome: { en: "Completed", ko: "완료" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
     tags: ["Quantum", "GNN", "Mathematical Analysis", "Theory"],
   },
   {
@@ -72,6 +78,7 @@ const PAST_PROJECTS = [
     },
     year: "2025",
     outcome: { en: "Published at KIIT Conference 2025", ko: "KIIT Conference 2025 발표" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
     tags: ["Adversarial Attack", "ViT", "Robustness"],
   },
   {
@@ -82,6 +89,7 @@ const PAST_PROJECTS = [
     },
     year: "2025",
     outcome: { en: "Published at KIIT Conference 2025", ko: "KIIT Conference 2025 발표" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
     tags: ["Signal Processing", "Deep Learning", "Denoising"],
   },
   {
@@ -92,6 +100,7 @@ const PAST_PROJECTS = [
     },
     year: "2025",
     outcome: { en: "Published at KSII Conference 2025", ko: "KSII Conference 2025 발표" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
     tags: ["Quantum ML", "Medical AI", "Hybrid Network"],
   },
   {
@@ -102,6 +111,7 @@ const PAST_PROJECTS = [
     },
     year: "2025",
     outcome: { en: "Published at KICS Conference 2025", ko: "KICS Conference 2025 발표" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
     tags: ["Federated Learning", "Adversarial Defense", "Knowledge Distillation"],
   },
   {
@@ -112,6 +122,7 @@ const PAST_PROJECTS = [
     },
     year: "2025",
     outcome: { en: "Published at KIIT Conference 2025, Outstanding Paper Award", ko: "KIIT Conference 2025 발표, 우수논문상 수상" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
     tags: ["Federated Learning", "Medical AI", "Knowledge Distillation"],
   },
   {
@@ -122,6 +133,7 @@ const PAST_PROJECTS = [
     },
     year: "2025",
     outcome: { en: "Published in JKICS 2026 (Journal)", ko: "JKICS 2026 저널 게재" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
     tags: ["Quantum", "BB84", "Military Network", "PennyLane"],
   },
   {
@@ -132,6 +144,7 @@ const PAST_PROJECTS = [
     },
     year: "2025",
     outcome: { en: "Published in KIIT-JICS 2026", ko: "KIIT-JICS 2026 게재" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
     tags: ["Quantum", "Adversarial Attack", "Diffusion Model"],
   },
   {
@@ -142,6 +155,7 @@ const PAST_PROJECTS = [
     },
     year: "2025",
     outcome: { en: "Accepted at IEEE ICAIIC 2026", ko: "IEEE ICAIIC 2026 채택" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png", "assets/logos/Permillion Logos.png"],
     tags: ["Wireless", "AMC", "Adversarial Attack", "IEEE"],
   },
   {
@@ -152,6 +166,7 @@ const PAST_PROJECTS = [
     },
     year: "2025",
     outcome: { en: "Accepted at KCS 2026", ko: "KCS 2026 채택" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
     tags: ["FPGA", "Voice Detection", "Hardware"],
   },
   {
@@ -162,6 +177,7 @@ const PAST_PROJECTS = [
     },
     year: "2025",
     outcome: { en: "Accepted at KICS 2026", ko: "KICS 2026 채택" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
     tags: ["Fault Injection", "DNN Recovery", "Calibration"],
   },
   {
@@ -172,6 +188,7 @@ const PAST_PROJECTS = [
     },
     year: "2025",
     outcome: { en: "Completed (with COREX)", ko: "완료 (COREX 협업)" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png", "assets/logos/Corex logo.png"],
     tags: ["Aquaponics", "Computer Vision", "IoT", "Real-time Monitoring"],
   },
 ];

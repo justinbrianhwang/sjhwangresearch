@@ -56,6 +56,13 @@ const UI_TEXT = {
   futureSubtitle: { en: "Research topics and open questions to explore in the future", ko: "앞으로 탐구하고자 하는 연구 주제와 질문" },
   futureTimeline: { en: "Est. Timeline", ko: "예상 기간" },
 
+  rmapTitle: { en: "Research Map", ko: "연구 지도" },
+  rmapSubtitle: { en: "How my research areas connect and inform each other", ko: "연구 분야 간 연결과 상호작용을 시각적으로 표현합니다" },
+  rmapCenter: { en: "Trustworthy\nIntelligent\nSystems", ko: "신뢰할 수 있는\n지능형 시스템" },
+  rmapLegendConnection: { en: "Shared methodology", ko: "공유 방법론" },
+  rmapLegendArea: { en: "Research area", ko: "연구 분야" },
+  rmapLegendCore: { en: "Core theme", ko: "핵심 주제" },
+
   collabsTitle: { en: "Collaborations", ko: "협업" },
   collabsSubtitle: { en: "Institutions and partners collaborating on research", ko: "함께 연구하고 있는 기관과 파트너" },
 

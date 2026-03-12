@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 function renderAll() {
   renderHero();
   renderOverview();
+  renderResearchMap();
   renderAreas();
   renderProjects();
   renderExperiments();
@@ -128,6 +129,171 @@ function renderOverview() {
   }
 }
 
+/* ── Research Map 렌더링 ── */
+function renderResearchMap() {
+  const title = document.querySelector('#research-map .section__title');
+  const subtitle = document.querySelector('#research-map .section__subtitle');
+  const centerLabel = document.getElementById('rmap-center-label');
+  const nodesContainer = document.getElementById('rmap-nodes');
+  const svg = document.getElementById('rmap-svg');
+  const legend = document.getElementById('rmap-legend');
+
+  if (title) title.textContent = ui('rmapTitle');
+  if (subtitle) subtitle.textContent = ui('rmapSubtitle');
+  if (centerLabel) centerLabel.textContent = ui('rmapCenter');
+  if (!nodesContainer || !svg) return;
+
+  // Node positions (%) — hexagonal layout around center
+  const positions = [
+    { x: 50, y: 10 },   // top
+    { x: 85, y: 28 },   // top-right
+    { x: 85, y: 72 },   // bottom-right
+    { x: 50, y: 90 },   // bottom
+    { x: 15, y: 72 },   // bottom-left
+    { x: 15, y: 28 },   // top-left
+  ];
+
+  // Connections between areas: [fromIndex, toIndex, label]
+  const connections = [
+    [0, 1, "FL"],                     // AI Security <-> Autonomous Driving
+    [0, 4, "Privacy"],                // AI Security <-> Medical AI
+    [0, 5, "Adversarial"],            // AI Security <-> Network Security
+    [1, 3, "Real-time"],              // Autonomous Driving <-> AI Semiconductors
+    [2, 4, "Hybrid QC"],              // Quantum Computing <-> Medical AI
+    [2, 5, "QKD"],                    // Quantum Computing <-> Network Security
+    [3, 2, "Hardware"],               // AI Semiconductors <-> Quantum Computing
+  ];
+
+  // Render area nodes
+  nodesContainer.innerHTML = RESEARCH_AREAS.map((area, i) => `
+    <div class="rmap__node" data-node="${i}"
+         style="left: ${positions[i].x}%; top: ${positions[i].y}%;">
+      <div class="rmap__node-inner">
+        <img class="rmap__node-icon" src="${BASE_PATH}/${area.icon}" alt="${area.title.en}" />
+        <span class="rmap__node-label">${t(area.title)}</span>
+        <div class="rmap__node-tags">
+          ${area.tags.slice(0, 2).map(tag => `<span class="rmap__node-tag">${tag}</span>`).join('')}
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  // Draw SVG lines (center connections + inter-area connections)
+  const cx = 50, cy = 50;
+  let svgContent = '';
+
+  // Lines from center to each area
+  positions.forEach((pos, i) => {
+    svgContent += `<line class="rmap__line" data-from="center" data-to="${i}"
+      x1="${cx}%" y1="${cy}%" x2="${pos.x}%" y2="${pos.y}%" />`;
+  });
+
+  // Lines between areas
+  connections.forEach(([from, to, label]) => {
+    const p1 = positions[from], p2 = positions[to];
+    const mx = (p1.x + p2.x) / 2, my = (p1.y + p2.y) / 2;
+    svgContent += `<line class="rmap__line" data-from="${from}" data-to="${to}"
+      x1="${p1.x}%" y1="${p1.y}%" x2="${p2.x}%" y2="${p2.y}%" />`;
+    svgContent += `<text class="rmap__line-label" x="${mx}%" y="${my}%" dy="-4">${label}</text>`;
+  });
+
+  svg.innerHTML = svgContent;
+
+  // Legend
+  if (legend) {
+    legend.innerHTML = `
+      <div class="rmap__legend-item">
+        <span class="rmap__legend-dot rmap__legend-dot--center"></span>
+        ${ui('rmapLegendCore')}
+      </div>
+      <div class="rmap__legend-item">
+        <span class="rmap__legend-dot"></span>
+        ${ui('rmapLegendArea')}
+      </div>
+      <div class="rmap__legend-item">
+        <span class="rmap__legend-line"></span>
+        ${ui('rmapLegendConnection')}
+      </div>
+    `;
+  }
+
+  // Hover interaction
+  const allNodes = nodesContainer.querySelectorAll('.rmap__node');
+  const centerNode = document.querySelector('.rmap__node--center');
+  const allLines = svg.querySelectorAll('.rmap__line');
+  const allLabels = svg.querySelectorAll('.rmap__line-label');
+
+  function getConnected(nodeId) {
+    const connected = new Set();
+    connected.add(nodeId);
+    if (nodeId === 'center') {
+      positions.forEach((_, i) => connected.add(String(i)));
+    } else {
+      connected.add('center');
+      connections.forEach(([from, to]) => {
+        if (String(from) === nodeId) connected.add(String(to));
+        if (String(to) === nodeId) connected.add(String(from));
+      });
+    }
+    return connected;
+  }
+
+  function highlightNode(nodeId) {
+    const connected = getConnected(nodeId);
+
+    allNodes.forEach(n => {
+      const id = n.dataset.node;
+      n.classList.toggle('rmap__node--highlight', connected.has(id));
+      n.classList.toggle('rmap__node--dim', !connected.has(id));
+    });
+
+    if (centerNode) {
+      centerNode.classList.toggle('rmap__node--highlight', connected.has('center'));
+      centerNode.classList.toggle('rmap__node--dim', !connected.has('center'));
+    }
+
+    allLines.forEach(line => {
+      const f = line.dataset.from, t = line.dataset.to;
+      const isConnected = connected.has(f) && connected.has(t);
+      line.classList.toggle('rmap__line--highlight', isConnected);
+      line.classList.toggle('rmap__line--dim', !isConnected);
+    });
+
+    allLabels.forEach((label, i) => {
+      const conn = connections[i];
+      if (!conn) return;
+      const isConnected = connected.has(String(conn[0])) && connected.has(String(conn[1]));
+      label.classList.toggle('rmap__line-label--highlight', isConnected);
+      label.classList.toggle('rmap__line-label--dim', !isConnected);
+    });
+  }
+
+  function clearHighlight() {
+    allNodes.forEach(n => {
+      n.classList.remove('rmap__node--highlight', 'rmap__node--dim');
+    });
+    if (centerNode) {
+      centerNode.classList.remove('rmap__node--highlight', 'rmap__node--dim');
+    }
+    allLines.forEach(l => {
+      l.classList.remove('rmap__line--highlight', 'rmap__line--dim');
+    });
+    allLabels.forEach(l => {
+      l.classList.remove('rmap__line-label--highlight', 'rmap__line-label--dim');
+    });
+  }
+
+  allNodes.forEach(n => {
+    n.addEventListener('mouseenter', () => highlightNode(n.dataset.node));
+    n.addEventListener('mouseleave', clearHighlight);
+  });
+
+  if (centerNode) {
+    centerNode.addEventListener('mouseenter', () => highlightNode('center'));
+    centerNode.addEventListener('mouseleave', clearHighlight);
+  }
+}
+
 /* ── Research Areas 렌더링 ── */
 function renderAreas() {
   const grid = document.getElementById('areas-grid');
@@ -213,6 +379,7 @@ function renderExperiments() {
         <div class="experiment-card__outcome">
           <span class="experiment-card__year">${project.year}</span>
           <span class="experiment-card__outcome-text">${t(project.outcome)}</span>
+          ${project.teamLogos ? `<span class="experiment-card__team-logos">${project.teamLogos.map(logo => `<img src="${BASE_PATH}/${logo}" alt="team logo" class="project-card__team-logo${logo.endsWith('.webp') ? ' project-card__team-logo--invert' : ''}" />`).join('')}</span>` : ''}
         </div>
       </div>
     `;
