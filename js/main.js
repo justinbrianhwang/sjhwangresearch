@@ -83,6 +83,7 @@ function renderHero() {
   const btnSecondary = document.getElementById('hero-btn-secondary');
   const scholarLink = document.getElementById('hero-link-scholar');
   const cvLink = document.getElementById('hero-link-cv');
+  const githubLink = document.getElementById('hero-link-github');
 
   if (badge) badge.textContent = PROFILE.badge;
   if (nameEl) nameEl.textContent = PROFILE.name;
@@ -93,6 +94,7 @@ function renderHero() {
   if (btnSecondary) btnSecondary.textContent = ui('heroViewPubs');
   if (scholarLink) scholarLink.href = PROFILE.links.scholar;
   if (cvLink) cvLink.href = PROFILE.links.cv;
+  if (githubLink) githubLink.href = PROFILE.links.github;
 }
 
 /* ── Overview 렌더링 ── */
