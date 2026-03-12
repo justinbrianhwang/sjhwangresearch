@@ -3,7 +3,7 @@
    언어 전환 시스템 — 기본 언어: English
    ============================================ */
 
-let currentLang = 'en';
+let currentLang = localStorage.getItem('lang') || 'en';
 
 /* ── UI 텍스트 번역 (섹션 제목, 버튼, 라벨 등) ── */
 const UI_TEXT = {
@@ -38,8 +38,8 @@ const UI_TEXT = {
   projectsSubtitle: { en: "Check the current progress of each project", ko: "각 프로젝트의 현재 진행 상황을 확인하세요" },
   progressLabel: { en: "Progress", ko: "진행률" },
 
-  experimentsTitle: { en: "Research Experiments", ko: "연구 프로젝트 / 실험" },
-  experimentsSubtitle: { en: "Tracking ongoing experiments and their results", ko: "진행 중인 실험과 그 결과를 추적합니다" },
+  experimentsTitle: { en: "Past Research", ko: "완료된 연구" },
+  experimentsSubtitle: { en: "Previously completed research projects and their outcomes", ko: "이전에 수행하여 완료된 연구 프로젝트와 성과" },
 
   pubsTitle: { en: "Selected Publications", ko: "주요 출판물" },
   pubsSubtitle: { en: "Research papers published in conferences and journals", ko: "학회 및 저널에 게재된 연구 성과" },
@@ -84,6 +84,7 @@ function ui(key) {
 function setLanguage(lang) {
   if (lang === currentLang) return;
   currentLang = lang;
+  localStorage.setItem('lang', lang);
   document.documentElement.lang = lang;
 
   // 토글 버튼 상태 업데이트
@@ -116,6 +117,12 @@ function setLanguage(lang) {
 }
 
 function initLanguageToggle() {
+  // 저장된 언어 상태 반영
+  document.documentElement.lang = currentLang;
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('lang-btn--active', btn.dataset.lang === currentLang);
+  });
+
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       setLanguage(btn.dataset.lang);

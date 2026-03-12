@@ -130,7 +130,26 @@
   height: 2px;
   background: var(--text-primary);
   border-radius: 2px;
-  transition: all var(--transition-fast);
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* 햄버거 → X 애니메이션 */
+.nav__toggle--active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav__toggle--active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav__toggle--active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ── 서브페이지 상단 여백 (Hero 없는 페이지) ── */
+main[data-sections]:not([data-sections^="hero"]) {
+  padding-top: var(--nav-height);
 }
 
 /* ── Grid ── */

@@ -30,8 +30,15 @@
 }
 
 .future-card__icon {
-  font-size: 2rem;
+  width: 48px;
+  height: 48px;
   margin-bottom: var(--space-4);
+}
+
+.future-card__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .future-card__title {

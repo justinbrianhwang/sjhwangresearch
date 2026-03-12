@@ -5,7 +5,7 @@
 
 const RESEARCH_AREAS = [
   {
-    icon: "🛡️",
+    icon: "assets/icons/AI Security.png",
     title: { en: "AI Security", ko: "AI 보안" },
     description: {
       en: "Research on attack and defense techniques to ensure AI system reliability and safety, including adversarial robustness, federated learning security, post-hoc defense, and fault injection.",
@@ -14,7 +14,7 @@ const RESEARCH_AREAS = [
     tags: ["Adversarial Attack", "FL Security", "Fault Injection", "Trust"],
   },
   {
-    icon: "🚗",
+    icon: "assets/icons/Autonomous Driving.png",
     title: { en: "Autonomous Driving", ko: "자율주행 자동차" },
     description: {
       en: "Autonomous driving systems using Federated Learning (FL) and Large Language Models (LLM). Optimizing FL across heterogeneous/homogeneous models in diverse driving environments.",
@@ -23,7 +23,7 @@ const RESEARCH_AREAS = [
     tags: ["Federated Learning", "LLM", "Autonomous Driving", "Simulation"],
   },
   {
-    icon: "⚛️",
+    icon: "assets/icons/Quantum Computing.png",
     title: { en: "Quantum Computing & Communication", ko: "양자컴퓨팅 / 양자 통신" },
     description: {
       en: "Quantum algorithms, NISQ-era circuits, and VQC research. Quantum key distribution via BB84 protocol and quantum-secured hybrid communication systems.",
@@ -32,7 +32,7 @@ const RESEARCH_AREAS = [
     tags: ["Quantum ML", "VQC", "BB84", "PennyLane", "Qiskit"],
   },
   {
-    icon: "🔧",
+    icon: "assets/icons/AI Semiconductors.png",
     title: { en: "AI Semiconductors", ko: "AI 반도체" },
     description: {
       en: "Design and implementation of real-time AI systems on FPGA, AI accelerators, and neuromorphic computing architectures. Hardware-optimized voice risk detection systems.",
@@ -41,7 +41,7 @@ const RESEARCH_AREAS = [
     tags: ["FPGA", "AI Accelerator", "Neuromorphic", "CUDA"],
   },
   {
-    icon: "🏥",
+    icon: "assets/icons/Medical AI.png",
     title: { en: "Medical AI", ko: "의료 AI" },
     description: {
       en: "AI applications in healthcare including pneumonia classification from chest X-rays, federated learning for medical imaging, and hybrid quantum-classical classification models with privacy preservation.",
@@ -50,7 +50,7 @@ const RESEARCH_AREAS = [
     tags: ["Medical Imaging", "Chest X-ray", "Federated Learning", "Privacy"],
   },
   {
-    icon: "📡",
+    icon: "assets/icons/Netweork Security.png",
     title: { en: "Network / Communication Security", ko: "네트워크 / 통신 보안" },
     description: {
       en: "Adversarial robustness analysis of Automatic Modulation Classification (AMC) in wireless communication. Quantum-secured communication systems for tactical military networks.",

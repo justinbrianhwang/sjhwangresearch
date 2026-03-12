@@ -1,6 +1,6 @@
 /* ============================================
    NAVIGATION
-   스크롤 시 네비게이션 효과 및 모바일 메뉴
+   멀티페이지 네비게이션 및 모바일 메뉴
    ============================================ */
 
 function initNavigation() {
@@ -16,13 +16,13 @@ function initNavigation() {
     } else {
       nav.classList.remove('nav--scrolled');
     }
-    updateActiveLink();
   });
 
   // 모바일 메뉴 토글
   if (toggle) {
     toggle.addEventListener('click', () => {
       links.classList.toggle('nav__links--open');
+      toggle.classList.toggle('nav__toggle--active');
     });
   }
 
@@ -30,27 +30,23 @@ function initNavigation() {
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       links.classList.remove('nav__links--open');
+      if (toggle) toggle.classList.remove('nav__toggle--active');
     });
   });
 
-  // 현재 섹션에 따라 활성 링크 업데이트
-  function updateActiveLink() {
-    const sections = document.querySelectorAll('section[id]');
-    const scrollPos = window.scrollY + 100;
+  // 현재 페이지에 해당하는 네비 링크 활성화
+  highlightCurrentPage(navLinks);
+}
 
-    sections.forEach(section => {
-      const top = section.offsetTop;
-      const height = section.offsetHeight;
-      const id = section.getAttribute('id');
+function highlightCurrentPage(navLinks) {
+  const path = window.location.pathname;
+  const currentPage = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
 
-      if (scrollPos >= top && scrollPos < top + height) {
-        navLinks.forEach(link => {
-          link.classList.remove('nav__link--active');
-          if (link.getAttribute('href') === `#${id}`) {
-            link.classList.add('nav__link--active');
-          }
-        });
-      }
-    });
-  }
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    link.classList.remove('nav__link--active');
+    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+      link.classList.add('nav__link--active');
+    }
+  });
 }

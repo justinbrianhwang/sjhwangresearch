@@ -14,6 +14,24 @@ const TIMELINE_EVENTS = [
     tags: ["Publication", "Fault Injection", "IEEE", "FPGA"],
   },
   {
+    date: "2026 Q1",
+    title: { en: "TDA Medical Data Analysis & AD+LLM Projects Launched", ko: "TDA 의료 데이터 분석 & 자율주행+LLM 프로젝트 착수" },
+    description: {
+      en: "Started TDA-based medical data analysis (personal project) and Autonomous Driving + LLM research in collaboration with RAISE LAB and ASU MPS LAB.",
+      ko: "TDA 기반 의료 데이터 분석(개인 프로젝트) 및 RAISE LAB·ASU MPS LAB 협업 자율주행+LLM 연구 착수."
+    },
+    tags: ["New Project", "TDA", "LLM", "MPS LAB"],
+  },
+  {
+    date: "2026 Feb",
+    title: { en: "LG Aimers 8th Cohort Completed (LLM Compression)", ko: "LG Aimers 8기 수료 (LLM Compression)" },
+    description: {
+      en: "Completed LG Aimers 8th program (2026.01.02–2026.02.26). Hackathon topic: EXAONE Model Lightweight LLM Compression. Certified by LG AI Research Institute and Ministry of Employment and Labor.",
+      ko: "LG Aimers 8기 프로그램 수료 (2026.01.02~2026.02.26). 해커톤 주제: EXAONE 모델 경량화(LLM Compression). LG AI연구원 및 고용노동부 인증."
+    },
+    tags: ["Certificate", "LG Aimers", "LLM Compression"],
+  },
+  {
     date: "2025 Q4",
     title: { en: "JKICS & KIIT-JICS Journal Papers Accepted", ko: "JKICS & KIIT-JICS 저널 논문 채택" },
     description: {
@@ -39,6 +57,15 @@ const TIMELINE_EVENTS = [
       ko: "Logit 기반 Knowledge Distillation FL(KIIT), FGSM/PGD 공격 방어 실증 연구(KICS) 발표."
     },
     tags: ["Conference", "Federated Learning", "Medical AI"],
+  },
+  {
+    date: "2025 Q4",
+    title: { en: "Side-Channel Attack Detection & Quantum GNN Studies Completed", ko: "부채널 공격 탐지 & 양자 GNN 연구 완료" },
+    description: {
+      en: "Completed comparative analysis of AI models for side-channel attack detection and mathematical analysis of Quantum Graph Neural Networks.",
+      ko: "부채널 공격 탐지를 위한 AI 모델 비교 분석 및 양자 그래프 신경망(Quantum GNN) 수학적 분석 연구 완료."
+    },
+    tags: ["Security", "Quantum", "GNN", "Completed"],
   },
   {
     date: "2025 Q3",
@@ -69,6 +96,15 @@ const TIMELINE_EVENTS = [
   },
   {
     date: "2025",
+    title: { en: "AI Aquaponics Monitoring System Completed (COREX)", ko: "AI 아쿠아포닉스 모니터링 시스템 완료 (COREX)" },
+    description: {
+      en: "Completed camera-based plant growth prediction and real-time AI monitoring system for aquaponics (pH, temperature, etc.) with automated anomaly adjustment. Collaborated with COREX.",
+      ko: "COREX와 협업하여 카메라 기반 식물 생장 예측 및 pH·온도 등 실시간 AI 모니터링 시스템 개발 완료. 이상 감지 시 자동 조절 기능 구현."
+    },
+    tags: ["Completed", "Aquaponics", "Computer Vision", "IoT"],
+  },
+  {
+    date: "2025 Q1",
     title: { en: "Autonomous Driving + FL Research Launched", ko: "자율주행 + FL 연구 본격 착수" },
     description: {
       en: "Launched federated learning research for autonomous driving at RAISE LAB. Designing experiments with heterogeneous/homogeneous models across diverse environments.",
@@ -77,7 +113,7 @@ const TIMELINE_EVENTS = [
     tags: ["New Project", "Autonomous Driving", "FL"],
   },
   {
-    date: "2024",
+    date: "2024 Q4",
     title: { en: "Joined RAISE LAB as Undergraduate Researcher", ko: "RAISE LAB 학부연구원 합류" },
     description: {
       en: "Joined RAISE LAB at Yonsei University as an undergraduate researcher, beginning research in AI security and quantum computing.",
@@ -87,12 +123,21 @@ const TIMELINE_EVENTS = [
   },
   {
     date: "2024",
-    title: { en: "LG Aimers & AI Expert Program Certificates", ko: "LG Aimers & AI 융합 전문가 수료" },
+    title: { en: "Multiple Independent Research Projects", ko: "다수 개인 연구 프로젝트 수행" },
     description: {
-      en: "Earned LG Aimers certification and completed the AI Convergence Technology Expert Training Program. Academic Excellence Awards.",
-      ko: "LG Aimers 인증 취득, 한국학회 AI 융합 기술 전문가 양성 프로그램 수료. 학업우수상 수상."
+      en: "Completed electricity usage prediction (weather + consumption data), OCR + LLM medical document automation, voice-based risk prediction, and LLM search query optimization projects.",
+      ko: "전력 수요 예측(기상+사용량 데이터), OCR+LLM 의료 문서 자동화, 음성 기반 위험 예측, LLM 검색어 최적화 프로젝트 완료."
     },
-    tags: ["Certificate", "Award", "Education"],
+    tags: ["Completed", "LLM", "OCR", "Prediction"],
+  },
+  {
+    date: "2025 Feb",
+    title: { en: "LG Aimers 6th Cohort Completed (Data Intelligence)", ko: "LG Aimers 6기 수료 (Data Intelligence)" },
+    description: {
+      en: "Completed LG Aimers 6th program (2025.01.02–2025.02.27). Hackathon topic: Pregnancy success prediction for infertility patients. Certified by LG AI Research Institute and Ministry of Employment and Labor.",
+      ko: "LG Aimers 6기 프로그램 수료 (2025.01.02~2025.02.27). 해커톤 주제: 난임 환자 대상 임신 성공 여부 예측. LG AI연구원 및 고용노동부 인증."
+    },
+    tags: ["Certificate", "LG Aimers", "Data Intelligence"],
   },
   {
     date: "2022",

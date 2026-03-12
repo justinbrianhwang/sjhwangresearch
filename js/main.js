@@ -3,6 +3,9 @@
    섹션 로딩 및 데이터 렌더링 총괄
    ============================================ */
 
+/* ── 에셋 경로 프리픽스 (서브폴더 페이지 지원) ── */
+const BASE_PATH = document.getElementById('main-content')?.dataset.base || '.';
+
 document.addEventListener('DOMContentLoaded', async () => {
   // 1. HTML 섹션 로드
   await loadSections();
@@ -39,20 +42,27 @@ function renderAll() {
   }, 100);
 }
 
-/* ── 섹션 HTML 로드 ── */
+/* ── 섹션 HTML 로드 (페이지별 data-sections 기반) ── */
 async function loadSections() {
-  const sectionOrder = [
-    'hero', 'overview', 'areas', 'projects', 'experiments',
-    'publications', 'talks', 'timeline', 'future', 'collaborations'
-  ];
-
   const main = document.getElementById('main-content');
+  const pageSections = main.dataset.sections;
+
+  // data-sections 속성이 없으면 전체 로드 (폴백)
+  const sectionOrder = pageSections
+    ? pageSections.split(',').map(s => s.trim())
+    : ['hero', 'overview', 'areas', 'projects', 'experiments',
+       'publications', 'talks', 'timeline', 'future', 'collaborations'];
 
   for (const name of sectionOrder) {
     try {
-      const response = await fetch(`sections/${name}.html`);
+      const basePath = main.dataset.base || '.';
+      const response = await fetch(`${basePath}/sections/${name}.html`);
       if (response.ok) {
-        const html = await response.text();
+        let html = await response.text();
+        // 서브폴더 페이지에서 에셋 경로 보정
+        if (BASE_PATH !== '.') {
+          html = html.replace(/src="assets\//g, `src="${BASE_PATH}/assets/`);
+        }
         main.insertAdjacentHTML('beforeend', html);
       }
     } catch (e) {
@@ -66,7 +76,6 @@ function renderHero() {
   const badge = document.getElementById('hero-badge');
   const nameEl = document.getElementById('hero-name');
   const desc = document.getElementById('hero-description');
-  const statsContainer = document.getElementById('hero-stats');
   const heroTitle = document.getElementById('hero-title-prefix');
   const btnPrimary = document.getElementById('hero-btn-primary');
   const btnSecondary = document.getElementById('hero-btn-secondary');
@@ -77,15 +86,6 @@ function renderHero() {
   if (heroTitle) heroTitle.textContent = ui('heroResearchBy');
   if (btnPrimary) btnPrimary.textContent = ui('heroViewProjects');
   if (btnSecondary) btnSecondary.textContent = ui('heroViewPubs');
-
-  if (statsContainer && PROFILE.stats) {
-    statsContainer.innerHTML = PROFILE.stats.map(s => `
-      <div>
-        <div class="hero__stat-number">${s.number}</div>
-        <div class="hero__stat-label">${t(s.label)}</div>
-      </div>
-    `).join('');
-  }
 }
 
 /* ── Overview 렌더링 ── */
@@ -112,6 +112,14 @@ function renderOverview() {
     highlights[2].querySelector('h4').textContent = ui('highlightImpactTitle');
     highlights[2].querySelector('p').textContent = ui('highlightImpactDesc');
   }
+
+  // Stats: 데이터 배열과 동적 연동
+  const statCards = document.querySelectorAll('.overview__stat-card .stat__number');
+  if (statCards.length >= 4) {
+    statCards[0].setAttribute('data-count', PROJECTS.length);
+    statCards[1].setAttribute('data-count', PUBLICATIONS.length);
+    statCards[3].setAttribute('data-count', RESEARCH_AREAS.length);
+  }
 }
 
 /* ── Research Areas 렌더링 ── */
@@ -125,7 +133,7 @@ function renderAreas() {
 
   grid.innerHTML = RESEARCH_AREAS.map(area => `
     <div class="area-card fade-in">
-      <div class="area-card__icon">${area.icon}</div>
+      <div class="area-card__icon"><img src="${BASE_PATH}/${area.icon}" alt="${area.title.en}" /></div>
       <h3 class="area-card__title">${t(area.title)}</h3>
       <p class="area-card__description">${t(area.description)}</p>
       <div class="area-card__tags">
@@ -157,7 +165,7 @@ function renderProjects() {
         <p class="project-card__description">${t(project.description)}</p>
         <div class="project-card__meta">
           <span class="project-card__meta-item">📅 ${project.startDate}</span>
-          <span class="project-card__meta-item">👥 ${project.team}</span>
+          <span class="project-card__meta-item project-card__team-logos">${project.teamLogos.map(logo => `<img src="${BASE_PATH}/${logo}" alt="team logo" class="project-card__team-logo${logo.endsWith('.webp') ? ' project-card__team-logo--invert' : ''}" />`).join('')}</span>
         </div>
         <div class="progress">
           <div class="progress__header">
@@ -176,7 +184,7 @@ function renderProjects() {
   }).join('');
 }
 
-/* ── Experiments 렌더링 ── */
+/* ── Past Research 렌더링 ── */
 function renderExperiments() {
   const list = document.getElementById('experiments-list');
   const title = document.querySelector('#experiments .section__title');
@@ -185,23 +193,20 @@ function renderExperiments() {
   if (subtitle) subtitle.textContent = ui('experimentsSubtitle');
   if (!list) return;
 
-  list.innerHTML = PROJECTS.map((project, i) => {
-    const color = getProgressColor(project.progress);
+  list.innerHTML = PAST_PROJECTS.map((project, i) => {
     return `
       <div class="experiment-card fade-in">
         <div class="experiment-card__number">${String(i + 1).padStart(2, '0')}</div>
         <div class="experiment-card__content">
           <h3 class="experiment-card__title">${t(project.title)}</h3>
           <p class="experiment-card__description">${t(project.description)}</p>
+          <div class="experiment-card__tags">
+            ${project.tags.map(tag => `<span class="tag tag--primary">${tag}</span>`).join('')}
+          </div>
         </div>
-        <div class="experiment-card__progress-section">
-          <div class="experiment-card__progress-label">
-            <span>${ui('progressLabel')}</span>
-            <span>${project.progress}%</span>
-          </div>
-          <div class="experiment-card__progress-track">
-            <div class="experiment-card__progress-bar" data-progress="${project.progress}" style="background: ${color};"></div>
-          </div>
+        <div class="experiment-card__outcome">
+          <span class="experiment-card__year">${project.year}</span>
+          <span class="experiment-card__outcome-text">${t(project.outcome)}</span>
         </div>
       </div>
     `;
@@ -313,7 +318,7 @@ function renderFuture() {
     return `
       <div class="future-card fade-in">
         <div class="future-card__priority">${priorityTag}</div>
-        <div class="future-card__icon">${item.icon}</div>
+        <div class="future-card__icon"><img src="${BASE_PATH}/${item.icon}" alt="${item.title.en}" /></div>
         <h3 class="future-card__title">${t(item.title)}</h3>
         <p class="future-card__description">${t(item.description)}</p>
         <ul class="future-card__questions">
@@ -341,7 +346,7 @@ function renderCollaborations() {
       <div class="collab-card__info">
         <div class="collab-card__logo">${
           collab.logo.endsWith('.png') || collab.logo.endsWith('.jpg') || collab.logo.endsWith('.svg') || collab.logo.endsWith('.webp')
-            ? `<img src="${collab.logo}" alt="${collab.name}" class="collab-card__logo-img" onerror="this.style.display='none';this.parentElement.textContent='🔬'">`
+            ? `<img src="${BASE_PATH}/${collab.logo}" alt="${collab.name}" class="collab-card__logo-img${collab.logo.endsWith('.webp') ? ' collab-card__logo-img--invert' : ''}${collab.darkBg ? ' collab-card__logo-img--dark-bg' : ''}" onerror="this.style.display='none';this.parentElement.textContent='🔬'">`
             : collab.logo
         }</div>
         <h3 class="collab-card__name">${collab.name}</h3>

@@ -11,10 +11,10 @@ const PROJECTS = [
       en: "Training heterogeneous models via federated learning in the same driving environment. Analyzing knowledge transfer between models and performance convergence.",
       ko: "동일한 주행 환경에서 이기종(Heterogeneous) 모델들을 연합학습으로 훈련하는 연구. 모델 간 지식 전이와 성능 수렴을 분석합니다."
     },
-    progress: 80,
+    progress: 85,
     status: "active",
     startDate: "2025",
-    team: "RAISE LAB",
+    teamLogos: ["assets/logos/sjjb logos.png"],
     tags: ["Federated Learning", "Heterogeneous Models", "Autonomous Driving"],
   },
   {
@@ -26,7 +26,7 @@ const PROJECTS = [
     progress: 30,
     status: "active",
     startDate: "2025",
-    team: "RAISE LAB",
+    teamLogos: ["assets/logos/sjjb logos.png"],
     tags: ["Fault Injection", "DNN Recovery", "Logit Calibration", "Reliability"],
   },
   {
@@ -38,7 +38,7 @@ const PROJECTS = [
     progress: 20,
     status: "active",
     startDate: "2025",
-    team: "RAISE LAB",
+    teamLogos: ["assets/logos/RAISE LAB_current research.png"],
     tags: ["Quantum ML", "VQC", "Hybrid Network", "PennyLane"],
   },
   {
@@ -47,10 +47,10 @@ const PROJECTS = [
       en: "Leveraging Large Language Models (LLMs) for autonomous driving decision-making and scenario understanding. Analyzing reasoning capabilities in complex traffic situations.",
       ko: "대규모 언어 모델(LLM)을 자율주행 의사결정 및 시나리오 이해에 활용하는 연구. 복잡한 교통 상황에서의 추론 능력 분석."
     },
-    progress: 10,
+    progress: 25,
     status: "active",
     startDate: "2025",
-    team: "RAISE LAB",
+    teamLogos: ["assets/logos/RAISE LAB_current research.png", "assets/logos/MPS LAB_current research.webp"],
     tags: ["LLM", "Autonomous Driving", "Decision Making"],
   },
   {
@@ -62,7 +62,19 @@ const PROJECTS = [
     progress: 10,
     status: "active",
     startDate: "2025",
-    team: "RAISE LAB",
+    teamLogos: ["assets/logos/RAISE LAB_current research.png"],
     tags: ["Federated Learning", "Domain Shift", "Autonomous Driving"],
+  },
+  {
+    title: { en: "TDA for Medical Data Analysis", ko: "TDA 기반 의료 데이터 분석" },
+    description: {
+      en: "Applying Topological Data Analysis (TDA) to medical datasets for robust feature extraction and pattern discovery in complex healthcare data.",
+      ko: "위상적 데이터 분석(TDA)을 의료 데이터에 적용하여 복잡한 의료 데이터에서 강건한 특징 추출 및 패턴 발견 연구."
+    },
+    progress: 5,
+    status: "active",
+    startDate: "2025",
+    teamLogos: ["assets/logos/sjjb logos.png"],
+    tags: ["TDA", "Medical Data", "Topological Analysis", "Healthcare"],
   },
 ];

@@ -6,22 +6,7 @@
 
 const FUTURE_RESEARCH = [
   {
-    icon: "🚗",
-    title: { en: "Autonomous Driving + LLM Integration Framework", ko: "자율주행 + LLM 통합 프레임워크" },
-    description: {
-      en: "Integrating LLM reasoning into autonomous driving decision-making, building systems that understand complex traffic scenarios through natural language.",
-      ko: "LLM의 추론 능력을 자율주행 의사결정에 접목하여, 복잡한 교통 시나리오를 자연어로 이해하고 대응하는 시스템 구축."
-    },
-    priority: "high",
-    openQuestions: [
-      { en: "Can LLMs be fast enough for real-time driving decisions?", ko: "LLM이 실시간 주행 판단에 충분히 빠를 수 있는가?" },
-      { en: "What is the optimal fusion of language-based reasoning and sensor data?", ko: "언어 기반 추론과 센서 데이터의 최적 결합 방법은?" },
-      { en: "Deployment strategies for lightweight LLMs on edge devices?", ko: "Edge Device에서의 경량 LLM 배포 전략은?" },
-    ],
-    estimatedTimeline: "2025 ~ 2026",
-  },
-  {
-    icon: "⚛️",
+    icon: "assets/icons/Practical Quantum Machine Learning.png",
     title: { en: "Practical Quantum Machine Learning", ko: "양자 머신러닝 실용화" },
     description: {
       en: "Overcoming VQC performance limits on NISQ devices, researching hybrid algorithms that can achieve quantum advantage on real-world problems.",
@@ -36,7 +21,7 @@ const FUTURE_RESEARCH = [
     estimatedTimeline: "2025 ~ 2027",
   },
   {
-    icon: "🛡️",
+    icon: "assets/icons/AI Safety  Fault Tolerance Integration.png",
     title: { en: "AI Safety / Fault Tolerance Integration", ko: "AI 안전성 / Fault Tolerance 통합" },
     description: {
       en: "Building a unified AI system reliability framework that addresses fault injection, adversarial attacks, and Byzantine faults comprehensively.",
@@ -51,7 +36,7 @@ const FUTURE_RESEARCH = [
     estimatedTimeline: "2025 ~ 2027",
   },
   {
-    icon: "🔬",
+    icon: "assets/icons/AI Semiconductors  Neuromorphic Computing.png",
     title: { en: "AI Semiconductors / Neuromorphic Computing", ko: "AI 반도체 / 뉴로모픽 컴퓨팅" },
     description: {
       en: "Efficient inference systems on FPGA and dedicated AI accelerators, low-power AI research using neuromorphic architectures.",

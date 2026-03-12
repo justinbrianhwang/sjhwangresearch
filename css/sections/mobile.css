@@ -66,22 +66,6 @@
     font-size: var(--text-base);
   }
 
-  .hero__stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-4);
-    margin-top: var(--space-8);
-    padding-top: var(--space-6);
-  }
-
-  .hero__stat-number {
-    font-size: var(--text-2xl);
-  }
-
-  .hero__stat-label {
-    font-size: var(--text-xs);
-  }
-
   /* ── Overview 모바일 ── */
   .overview__grid {
     grid-template-columns: 1fr;
@@ -211,7 +195,8 @@
   }
 
   .future-card__icon {
-    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
   }
 
   .future-card__title {
@@ -292,11 +277,6 @@
 @media (max-width: 360px) {
   :root {
     --section-padding: 3rem;
-  }
-
-  .hero__stats {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-3);
   }
 
   .overview__stats-grid {
