@@ -74,7 +74,7 @@ const PROJECTS = [
     progress: 5,
     status: "active",
     startDate: "2025",
-    teamLogos: ["assets/logos/sjjb logos.png"],
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/Permillion Logos.png"],
     tags: ["TDA", "Medical Data", "Topological Analysis", "Healthcare"],
   },
 ];

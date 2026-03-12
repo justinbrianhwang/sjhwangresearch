@@ -10,9 +10,7 @@ const PUBLICATIONS = [
     authors: "Sunjun Hwang, Jihyuk Ha",
     venue: "KICS 2026",
     status: "Accepted",
-    links: [
-      { label: "Paper", url: "#" },
-    ],
+    links: [],
   },
   {
     year: "2026",
@@ -20,9 +18,7 @@ const PUBLICATIONS = [
     authors: "Sunjun Hwang, Eunho Choi, Dohyun Hwang",
     venue: "IEEE ICAIIC 2026",
     status: "Accepted",
-    links: [
-      { label: "Paper", url: "#" },
-    ],
+    links: [],
   },
   {
     year: "2026",
@@ -30,9 +26,7 @@ const PUBLICATIONS = [
     authors: "Sunjun Hwang, Seunghui Ye",
     venue: "KCS 2026",
     status: "Accepted",
-    links: [
-      { label: "Paper", url: "#" },
-    ],
+    links: [],
   },
   {
     year: "2026",
@@ -40,9 +34,7 @@ const PUBLICATIONS = [
     authors: "Sunjun Hwang",
     venue: "JKICS 2026 (Journal)",
     status: "Accepted",
-    links: [
-      { label: "Paper", url: "#" },
-    ],
+    links: [],
   },
   {
     year: "2026",
@@ -50,9 +42,7 @@ const PUBLICATIONS = [
     authors: "Sunjun Hwang",
     venue: "KIIT-JICS 2026",
     status: "Accepted",
-    links: [
-      { label: "Paper", url: "#" },
-    ],
+    links: [],
   },
   {
     year: "2025",
@@ -60,9 +50,7 @@ const PUBLICATIONS = [
     authors: "Sunjun Hwang, Wooseok Wang, Jaehoon Lee",
     venue: "Proceedings of KIIT Conference, 2025",
     status: "Accepted",
-    links: [
-      { label: "Paper", url: "#" },
-    ],
+    links: [],
   },
   {
     year: "2025",
@@ -70,9 +58,7 @@ const PUBLICATIONS = [
     authors: "Sunjun Hwang, Hongjoon Jun, Wooseok Wang, Jaehoon Lee",
     venue: "Proceedings of KICS Conference, 2025",
     status: "Accepted",
-    links: [
-      { label: "Paper", url: "#" },
-    ],
+    links: [],
   },
   {
     year: "2025",
@@ -80,9 +66,7 @@ const PUBLICATIONS = [
     authors: "Sunjun Hwang",
     venue: "KSII Conference, 2025",
     status: "Accepted",
-    links: [
-      { label: "Paper", url: "#" },
-    ],
+    links: [],
   },
   {
     year: "2025",
@@ -90,9 +74,7 @@ const PUBLICATIONS = [
     authors: "Sunjun Hwang, Sehee Park, Kangmin Ko, Jiyun Baik",
     venue: "Proceedings of KIIT Conference, 2025",
     status: "Published",
-    links: [
-      { label: "Paper", url: "#" },
-    ],
+    links: [],
   },
   {
     year: "2025",
@@ -100,8 +82,6 @@ const PUBLICATIONS = [
     authors: "Sunjun Hwang, Hongjoon Jun, Sunje Kuem",
     venue: "Proceedings of KIIT Conference, 2025",
     status: "Published",
-    links: [
-      { label: "Paper", url: "#" },
-    ],
+    links: [],
   },
 ];

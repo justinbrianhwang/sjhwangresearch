@@ -76,16 +76,22 @@ function renderHero() {
   const badge = document.getElementById('hero-badge');
   const nameEl = document.getElementById('hero-name');
   const desc = document.getElementById('hero-description');
-  const heroTitle = document.getElementById('hero-title-prefix');
+  const affiliation = document.getElementById('hero-affiliation');
+  const role = document.getElementById('hero-role');
   const btnPrimary = document.getElementById('hero-btn-primary');
   const btnSecondary = document.getElementById('hero-btn-secondary');
+  const scholarLink = document.getElementById('hero-link-scholar');
+  const cvLink = document.getElementById('hero-link-cv');
 
   if (badge) badge.textContent = PROFILE.badge;
   if (nameEl) nameEl.textContent = PROFILE.name;
   if (desc) desc.textContent = t(PROFILE.description);
-  if (heroTitle) heroTitle.textContent = ui('heroResearchBy');
+  if (affiliation) affiliation.textContent = t(PROFILE.affiliation);
+  if (role) role.textContent = t(PROFILE.title);
   if (btnPrimary) btnPrimary.textContent = ui('heroViewProjects');
   if (btnSecondary) btnSecondary.textContent = ui('heroViewPubs');
+  if (scholarLink) scholarLink.href = PROFILE.links.scholar;
+  if (cvLink) cvLink.href = PROFILE.links.cv;
 }
 
 /* ── Overview 렌더링 ── */
