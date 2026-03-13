@@ -1,5 +1,6 @@
 /* ============================================
-   RESEARCH AREAS SECTION
+   RESEARCH AREAS SECTION — Enhanced Edition
+   각 연구 영역별 테마 애니메이션 + 태그 기반 Research Directions
    ============================================ */
 
 .areas__grid {
@@ -8,14 +9,17 @@
   gap: var(--space-6);
 }
 
+/* ── Area Card ── */
 .area-card {
   background: var(--color-white);
   border-radius: var(--radius-xl);
   padding: var(--space-8);
+  padding-top: 0;
   position: relative;
   overflow: hidden;
   border: 1px solid var(--color-gray-200);
   transition: all var(--transition-base);
+  cursor: pointer;
 }
 
 .area-card::before {
@@ -27,6 +31,7 @@
   height: 4px;
   background: var(--color-primary);
   transition: height var(--transition-base);
+  z-index: 3;
 }
 
 .area-card:hover::before {
@@ -38,6 +43,17 @@
   transform: translateY(-4px);
 }
 
+/* Expanded state */
+.area-card--expanded {
+  grid-column: 1 / -1;
+  transform: none !important;
+  box-shadow: var(--shadow-xl);
+}
+
+.area-card--expanded::before { height: 6px; }
+.area-card--expanded:hover { transform: none; }
+
+/* Color accents */
 .area-card:nth-child(1)::before { background: var(--color-primary); }
 .area-card:nth-child(2)::before { background: var(--color-accent); }
 .area-card:nth-child(3)::before { background: var(--color-secondary); }
@@ -45,6 +61,479 @@
 .area-card:nth-child(5)::before { background: var(--progress-0-25); }
 .area-card:nth-child(6)::before { background: #6C63FF; }
 
+/* ================================================================
+   THEMATIC VISUAL ANIMATIONS
+   각 카드 상단에 연구 분야를 시각적으로 표현하는 애니메이션
+   ================================================================ */
+
+.area-card__visual {
+  width: calc(100% + var(--space-8) * 2);
+  margin-left: calc(-1 * var(--space-8));
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: var(--space-5);
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+/* ── 1. AI Security: Bit-flip Detection ── */
+.area-visual--security {
+  background: linear-gradient(180deg, rgba(var(--color-primary-rgb), 0.04) 0%, transparent 100%);
+}
+
+.area-visual--security .av__grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 2px;
+  padding: 12px 16px;
+  height: 100%;
+}
+
+.area-visual--security .av__bit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-gray-400);
+  background: var(--color-gray-50);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.area-visual--security .av__bit--flip {
+  animation: bit-flip 4s ease-in-out infinite;
+}
+
+.area-visual--security .av__bit--flip:nth-child(7) { animation-delay: 0s; }
+.area-visual--security .av__bit--flip:nth-child(15) { animation-delay: 0.8s; }
+.area-visual--security .av__bit--flip:nth-child(23) { animation-delay: 1.6s; }
+.area-visual--security .av__bit--flip:nth-child(34) { animation-delay: 2.4s; }
+.area-visual--security .av__bit--flip:nth-child(41) { animation-delay: 0.4s; }
+
+@keyframes bit-flip {
+  0%, 30% { color: var(--color-gray-400); background: var(--color-gray-50); }
+  35%, 55% { color: #fff; background: #E31937; transform: scale(1.2); }
+  60%, 75% { color: #fff; background: var(--progress-76-100); transform: scale(1.1); box-shadow: 0 0 8px rgba(0, 132, 61, 0.4); }
+  80%, 100% { color: var(--color-gray-400); background: var(--color-gray-50); transform: scale(1); }
+}
+
+/* Scanner line */
+.area-visual--security .av__scanner {
+  position: absolute;
+  top: 0;
+  left: -2px;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, var(--color-primary), transparent);
+  box-shadow: 0 0 8px rgba(var(--color-primary-rgb), 0.5);
+  animation: scanner-sweep 4s linear infinite;
+}
+
+@keyframes scanner-sweep {
+  0% { left: -2px; }
+  100% { left: 100%; }
+}
+
+/* ── 2. Autonomous Driving: Road & Vehicle ── */
+.area-visual--driving {
+  background: linear-gradient(180deg, rgba(var(--color-accent-rgb), 0.04) 0%, transparent 100%);
+}
+
+.area-visual--driving .av__road {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: var(--color-gray-200);
+}
+
+.area-visual--driving .av__lane {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--color-gray-400) 0px, var(--color-gray-400) 20px, transparent 20px, transparent 35px);
+  animation: lane-move 1s linear infinite;
+}
+
+@keyframes lane-move {
+  to { transform: translateX(-35px); }
+}
+
+.area-visual--driving .av__car {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 16px;
+  background: var(--color-accent);
+  border-radius: 4px 4px 2px 2px;
+  box-shadow: 0 2px 8px rgba(var(--color-accent-rgb), 0.3);
+  animation: car-drift 3s ease-in-out infinite;
+}
+
+.area-visual--driving .av__car::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 6px;
+  width: 20px;
+  height: 8px;
+  background: var(--color-accent-dark);
+  border-radius: 3px 3px 0 0;
+}
+
+@keyframes car-drift {
+  0%, 100% { transform: translateX(-50%); }
+  25% { transform: translateX(-70%); }
+  75% { transform: translateX(-30%); }
+}
+
+/* Decision signals */
+.area-visual--driving .av__signal {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  animation: signal-ping 2s ease-out infinite;
+}
+
+.area-visual--driving .av__signal:nth-child(4) { top: 20px; left: 30%; animation-delay: 0s; }
+.area-visual--driving .av__signal:nth-child(5) { top: 15px; left: 60%; animation-delay: 0.7s; }
+.area-visual--driving .av__signal:nth-child(6) { top: 25px; left: 80%; animation-delay: 1.4s; }
+
+@keyframes signal-ping {
+  0% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(var(--color-accent-rgb), 0.5); }
+  50% { transform: scale(1.5); opacity: 0.7; box-shadow: 0 0 0 8px rgba(var(--color-accent-rgb), 0); }
+  100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(var(--color-accent-rgb), 0); }
+}
+
+/* ── 3. Quantum Computing: Qubits ── */
+.area-visual--quantum {
+  background: linear-gradient(180deg, rgba(var(--color-secondary-rgb), 0.04) 0%, transparent 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.area-visual--quantum .av__qubit {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--color-secondary);
+  border-radius: 50%;
+  position: relative;
+  animation: qubit-spin 3s linear infinite;
+}
+
+.area-visual--quantum .av__qubit:nth-child(2) { animation-delay: 0.5s; animation-duration: 2.5s; }
+.area-visual--quantum .av__qubit:nth-child(3) { animation-delay: 1s; animation-duration: 3.5s; }
+
+.area-visual--quantum .av__qubit::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--color-secondary);
+  border-radius: 50%;
+  animation: qubit-state 2s ease-in-out infinite;
+}
+
+.area-visual--quantum .av__qubit:nth-child(2)::before { animation-delay: 0.7s; }
+.area-visual--quantum .av__qubit:nth-child(3)::before { animation-delay: 1.4s; }
+
+@keyframes qubit-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes qubit-state {
+  0%, 100% { top: 2px; background: var(--color-secondary); }
+  50% { top: calc(100% - 10px); background: var(--color-accent); }
+}
+
+/* Entanglement lines */
+.area-visual--quantum .av__entangle {
+  position: absolute;
+  width: 60%;
+  height: 1px;
+  top: 50%;
+  left: 20%;
+  background: linear-gradient(90deg, transparent, rgba(var(--color-secondary-rgb), 0.3), transparent);
+  animation: entangle-pulse 2s ease-in-out infinite;
+}
+
+@keyframes entangle-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Quantum state labels */
+.area-visual--quantum .av__state-label {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-secondary);
+  opacity: 0.6;
+  animation: state-switch 3s ease-in-out infinite;
+}
+
+.area-visual--quantum .av__state-label:nth-child(5) { bottom: 8px; left: 15%; }
+.area-visual--quantum .av__state-label:nth-child(6) { bottom: 8px; left: 45%; animation-delay: 1s; }
+.area-visual--quantum .av__state-label:nth-child(7) { bottom: 8px; left: 75%; animation-delay: 2s; }
+
+@keyframes state-switch {
+  0%, 45% { opacity: 0.4; }
+  50%, 55% { opacity: 1; }
+  60%, 100% { opacity: 0.4; }
+}
+
+/* ── 4. AI Semiconductors: Circuit Traces ── */
+.area-visual--semiconductor {
+  background: linear-gradient(180deg, rgba(0, 132, 61, 0.04) 0%, transparent 100%);
+}
+
+.area-visual--semiconductor .av__traces {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.area-visual--semiconductor .av__trace {
+  position: absolute;
+  height: 2px;
+  background: var(--color-gray-200);
+}
+
+.area-visual--semiconductor .av__trace:nth-child(1) { top: 20%; left: 5%; width: 30%; }
+.area-visual--semiconductor .av__trace:nth-child(2) { top: 40%; left: 15%; width: 50%; }
+.area-visual--semiconductor .av__trace:nth-child(3) { top: 60%; left: 10%; width: 40%; }
+.area-visual--semiconductor .av__trace:nth-child(4) { top: 80%; left: 20%; width: 60%; }
+
+/* Vertical traces */
+.area-visual--semiconductor .av__trace--v {
+  width: 2px;
+  height: 0;
+}
+
+.area-visual--semiconductor .av__trace--v:nth-child(5) { top: 20%; left: 35%; height: 40%; }
+.area-visual--semiconductor .av__trace--v:nth-child(6) { top: 40%; left: 65%; height: 40%; }
+
+/* Signal flowing through traces */
+.area-visual--semiconductor .av__signal-pulse {
+  position: absolute;
+  width: 12px;
+  height: 2px;
+  background: var(--progress-76-100);
+  box-shadow: 0 0 6px rgba(0, 132, 61, 0.6);
+  border-radius: 1px;
+}
+
+.area-visual--semiconductor .av__signal-pulse:nth-child(7) {
+  top: 20%;
+  animation: trace-flow-1 2s linear infinite;
+}
+
+.area-visual--semiconductor .av__signal-pulse:nth-child(8) {
+  top: 40%;
+  animation: trace-flow-2 2.5s linear infinite;
+  animation-delay: 0.5s;
+}
+
+.area-visual--semiconductor .av__signal-pulse:nth-child(9) {
+  top: 60%;
+  animation: trace-flow-3 1.8s linear infinite;
+  animation-delay: 1s;
+}
+
+.area-visual--semiconductor .av__signal-pulse:nth-child(10) {
+  top: 80%;
+  animation: trace-flow-4 2.2s linear infinite;
+  animation-delay: 0.3s;
+}
+
+@keyframes trace-flow-1 { 0% { left: 5%; } 100% { left: 35%; } }
+@keyframes trace-flow-2 { 0% { left: 15%; } 100% { left: 65%; } }
+@keyframes trace-flow-3 { 0% { left: 10%; } 100% { left: 50%; } }
+@keyframes trace-flow-4 { 0% { left: 20%; } 100% { left: 80%; } }
+
+/* Gate nodes */
+.area-visual--semiconductor .av__gate {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--progress-76-100);
+  border-radius: 2px;
+  background: var(--bg-primary);
+  animation: gate-blink 2s ease-in-out infinite;
+}
+
+.area-visual--semiconductor .av__gate:nth-child(11) { top: calc(20% - 4px); left: calc(35% - 4px); }
+.area-visual--semiconductor .av__gate:nth-child(12) { top: calc(40% - 4px); left: calc(65% - 4px); animation-delay: 0.5s; }
+.area-visual--semiconductor .av__gate:nth-child(13) { top: calc(60% - 4px); left: calc(50% - 4px); animation-delay: 1s; }
+
+@keyframes gate-blink {
+  0%, 70%, 100% { background: var(--bg-primary); }
+  75%, 90% { background: rgba(0, 132, 61, 0.2); box-shadow: 0 0 8px rgba(0, 132, 61, 0.3); }
+}
+
+/* ── 5. Medical AI: ECG Heartbeat ── */
+.area-visual--medical {
+  background: linear-gradient(180deg, rgba(227, 25, 55, 0.04) 0%, transparent 100%);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.area-visual--medical .av__ecg-container {
+  width: 200%;
+  height: 60px;
+  position: relative;
+  animation: ecg-scroll 4s linear infinite;
+}
+
+@keyframes ecg-scroll {
+  to { transform: translateX(-50%); }
+}
+
+.area-visual--medical .av__ecg-line {
+  width: 100%;
+  height: 100%;
+}
+
+.area-visual--medical .av__ecg-line polyline {
+  fill: none;
+  stroke: #E31937;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Scan overlay */
+.area-visual--medical .av__scan {
+  position: absolute;
+  top: 0;
+  width: 60px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(227, 25, 55, 0.08), transparent);
+  animation: med-scan 4s linear infinite;
+}
+
+@keyframes med-scan {
+  0% { left: -60px; }
+  100% { left: 100%; }
+}
+
+/* ── 6. Network Security: Signal Waves ── */
+.area-visual--network {
+  background: linear-gradient(180deg, rgba(108, 99, 255, 0.04) 0%, transparent 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.area-visual--network .av__wave {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.area-visual--network .av__wave path {
+  fill: none;
+  stroke: rgba(108, 99, 255, 0.2);
+  stroke-width: 1.5;
+}
+
+.area-visual--network .av__wave:nth-child(1) path { animation: wave-move 3s ease-in-out infinite; }
+.area-visual--network .av__wave:nth-child(2) path { stroke: rgba(108, 99, 255, 0.15); animation: wave-move 3.5s ease-in-out infinite reverse; }
+
+@keyframes wave-move {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Lock icon */
+.area-visual--network .av__lock {
+  position: relative;
+  z-index: 2;
+  width: 28px;
+  height: 22px;
+  background: #6C63FF;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: lock-pulse 3s ease-in-out infinite;
+}
+
+.area-visual--network .av__lock::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 12px;
+  border: 2.5px solid #6C63FF;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+}
+
+.area-visual--network .av__lock::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+}
+
+@keyframes lock-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(108, 99, 255, 0.3); }
+  50% { box-shadow: 0 0 0 12px rgba(108, 99, 255, 0); }
+}
+
+/* Packet dots */
+.area-visual--network .av__packet {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #6C63FF;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.area-visual--network .av__packet:nth-child(4) { animation: packet-left 2s linear infinite; top: 40%; }
+.area-visual--network .av__packet:nth-child(5) { animation: packet-right 2.2s linear infinite; top: 55%; animation-delay: 0.5s; }
+.area-visual--network .av__packet:nth-child(6) { animation: packet-left 1.8s linear infinite; top: 65%; animation-delay: 1s; }
+
+@keyframes packet-left {
+  0% { left: 0; opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { left: calc(50% - 20px); opacity: 0; }
+}
+
+@keyframes packet-right {
+  0% { right: 0; opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { right: calc(50% - 20px); opacity: 0; }
+}
+
+/* ================================================================
+   CARD CONTENT STYLES
+   ================================================================ */
+
+/* ── Icon ── */
 .area-card__icon {
   width: 56px;
   height: 56px;
@@ -53,6 +542,11 @@
   align-items: center;
   justify-content: center;
   margin-bottom: var(--space-5);
+  transition: transform var(--transition-base);
+}
+
+.area-card:hover .area-card__icon {
+  transform: scale(1.1) rotate(-3deg);
 }
 
 .area-card__icon img {
@@ -68,11 +562,75 @@
 .area-card:nth-child(5) .area-card__icon { background: rgba(227, 25, 55, 0.1); }
 .area-card:nth-child(6) .area-card__icon { background: rgba(108, 99, 255, 0.1); }
 
+/* ── Header ── */
+.area-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  flex-direction: column;
+}
+
+.area-card--expanded .area-card__header {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.area-card--expanded .area-card__icon {
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
 .area-card__title {
   font-size: var(--text-xl);
   margin-bottom: var(--space-3);
 }
 
+.area-card--expanded .area-card__title {
+  margin-bottom: 0;
+}
+
+/* ── Expand hint ── */
+.area-card__expand-hint {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.area-card:hover .area-card__expand-hint {
+  color: var(--color-primary);
+}
+
+.area-card__expand-arrow {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  position: relative;
+  flex-shrink: 0;
+  transition: transform var(--transition-base);
+}
+
+.area-card__expand-arrow::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translate(-50%, -60%) rotate(45deg);
+}
+
+.area-card--expanded .area-card__expand-hint { display: none; }
+
+/* ── Description ── */
 .area-card__description {
   font-size: var(--text-sm);
   color: var(--text-muted);
@@ -80,16 +638,570 @@
   margin-bottom: var(--space-4);
 }
 
+/* ── Tags ── */
 .area-card__tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
 }
 
+/* ── Expanded Detail: Tag-based Research Directions ── */
+.area-card__detail {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, margin-top 0.4s ease;
+  margin-top: 0;
+}
+
+.area-card--expanded .area-card__detail {
+  max-height: 800px;
+  opacity: 1;
+  margin-top: var(--space-6);
+}
+
+.area-card__detail-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--color-gray-200);
+  margin-bottom: var(--space-6);
+}
+
+.area-card__detail-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-5);
+}
+
+/* Directions list (tag-based) */
+.area-card__directions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+.area-card__direction {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-gray-50);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-gray-100);
+  border-left: 3px solid var(--color-primary);
+  transition: all var(--transition-base);
+  opacity: 0;
+  transform: translateX(-12px);
+  cursor: pointer;
+}
+
+.area-card--expanded .area-card__direction {
+  animation: direction-slide-in 0.4s ease forwards;
+}
+
+.area-card--expanded .area-card__direction:nth-child(1) { animation-delay: 0.1s; }
+.area-card--expanded .area-card__direction:nth-child(2) { animation-delay: 0.18s; }
+.area-card--expanded .area-card__direction:nth-child(3) { animation-delay: 0.26s; }
+.area-card--expanded .area-card__direction:nth-child(4) { animation-delay: 0.34s; }
+.area-card--expanded .area-card__direction:nth-child(5) { animation-delay: 0.42s; }
+
+@keyframes direction-slide-in {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Direction accent colors per card */
+.area-card:nth-child(1) .area-card__direction { border-left-color: var(--color-primary); }
+.area-card:nth-child(2) .area-card__direction { border-left-color: var(--color-accent); }
+.area-card:nth-child(3) .area-card__direction { border-left-color: var(--color-secondary); }
+.area-card:nth-child(4) .area-card__direction { border-left-color: var(--progress-76-100); }
+.area-card:nth-child(5) .area-card__direction { border-left-color: var(--progress-0-25); }
+.area-card:nth-child(6) .area-card__direction { border-left-color: #6C63FF; }
+
+.area-card__direction:hover {
+  background: var(--bg-primary);
+  border-color: var(--color-gray-200);
+  box-shadow: var(--shadow-md);
+}
+
+/* Active (clicked) direction */
+.area-card__direction--active {
+  background: var(--bg-primary);
+  border-color: var(--color-gray-200);
+  box-shadow: var(--shadow-md);
+  border-left-width: 4px;
+}
+
+.area-card__direction-row {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.area-card__direction-tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-top: 1px;
+}
+
+.area-card:nth-child(2) .area-card__direction-tag { color: var(--color-accent); }
+.area-card:nth-child(3) .area-card__direction-tag { color: var(--color-secondary); }
+.area-card:nth-child(4) .area-card__direction-tag { color: var(--progress-76-100); }
+.area-card:nth-child(5) .area-card__direction-tag { color: var(--progress-0-25); }
+.area-card:nth-child(6) .area-card__direction-tag { color: #6C63FF; }
+
+.area-card__direction-desc {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+/* ── Direction Mini-Animation Panel ── */
+.area-card__dir-anim {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+
+.area-card__direction--active .area-card__dir-anim {
+  max-height: 120px;
+  opacity: 1;
+}
+
+.area-card__dir-anim-inner {
+  height: 80px;
+  margin-top: var(--space-3);
+  border-radius: var(--radius-md);
+  background: var(--color-gray-50);
+  border: 1px solid var(--color-gray-100);
+  position: relative;
+  overflow: hidden;
+}
+
+/* === Mini-animation types === */
+
+/* ── Type: bit-flip (Adversarial Attack, Fault Injection) ── */
+.dir-anim--bitflip .da__row {
+  display: flex;
+  gap: 3px;
+  padding: 4px 8px;
+  justify-content: center;
+}
+
+.dir-anim--bitflip .da__cell {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--color-gray-400);
+  background: var(--bg-primary);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.dir-anim--bitflip .da__cell--bad {
+  animation: da-bit-corrupt 3s ease-in-out infinite;
+}
+
+@keyframes da-bit-corrupt {
+  0%, 25% { color: var(--color-gray-400); background: var(--bg-primary); }
+  30%, 50% { color: #fff; background: #E31937; transform: scale(1.15); }
+  55%, 70% { color: #fff; background: var(--progress-76-100); }
+  75%, 100% { color: var(--color-gray-400); background: var(--bg-primary); }
+}
+
+/* ── Type: shield (FL Security, Trust, Privacy, etc.) ── */
+.dir-anim--shield {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dir-anim--shield .da__shield {
+  width: 36px;
+  height: 42px;
+  border: 3px solid var(--color-primary);
+  border-radius: 4px 4px 18px 18px;
+  position: relative;
+  animation: da-shield-pulse 2s ease-in-out infinite;
+}
+
+.dir-anim--shield .da__shield::after {
+  content: '✓';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+@keyframes da-shield-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0.3); }
+  50% { box-shadow: 0 0 0 10px rgba(var(--color-primary-rgb), 0); }
+}
+
+.dir-anim--shield .da__attack {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #E31937;
+  border-radius: 50%;
+}
+
+.dir-anim--shield .da__attack:nth-child(2) { animation: da-attack-hit 2s linear infinite; top: 20%; }
+.dir-anim--shield .da__attack:nth-child(3) { animation: da-attack-hit 2.3s linear infinite 0.5s; top: 50%; }
+.dir-anim--shield .da__attack:nth-child(4) { animation: da-attack-hit 1.8s linear infinite 1s; top: 70%; }
+
+@keyframes da-attack-hit {
+  0% { left: 0; opacity: 0; }
+  30% { opacity: 1; }
+  60% { left: calc(50% - 24px); opacity: 1; }
+  65% { left: calc(50% - 24px); opacity: 0; transform: scale(1.5); }
+  100% { left: calc(50% - 24px); opacity: 0; }
+}
+
+/* ── Type: circuit (VQC, FPGA, CUDA, Hardware, etc.) ── */
+.dir-anim--circuit {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+}
+
+.dir-anim--circuit .da__wire {
+  flex: 1;
+  height: 2px;
+  background: var(--color-gray-200);
+  position: relative;
+}
+
+.dir-anim--circuit .da__wire::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 12px;
+  height: 4px;
+  background: var(--color-secondary);
+  border-radius: 2px;
+  box-shadow: 0 0 6px rgba(var(--color-secondary-rgb), 0.5);
+  animation: da-signal-run 1.5s linear infinite;
+}
+
+.dir-anim--circuit .da__wire:nth-child(2)::after { animation-delay: 0.3s; }
+.dir-anim--circuit .da__wire:nth-child(3)::after { animation-delay: 0.6s; }
+
+@keyframes da-signal-run {
+  0% { left: 0; }
+  100% { left: calc(100% - 12px); }
+}
+
+.dir-anim--circuit .da__gate-node {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--color-secondary);
+  border-radius: 3px;
+  flex-shrink: 0;
+  margin: 0 -1px;
+  position: relative;
+  z-index: 1;
+  background: var(--bg-primary);
+  animation: da-gate-flash 2s ease-in-out infinite;
+}
+
+.dir-anim--circuit .da__gate-node:nth-child(4) { animation-delay: 0.5s; }
+
+@keyframes da-gate-flash {
+  0%, 80%, 100% { background: var(--bg-primary); }
+  85%, 95% { background: rgba(var(--color-secondary-rgb), 0.15); }
+}
+
+/* ── Type: wave (signal, quantum, AMC, etc.) ── */
+.dir-anim--wave {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dir-anim--wave svg {
+  width: 90%;
+  height: 50px;
+}
+
+.dir-anim--wave .da__wave-path {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  animation: da-wave-draw 2s ease-in-out infinite alternate;
+}
+
+.dir-anim--wave .da__wave-path--a { stroke: var(--color-primary); }
+.dir-anim--wave .da__wave-path--b { stroke: rgba(var(--color-primary-rgb), 0.3); stroke-dasharray: 4 4; }
+
+@keyframes da-wave-draw {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -20; }
+}
+
+/* ── Type: car (Autonomous Driving, Simulation) ── */
+.dir-anim--car {
+  position: relative;
+}
+
+.dir-anim--car .da__road {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: var(--color-gray-200);
+}
+
+.dir-anim--car .da__road::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--color-gray-400) 0px, var(--color-gray-400) 12px, transparent 12px, transparent 22px);
+  animation: da-road-scroll 0.8s linear infinite;
+}
+
+@keyframes da-road-scroll {
+  to { transform: translateX(-22px); }
+}
+
+.dir-anim--car .da__mini-car {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 12px;
+  background: var(--color-accent);
+  border-radius: 3px 3px 1px 1px;
+  animation: da-car-move 2s ease-in-out infinite;
+}
+
+@keyframes da-car-move {
+  0%, 100% { transform: translateX(-50%); }
+  30% { transform: translateX(-80%); }
+  70% { transform: translateX(-20%); }
+}
+
+/* ── Type: heartbeat (Medical, Chest X-ray, etc.) ── */
+.dir-anim--heartbeat {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.dir-anim--heartbeat svg {
+  width: 200%;
+  height: 50px;
+  animation: da-ecg-move 3s linear infinite;
+}
+
+.dir-anim--heartbeat .da__ecg-path {
+  fill: none;
+  stroke: #E31937;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@keyframes da-ecg-move {
+  to { transform: translateX(-50%); }
+}
+
+/* ── Type: lock (Privacy, Quantum Security, QKD, etc.) ── */
+.dir-anim--lock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.dir-anim--lock .da__key-particle {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  animation: da-key-fly 1.5s ease-in-out infinite;
+}
+
+.dir-anim--lock .da__key-particle:nth-child(2) { animation-delay: 0.3s; }
+.dir-anim--lock .da__key-particle:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes da-key-fly {
+  0% { transform: translateX(0) scale(1); opacity: 1; }
+  50% { transform: translateX(12px) scale(0.8); opacity: 0.5; }
+  100% { transform: translateX(0) scale(1); opacity: 1; }
+}
+
+.dir-anim--lock .da__lock-icon {
+  width: 20px;
+  height: 16px;
+  background: #6C63FF;
+  border-radius: 3px;
+  position: relative;
+  animation: da-lock-glow 2s ease-in-out infinite;
+}
+
+.dir-anim--lock .da__lock-icon::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 10px;
+  border: 2px solid #6C63FF;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+}
+
+@keyframes da-lock-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(108, 99, 255, 0.3); }
+  50% { box-shadow: 0 0 0 8px rgba(108, 99, 255, 0); }
+}
+
+/* ── Type: brain (LLM, Neuromorphic, AI Accelerator, etc.) ── */
+.dir-anim--brain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.dir-anim--brain .da__neuron {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  animation: da-neuron-fire 1.5s ease-in-out infinite;
+}
+
+.dir-anim--brain .da__neuron:nth-child(1) { animation-delay: 0s; }
+.dir-anim--brain .da__neuron:nth-child(2) { animation-delay: 0.2s; }
+.dir-anim--brain .da__neuron:nth-child(3) { animation-delay: 0.4s; }
+.dir-anim--brain .da__neuron:nth-child(4) { animation-delay: 0.6s; }
+.dir-anim--brain .da__neuron:nth-child(5) { animation-delay: 0.8s; }
+
+.dir-anim--brain .da__synapse {
+  width: 12px;
+  height: 1px;
+  background: rgba(var(--color-accent-rgb), 0.3);
+}
+
+@keyframes da-neuron-fire {
+  0%, 60%, 100% { transform: scale(1); opacity: 0.4; }
+  30% { transform: scale(1.8); opacity: 1; box-shadow: 0 0 8px rgba(var(--color-accent-rgb), 0.5); }
+}
+
+/* ── Type: qubit (Quantum ML, VQC) ── */
+.dir-anim--qubit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.dir-anim--qubit .da__q {
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--color-secondary);
+  border-radius: 50%;
+  position: relative;
+  animation: da-q-rotate 2.5s linear infinite;
+}
+
+.dir-anim--qubit .da__q:nth-child(2) { animation-direction: reverse; animation-duration: 3s; }
+
+.dir-anim--qubit .da__q::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: var(--color-secondary);
+  border-radius: 50%;
+  animation: da-q-flip 2s ease-in-out infinite;
+}
+
+@keyframes da-q-rotate {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes da-q-flip {
+  0%, 100% { top: 2px; }
+  50% { top: calc(100% - 8px); background: var(--color-accent); }
+}
+
+/* ── Close button ── */
+.area-card__close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: var(--color-gray-100);
+  border-radius: 50%;
+  font-size: 18px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), color var(--transition-fast);
+  z-index: 4;
+}
+
+.area-card--expanded .area-card__close { display: flex; }
+.area-card__close:hover { background: var(--color-gray-200); color: var(--text-primary); }
+
+/* ── Dim other cards ── */
+.areas__grid--has-expanded .area-card:not(.area-card--expanded) {
+  opacity: 0.4;
+  transform: scale(0.97);
+  pointer-events: none;
+}
+
+/* ── Responsive ── */
 @media (max-width: 1024px) {
   .areas__grid { grid-template-columns: repeat(2, 1fr); }
+  .area-card__directions { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
   .areas__grid { grid-template-columns: 1fr; }
+  .area-card__directions { grid-template-columns: 1fr; }
+  .area-card__visual { height: 80px; }
+
+  .area-card--expanded .area-card__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .area-card--expanded .area-card__icon {
+    margin-bottom: var(--space-3);
+  }
 }

@@ -69,6 +69,27 @@
   opacity: 0.05;
 }
 
+/* Hidden state — inter-area lines hidden by default, revealed on hover/click */
+.rmap__svg .rmap__line--hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, stroke var(--transition-base), stroke-width var(--transition-base);
+}
+
+.rmap__svg .rmap__line--hidden.rmap__line--highlight {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.rmap__svg .rmap__line-label--hidden {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.rmap__svg .rmap__line-label--hidden.rmap__line-label--highlight {
+  opacity: 1;
+}
+
 /* Inter-area connection lines */
 .rmap__svg .rmap__line--inter {
   stroke: rgba(var(--color-accent-rgb), 0.3);
@@ -150,6 +171,8 @@
 .rmap__node:nth-child(6) { animation-delay: 0.6s; }
 
 .rmap__node--center {
+  left: 50%;
+  top: 50%;
   animation: rmap-node-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
   animation-delay: 0s;
 }

@@ -147,14 +147,16 @@ function renderResearchMap() {
   if (centerLabel) centerLabel.textContent = ui('rmapCenter');
   if (!nodesContainer || !svg) return;
 
-  // Node positions (%) — hexagonal layout around center
+  // Node positions (%) — optimized so connected areas are adjacent
+  // Layout: Medical AI(top) → AI Security(top-right) → Auto Driving(bottom-right)
+  //         → AI Semi(bottom) → Quantum(bottom-left) → Network Security(top-left)
   const positions = [
-    { x: 50, y: 10 },   // top
-    { x: 85, y: 28 },   // top-right
-    { x: 85, y: 72 },   // bottom-right
-    { x: 50, y: 90 },   // bottom
-    { x: 15, y: 72 },   // bottom-left
-    { x: 15, y: 28 },   // top-left
+    { x: 85, y: 25 },   // 0: AI Security → top-right
+    { x: 85, y: 75 },   // 1: Autonomous Driving → bottom-right
+    { x: 15, y: 75 },   // 2: Quantum Computing → bottom-left
+    { x: 50, y: 92 },   // 3: AI Semiconductors → bottom
+    { x: 50, y: 8 },    // 4: Medical AI → top
+    { x: 15, y: 25 },   // 5: Network Security → top-left
   ];
 
   // Connections between areas: [fromIndex, toIndex, label, tooltip description]
@@ -185,14 +187,13 @@ function renderResearchMap() {
     </div>
   `).join('');
 
-  // Draw SVG lines with layered approach: bg track + animated foreground + hover target
+  // Draw SVG lines — all using % coordinates for perfect alignment with HTML nodes
   const cx = 50, cy = 50;
-  // Preserve the <defs> filter
   const defs = svg.querySelector('defs');
   const defsHTML = defs ? defs.outerHTML : '';
   let svgContent = defsHTML;
 
-  // Lines from center to each area (bg + animated)
+  // Center-to-area lines (always visible)
   positions.forEach((pos, i) => {
     svgContent += `<line class="rmap__line-bg rmap__line" data-from="center" data-to="${i}"
       x1="${cx}%" y1="${cy}%" x2="${pos.x}%" y2="${pos.y}%" />`;
@@ -200,21 +201,23 @@ function renderResearchMap() {
       x1="${cx}%" y1="${cy}%" x2="${pos.x}%" y2="${pos.y}%" />`;
   });
 
-  // Lines between areas (bg + animated + hover target + label)
+  // Inter-area connections — hidden by default, shown on hover/click
   connections.forEach(([from, to, label], ci) => {
     const p1 = positions[from], p2 = positions[to];
     const mx = (p1.x + p2.x) / 2, my = (p1.y + p2.y) / 2;
+
     // Background track
-    svgContent += `<line class="rmap__line-bg rmap__line" data-from="${from}" data-to="${to}"
+    svgContent += `<line class="rmap__line-bg rmap__line rmap__line--hidden" data-from="${from}" data-to="${to}"
       x1="${p1.x}%" y1="${p1.y}%" x2="${p2.x}%" y2="${p2.y}%" />`;
     // Animated foreground
-    svgContent += `<line class="rmap__line rmap__line--inter" data-from="${from}" data-to="${to}"
+    svgContent += `<line class="rmap__line rmap__line--inter rmap__line--hidden" data-from="${from}" data-to="${to}"
       x1="${p1.x}%" y1="${p1.y}%" x2="${p2.x}%" y2="${p2.y}%" />`;
     // Invisible hover target
     svgContent += `<line class="rmap__line-hover" data-conn-index="${ci}"
       x1="${p1.x}%" y1="${p1.y}%" x2="${p2.x}%" y2="${p2.y}%" />`;
     // Label
-    svgContent += `<text class="rmap__line-label" x="${mx}%" y="${my}%" dy="-4">${label}</text>`;
+    svgContent += `<text class="rmap__line-label rmap__line-label--hidden" data-from="${from}" data-to="${to}"
+      x="${mx}%" y="${my}%" dy="-4">${label}</text>`;
   });
 
   svg.innerHTML = svgContent;
@@ -276,25 +279,40 @@ function renderResearchMap() {
       centerNode.classList.toggle('rmap__node--dim', !connected.has('center'));
     }
 
+    // Center-to-node lines: highlight/dim as before
+    // Inter-area lines: reveal only the ones connected to this node
     allLines.forEach(line => {
       const f = line.dataset.from, tt = line.dataset.to;
       if (f === undefined || tt === undefined) return;
       const isConnected = connected.has(f) && connected.has(tt);
-      line.classList.toggle('rmap__line--highlight', isConnected);
-      line.classList.toggle('rmap__line--dim', !isConnected);
+      const isInterArea = line.classList.contains('rmap__line--inter') || (f !== 'center' && tt !== 'center');
+
+      if (isInterArea) {
+        // Show/hide inter-area lines based on connection to active node
+        line.classList.toggle('rmap__line--hidden', !isConnected);
+        line.classList.toggle('rmap__line--highlight', isConnected);
+        line.classList.remove('rmap__line--dim');
+      } else {
+        // Center lines: highlight/dim
+        line.classList.toggle('rmap__line--highlight', isConnected);
+        line.classList.toggle('rmap__line--dim', !isConnected);
+      }
     });
 
-    allLabels.forEach((label, i) => {
-      const conn = connections[i];
-      if (!conn) return;
-      const isConnected = connected.has(String(conn[0])) && connected.has(String(conn[1]));
-      label.classList.toggle('rmap__line-label--highlight', isConnected);
-      label.classList.toggle('rmap__line-label--dim', !isConnected);
+    allLabels.forEach(label => {
+      const f = label.dataset.from, tt = label.dataset.to;
+      if (f !== undefined && tt !== undefined) {
+        // Inter-area labels — show only relevant ones
+        const isConnected = connected.has(f) && connected.has(tt);
+        label.classList.toggle('rmap__line-label--hidden', !isConnected);
+        label.classList.toggle('rmap__line-label--highlight', isConnected);
+        label.classList.remove('rmap__line-label--dim');
+      }
     });
   }
 
   function clearHighlight() {
-    if (activeNodeId !== null) return; // Don't clear if a node is clicked/active
+    if (activeNodeId !== null) return;
     allNodes.forEach(n => {
       n.classList.remove('rmap__node--highlight', 'rmap__node--dim');
     });
@@ -303,9 +321,16 @@ function renderResearchMap() {
     }
     allLines.forEach(l => {
       l.classList.remove('rmap__line--highlight', 'rmap__line--dim');
+      // Re-hide inter-area lines
+      if (l.classList.contains('rmap__line--inter') || (l.dataset.from !== 'center' && l.dataset.to !== 'center')) {
+        l.classList.add('rmap__line--hidden');
+      }
     });
     allLabels.forEach(l => {
       l.classList.remove('rmap__line-label--highlight', 'rmap__line-label--dim');
+      if (l.dataset.from !== undefined) {
+        l.classList.add('rmap__line-label--hidden');
+      }
     });
   }
 
@@ -441,16 +466,251 @@ function renderAreas() {
   if (subtitle) subtitle.textContent = ui('areasSubtitle');
   if (!grid) return;
 
-  grid.innerHTML = RESEARCH_AREAS.map(area => `
-    <div class="area-card fade-in">
-      <div class="area-card__icon"><img src="${BASE_PATH}/${area.icon}" alt="${area.title.en}" /></div>
-      <h3 class="area-card__title">${t(area.title)}</h3>
+  // Thematic visual HTML for each area
+  const visuals = [
+    // 0: AI Security — Bit-flip grid + scanner
+    `<div class="area-card__visual area-visual--security">
+      <div class="av__grid">${Array.from({length: 48}, (_, j) => {
+        const flips = [6, 14, 22, 33, 40];
+        const isFlip = flips.includes(j);
+        return `<span class="av__bit${isFlip ? ' av__bit--flip' : ''}">${Math.random() > 0.5 ? '1' : '0'}</span>`;
+      }).join('')}</div>
+      <div class="av__scanner"></div>
+    </div>`,
+    // 1: Autonomous Driving — Road + car + signals
+    `<div class="area-card__visual area-visual--driving">
+      <div class="av__road"><div class="av__lane"></div></div>
+      <div class="av__car"></div>
+      <div class="av__signal"></div>
+      <div class="av__signal"></div>
+      <div class="av__signal"></div>
+    </div>`,
+    // 2: Quantum Computing — Qubits + entanglement
+    `<div class="area-card__visual area-visual--quantum">
+      <div class="av__qubit"></div>
+      <div class="av__qubit"></div>
+      <div class="av__qubit"></div>
+      <div class="av__entangle"></div>
+      <span class="av__state-label">|0⟩+|1⟩</span>
+      <span class="av__state-label">|ψ⟩</span>
+      <span class="av__state-label">|Φ+⟩</span>
+    </div>`,
+    // 3: AI Semiconductors — Circuit traces + signals + gates
+    `<div class="area-card__visual area-visual--semiconductor">
+      <div class="av__traces">
+        <div class="av__trace"></div>
+        <div class="av__trace"></div>
+        <div class="av__trace"></div>
+        <div class="av__trace"></div>
+        <div class="av__trace av__trace--v"></div>
+        <div class="av__trace av__trace--v"></div>
+        <div class="av__signal-pulse"></div>
+        <div class="av__signal-pulse"></div>
+        <div class="av__signal-pulse"></div>
+        <div class="av__signal-pulse"></div>
+        <div class="av__gate"></div>
+        <div class="av__gate"></div>
+        <div class="av__gate"></div>
+      </div>
+    </div>`,
+    // 4: Medical AI — ECG heartbeat + scan
+    `<div class="area-card__visual area-visual--medical">
+      <div class="av__ecg-container">
+        <svg class="av__ecg-line" viewBox="0 0 600 60" preserveAspectRatio="none">
+          <polyline points="0,30 30,30 40,30 50,28 55,35 60,10 65,50 70,25 75,30 90,30 120,30 130,30 140,28 145,35 150,10 155,50 160,25 165,30 180,30 210,30 220,30 230,28 235,35 240,10 245,50 250,25 255,30 270,30 300,30 310,30 320,28 325,35 330,10 335,50 340,25 345,30 360,30 390,30 400,30 410,28 415,35 420,10 425,50 430,25 435,30 450,30 480,30 490,30 500,28 505,35 510,10 515,50 520,25 525,30 540,30 570,30 600,30" />
+        </svg>
+      </div>
+      <div class="av__scan"></div>
+    </div>`,
+    // 5: Network Security — Waves + lock + packets
+    `<div class="area-card__visual area-visual--network">
+      <svg class="av__wave" viewBox="0 0 200 100" preserveAspectRatio="none">
+        <path d="M0,50 Q25,30 50,50 T100,50 T150,50 T200,50" />
+      </svg>
+      <svg class="av__wave" viewBox="0 0 200 100" preserveAspectRatio="none">
+        <path d="M0,55 Q25,70 50,55 T100,55 T150,55 T200,55" />
+      </svg>
+      <div class="av__lock"></div>
+      <div class="av__packet"></div>
+      <div class="av__packet"></div>
+      <div class="av__packet"></div>
+    </div>`,
+  ];
+
+  grid.innerHTML = RESEARCH_AREAS.map((area, i) => `
+    <div class="area-card fade-in" data-area="${i}">
+      <button class="area-card__close" aria-label="Close">&times;</button>
+      ${visuals[i] || ''}
+      <div class="area-card__header">
+        <div class="area-card__icon"><img src="${BASE_PATH}/${area.icon}" alt="${area.title.en}" /></div>
+        <h3 class="area-card__title">${t(area.title)}</h3>
+      </div>
       <p class="area-card__description">${t(area.description)}</p>
       <div class="area-card__tags">
         ${area.tags.map(tag => `<span class="tag tag--primary">${tag}</span>`).join('')}
       </div>
+      <div class="area-card__expand-hint">
+        <span class="area-card__expand-arrow"></span>
+        ${ui('areasClickHint')}
+      </div>
+      <div class="area-card__detail">
+        <div class="area-card__detail-divider"></div>
+        <h4 class="area-card__detail-title">${ui('areasDetailTitle')}</h4>
+        <div class="area-card__directions">
+          ${area.tags.map((tag, ti) => `
+            <div class="area-card__direction" data-tag="${tag}">
+              <div class="area-card__direction-row">
+                <span class="area-card__direction-tag">${tag}</span>
+                <p class="area-card__direction-desc">${area.directions && area.directions[ti] ? t(area.directions[ti]) : ''}</p>
+              </div>
+              <div class="area-card__dir-anim"></div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
     </div>
   `).join('');
+
+  // Click-to-expand interaction
+  const cards = grid.querySelectorAll('.area-card');
+  cards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      // Ignore if clicking close button
+      if (e.target.closest('.area-card__close')) return;
+      // If already expanded, do nothing (use close button)
+      if (card.classList.contains('area-card--expanded')) return;
+
+      // Collapse any other expanded card
+      cards.forEach(c => c.classList.remove('area-card--expanded'));
+      // Expand this card
+      card.classList.add('area-card--expanded');
+      grid.classList.add('areas__grid--has-expanded');
+
+      // Smooth scroll to expanded card
+      setTimeout(() => {
+        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 100);
+    });
+
+    // Close button
+    const closeBtn = card.querySelector('.area-card__close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        card.classList.remove('area-card--expanded');
+        grid.classList.remove('areas__grid--has-expanded');
+      });
+    }
+  });
+
+  // Direction mini-animation: tag → animation type mapping
+  const tagAnimMap = {
+    // bitflip: bit corruption & detection
+    'Adversarial Attack': 'bitflip', 'Fault Injection': 'bitflip',
+    // shield: defense & protection
+    'FL Security': 'shield', 'Trust': 'shield', 'Privacy': 'shield', 'Wireless Security': 'shield',
+    // circuit: hardware & quantum circuits
+    'VQC': 'circuit', 'FPGA': 'circuit', 'CUDA': 'circuit', 'AI Accelerator': 'circuit',
+    // wave: signals & modulation
+    'AMC': 'wave', 'Quantum Security': 'wave', 'PennyLane': 'wave', 'Qiskit': 'wave',
+    // car: driving & simulation
+    'Autonomous Driving': 'car', 'Simulation': 'car',
+    // brain: neural & language models
+    'LLM': 'brain', 'Neuromorphic': 'brain', 'Federated Learning': 'brain',
+    // heartbeat: medical
+    'Medical Imaging': 'heartbeat', 'Chest X-ray': 'heartbeat',
+    // lock: cryptography & security protocols
+    'BB84': 'lock', 'Tactical Network': 'lock',
+    // qubit: quantum states
+    'Quantum ML': 'qubit',
+  };
+
+  // Generate mini-animation HTML for each type
+  function getMiniAnimHTML(type) {
+    switch (type) {
+      case 'bitflip': {
+        const bits = Array.from({length: 32}, () => Math.random() > 0.5 ? '1' : '0');
+        const bads = [3, 11, 19, 27];
+        return `<div class="area-card__dir-anim-inner dir-anim--bitflip">
+          <div class="da__row">${bits.slice(0,16).map((b,i) => `<span class="da__cell${bads.includes(i)?' da__cell--bad':''}">${b}</span>`).join('')}</div>
+          <div class="da__row">${bits.slice(16).map((b,i) => `<span class="da__cell${bads.includes(i+16)?' da__cell--bad':''}">${b}</span>`).join('')}</div>
+        </div>`;
+      }
+      case 'shield':
+        return `<div class="area-card__dir-anim-inner dir-anim--shield">
+          <div class="da__shield"></div>
+          <div class="da__attack"></div><div class="da__attack"></div><div class="da__attack"></div>
+        </div>`;
+      case 'circuit':
+        return `<div class="area-card__dir-anim-inner dir-anim--circuit">
+          <div class="da__wire"></div><div class="da__gate-node"></div>
+          <div class="da__wire"></div><div class="da__gate-node"></div>
+          <div class="da__wire"></div>
+        </div>`;
+      case 'wave':
+        return `<div class="area-card__dir-anim-inner dir-anim--wave">
+          <svg viewBox="0 0 200 50" preserveAspectRatio="none">
+            <path class="da__wave-path da__wave-path--a" d="M0,25 Q12,5 25,25 T50,25 T75,25 T100,25 T125,25 T150,25 T175,25 T200,25" />
+            <path class="da__wave-path da__wave-path--b" d="M0,30 Q12,45 25,30 T50,30 T75,30 T100,30 T125,30 T150,30 T175,30 T200,30" />
+          </svg>
+        </div>`;
+      case 'car':
+        return `<div class="area-card__dir-anim-inner dir-anim--car">
+          <div class="da__road"></div><div class="da__mini-car"></div>
+        </div>`;
+      case 'brain':
+        return `<div class="area-card__dir-anim-inner dir-anim--brain">
+          <div class="da__neuron"></div><div class="da__synapse"></div>
+          <div class="da__neuron"></div><div class="da__synapse"></div>
+          <div class="da__neuron"></div><div class="da__synapse"></div>
+          <div class="da__neuron"></div><div class="da__synapse"></div>
+          <div class="da__neuron"></div>
+        </div>`;
+      case 'heartbeat':
+        return `<div class="area-card__dir-anim-inner dir-anim--heartbeat">
+          <svg viewBox="0 0 400 50" preserveAspectRatio="none">
+            <polyline class="da__ecg-path" points="0,25 20,25 30,25 35,22 38,30 42,8 46,42 50,20 54,25 70,25 100,25 110,25 115,22 118,30 122,8 126,42 130,20 134,25 150,25 180,25 190,25 195,22 198,30 202,8 206,42 210,20 214,25 230,25 260,25 270,25 275,22 278,30 282,8 286,42 290,20 294,25 310,25 340,25 350,25 355,22 358,30 362,8 366,42 370,20 374,25 400,25" />
+          </svg>
+        </div>`;
+      case 'lock':
+        return `<div class="area-card__dir-anim-inner dir-anim--lock">
+          <div class="da__key-particle"></div><div class="da__key-particle"></div><div class="da__key-particle"></div>
+          <div class="da__lock-icon"></div>
+        </div>`;
+      case 'qubit':
+        return `<div class="area-card__dir-anim-inner dir-anim--qubit">
+          <div class="da__q"></div><div class="da__q"></div>
+        </div>`;
+      default:
+        return `<div class="area-card__dir-anim-inner dir-anim--wave">
+          <svg viewBox="0 0 200 50" preserveAspectRatio="none">
+            <path class="da__wave-path da__wave-path--a" d="M0,25 Q12,5 25,25 T50,25 T75,25 T100,25 T125,25 T150,25 T175,25 T200,25" />
+          </svg>
+        </div>`;
+    }
+  }
+
+  // Bind direction click handlers
+  grid.querySelectorAll('.area-card__direction').forEach(dir => {
+    dir.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const tag = dir.dataset.tag;
+      const animContainer = dir.querySelector('.area-card__dir-anim');
+      const isActive = dir.classList.contains('area-card__direction--active');
+
+      // Close all other active directions in the same card
+      dir.closest('.area-card__directions').querySelectorAll('.area-card__direction--active').forEach(d => {
+        d.classList.remove('area-card__direction--active');
+        d.querySelector('.area-card__dir-anim').innerHTML = '';
+      });
+
+      if (!isActive) {
+        const animType = tagAnimMap[tag] || 'wave';
+        animContainer.innerHTML = getMiniAnimHTML(animType);
+        dir.classList.add('area-card__direction--active');
+      }
+    });
+  });
 }
 
 /* ── Projects 렌더링 ── */

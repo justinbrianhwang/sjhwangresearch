@@ -37,6 +37,8 @@ const UI_TEXT = {
 
   areasTitle: { en: "Research Areas", ko: "연구 분야", ja: "研究分野", es: "Áreas de investigación" },
   areasSubtitle: { en: "Core research domains currently being explored", ko: "현재 집중하고 있는 핵심 연구 영역입니다", ja: "現在注力している核心研究領域", es: "Dominios de investigación principales actualmente explorados" },
+  areasClickHint: { en: "Click to explore", ko: "클릭하여 자세히 보기", ja: "クリックして詳細を表示", es: "Haz clic para explorar" },
+  areasDetailTitle: { en: "Research Directions", ko: "세부 연구 방향", ja: "研究の方向性", es: "Direcciones de investigación" },
 
   projectsTitle: { en: "Current Projects", ko: "진행 중인 연구", ja: "進行中の研究", es: "Proyectos actuales" },
   projectsSubtitle: { en: "Check the current progress of each project", ko: "각 프로젝트의 현재 진행 상황을 확인하세요", ja: "各プロジェクトの現在の進捗状況を確認", es: "Consulte el progreso actual de cada proyecto" },
