@@ -66,6 +66,8 @@ const UI_TEXT = {
   rmapLegendConnection: { en: "Shared methodology", ko: "공유 방법론", ja: "共有方法論", es: "Metodología compartida" },
   rmapLegendArea: { en: "Research area", ko: "연구 분야", ja: "研究分野", es: "Área de investigación" },
   rmapLegendCore: { en: "Core theme", ko: "핵심 주제", ja: "核心テーマ", es: "Tema central" },
+  rmapLegendClick: { en: "Click a node for details", ko: "노드를 클릭하면 상세 정보를 확인할 수 있습니다", ja: "ノードをクリックして詳細を表示", es: "Haz clic en un nodo para ver detalles" },
+  rmapDetailConnections: { en: "Connected Areas", ko: "연결된 연구 분야", ja: "接続された研究分野", es: "Áreas conectadas" },
 
   collabsTitle: { en: "Collaborations", ko: "협업", ja: "コラボレーション", es: "Colaboraciones" },
   collabsSubtitle: { en: "Institutions and partners collaborating on research", ko: "함께 연구하고 있는 기관과 파트너", ja: "共同研究を行っている機関とパートナー", es: "Instituciones y socios que colaboran en la investigación" },

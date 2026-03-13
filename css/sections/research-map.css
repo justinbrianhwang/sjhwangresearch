@@ -1,6 +1,6 @@
 /* ============================================
    RESEARCH MAP SECTION
-   네트워크 그래프 스타일 연구 맵
+   네트워크 그래프 스타일 연구 맵 — Enhanced Edition
    ============================================ */
 
 .research-map {
@@ -27,21 +27,73 @@
   z-index: 1;
 }
 
-.rmap__svg line {
-  stroke: var(--color-gray-300);
+/* Base line (background track) */
+.rmap__svg .rmap__line-bg {
+  stroke: var(--color-gray-200);
   stroke-width: 1.5;
+  transition: stroke var(--transition-base), opacity var(--transition-base);
+}
+
+/* Animated flowing line (foreground) */
+.rmap__svg .rmap__line {
+  stroke: rgba(var(--color-primary-rgb), 0.35);
+  stroke-width: 2;
+  stroke-dasharray: 8 6;
+  animation: rmap-flow 1.5s linear infinite;
   transition: stroke var(--transition-base), stroke-width var(--transition-base), opacity var(--transition-base);
 }
 
-.rmap__svg line.rmap__line--highlight {
+@keyframes rmap-flow {
+  to { stroke-dashoffset: -28; }
+}
+
+/* Highlighted state */
+.rmap__svg .rmap__line--highlight {
   stroke: var(--color-primary);
-  stroke-width: 2.5;
+  stroke-width: 3;
+  filter: url(#glow);
 }
 
-.rmap__svg line.rmap__line--dim {
-  opacity: 0.15;
+.rmap__svg .rmap__line-bg.rmap__line--highlight {
+  stroke: rgba(var(--color-primary-rgb), 0.25);
+  stroke-width: 4;
+  filter: none;
 }
 
+/* Dimmed state */
+.rmap__svg .rmap__line--dim {
+  opacity: 0.1;
+}
+
+.rmap__svg .rmap__line-bg.rmap__line--dim {
+  opacity: 0.05;
+}
+
+/* Inter-area connection lines */
+.rmap__svg .rmap__line--inter {
+  stroke: rgba(var(--color-accent-rgb), 0.3);
+  stroke-dasharray: 5 4;
+  animation: rmap-flow-inter 2s linear infinite;
+}
+
+.rmap__svg .rmap__line--inter.rmap__line--highlight {
+  stroke: var(--color-accent);
+  stroke-width: 3;
+}
+
+@keyframes rmap-flow-inter {
+  to { stroke-dashoffset: -18; }
+}
+
+/* Connection hover area (invisible wider hit target) */
+.rmap__svg .rmap__line-hover {
+  stroke: transparent;
+  stroke-width: 16;
+  pointer-events: stroke;
+  cursor: pointer;
+}
+
+/* Line labels */
 .rmap__svg .rmap__line-label {
   font-family: var(--font-primary);
   font-size: 10px;
@@ -60,17 +112,51 @@
   opacity: 0.15;
 }
 
+/* ── Pulse animation on center node ── */
+@keyframes rmap-pulse {
+  0%   { box-shadow: var(--shadow-lg), 0 0 0 0 rgba(var(--color-primary-rgb), 0.25); }
+  70%  { box-shadow: var(--shadow-lg), 0 0 0 18px rgba(var(--color-primary-rgb), 0); }
+  100% { box-shadow: var(--shadow-lg), 0 0 0 0 rgba(var(--color-primary-rgb), 0); }
+}
+
+/* ── Node entrance animation ── */
+@keyframes rmap-node-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
 /* ── Nodes ── */
 .rmap__node {
   position: absolute;
   z-index: 2;
   transform: translate(-50%, -50%);
   cursor: pointer;
-  transition: transform var(--transition-base);
+  transition: transform var(--transition-base), opacity var(--transition-base);
+  animation: rmap-node-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Stagger entrance for each node */
+.rmap__node:nth-child(1) { animation-delay: 0.1s; }
+.rmap__node:nth-child(2) { animation-delay: 0.2s; }
+.rmap__node:nth-child(3) { animation-delay: 0.3s; }
+.rmap__node:nth-child(4) { animation-delay: 0.4s; }
+.rmap__node:nth-child(5) { animation-delay: 0.5s; }
+.rmap__node:nth-child(6) { animation-delay: 0.6s; }
+
+.rmap__node--center {
+  animation: rmap-node-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: 0s;
 }
 
 .rmap__node:hover {
-  transform: translate(-50%, -50%) scale(1.08);
+  transform: translate(-50%, -50%) scale(1.12);
+  z-index: 5;
 }
 
 .rmap__node-inner {
@@ -82,20 +168,30 @@
   background: var(--bg-primary);
   border: 2px solid var(--color-gray-200);
   box-shadow: var(--shadow-md);
-  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), background var(--transition-base);
   padding: var(--space-4);
   width: 130px;
   height: 130px;
   text-align: center;
 }
 
+.rmap__node:hover .rmap__node-inner {
+  border-color: var(--color-primary-light);
+  box-shadow: var(--shadow-lg), 0 0 20px rgba(var(--color-primary-rgb), 0.12);
+}
+
 .rmap__node--highlight .rmap__node-inner {
   border-color: var(--color-primary);
-  box-shadow: var(--shadow-lg), 0 0 0 4px rgba(var(--color-primary-rgb), 0.1);
+  box-shadow: var(--shadow-lg), 0 0 24px rgba(var(--color-primary-rgb), 0.18), 0 0 0 4px rgba(var(--color-primary-rgb), 0.08);
+}
+
+.rmap__node--active .rmap__node-inner {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-lg), 0 0 24px rgba(var(--color-accent-rgb), 0.2), 0 0 0 4px rgba(var(--color-accent-rgb), 0.1);
 }
 
 .rmap__node--dim {
-  opacity: 0.3;
+  opacity: 0.25;
 }
 
 .rmap__node-inner--center {
@@ -105,6 +201,7 @@
   background: var(--bg-hero);
   border-color: var(--color-primary);
   box-shadow: var(--shadow-lg), 0 0 0 6px rgba(var(--color-primary-rgb), 0.12);
+  animation: rmap-pulse 2.5s ease-in-out infinite;
 }
 
 .rmap__node-icon {
@@ -112,6 +209,11 @@
   height: 36px;
   margin-bottom: var(--space-2);
   object-fit: contain;
+  transition: transform var(--transition-base);
+}
+
+.rmap__node:hover .rmap__node-icon {
+  transform: scale(1.15);
 }
 
 .rmap__node-label {
@@ -141,6 +243,169 @@
   background: var(--color-gray-100);
   padding: 1px 5px;
   border-radius: var(--radius-full);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.rmap__node:hover .rmap__node-tag {
+  background: rgba(var(--color-primary-rgb), 0.08);
+  color: var(--color-primary);
+}
+
+/* ── Detail Panel ── */
+.rmap__detail {
+  position: relative;
+  max-width: 600px;
+  margin: var(--space-8) auto 0;
+  padding: var(--space-8);
+  background: var(--bg-primary);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  opacity: 0;
+  transform: translateY(12px);
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease, transform 0.4s ease, max-height 0.4s ease, padding 0.4s ease, margin 0.4s ease;
+  padding: 0 var(--space-8);
+  margin-top: 0;
+}
+
+.rmap__detail--open {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 500px;
+  padding: var(--space-8);
+  margin-top: var(--space-8);
+}
+
+.rmap__detail-close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: var(--color-gray-100);
+  border-radius: 50%;
+  font-size: 18px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.rmap__detail-close:hover {
+  background: var(--color-gray-200);
+  color: var(--text-primary);
+}
+
+.rmap__detail-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.rmap__detail-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.rmap__detail-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.rmap__detail-desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin: 0 0 var(--space-4);
+}
+
+.rmap__detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.rmap__detail-tag {
+  font-size: var(--text-xs);
+  color: var(--color-primary);
+  background: rgba(var(--color-primary-rgb), 0.08);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-medium);
+}
+
+.rmap__detail-connections {
+  border-top: 1px solid var(--color-gray-200);
+  padding-top: var(--space-4);
+}
+
+.rmap__detail-conn-title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-2);
+}
+
+.rmap__detail-conn-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.rmap__detail-conn-item {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  background: var(--color-gray-100);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.rmap__detail-conn-item::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* ── Connection Tooltip ── */
+.rmap__tooltip {
+  position: fixed;
+  z-index: 100;
+  background: var(--color-gray-800);
+  color: var(--text-light);
+  font-size: var(--text-xs);
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+  box-shadow: var(--shadow-lg);
+}
+
+.rmap__tooltip--visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ── Legend ── */
@@ -171,6 +436,22 @@
   border-radius: 1px;
 }
 
+.rmap__legend-line--animated {
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(var(--color-primary-rgb), 0.5) 0px,
+    rgba(var(--color-primary-rgb), 0.5) 8px,
+    transparent 8px,
+    transparent 14px
+  );
+  background-size: 28px 100%;
+  animation: rmap-legend-flow 1.5s linear infinite;
+}
+
+@keyframes rmap-legend-flow {
+  to { background-position: -28px 0; }
+}
+
 .rmap__legend-dot {
   width: 12px;
   height: 12px;
@@ -183,6 +464,12 @@
   border-radius: 50%;
   background: var(--color-primary);
   border-color: var(--color-primary);
+}
+
+.rmap__legend-hint {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  font-style: italic;
 }
 
 /* ── Responsive ── */
@@ -228,6 +515,14 @@
     gap: var(--space-4);
     padding: var(--space-4);
   }
+
+  .rmap__detail {
+    padding: 0 var(--space-4);
+  }
+
+  .rmap__detail--open {
+    padding: var(--space-6);
+  }
 }
 
 @media (max-width: 480px) {
@@ -257,5 +552,14 @@
 
   .rmap__svg .rmap__line-label {
     display: none;
+  }
+
+  .rmap__detail-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .rmap__detail-title {
+    font-size: var(--text-lg);
   }
 }

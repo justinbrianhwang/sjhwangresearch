@@ -9,7 +9,18 @@
 
     <div class="rmap">
       <!-- SVG connections drawn by JS -->
-      <svg class="rmap__svg" id="rmap-svg"></svg>
+      <svg class="rmap__svg" id="rmap-svg">
+        <defs>
+          <!-- Animated dash pattern for connections -->
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+      </svg>
 
       <!-- Center node -->
       <div class="rmap__node rmap__node--center" data-node="center">
@@ -21,6 +32,24 @@
       <!-- Area nodes rendered by JS -->
       <div id="rmap-nodes"></div>
     </div>
+
+    <!-- Detail Panel (shown on node click) -->
+    <div class="rmap__detail" id="rmap-detail">
+      <button class="rmap__detail-close" id="rmap-detail-close">&times;</button>
+      <div class="rmap__detail-header">
+        <img class="rmap__detail-icon" id="rmap-detail-icon" src="" alt="" />
+        <h3 class="rmap__detail-title" id="rmap-detail-title"></h3>
+      </div>
+      <p class="rmap__detail-desc" id="rmap-detail-desc"></p>
+      <div class="rmap__detail-tags" id="rmap-detail-tags"></div>
+      <div class="rmap__detail-connections" id="rmap-detail-connections">
+        <h4 class="rmap__detail-conn-title" id="rmap-detail-conn-title"></h4>
+        <ul class="rmap__detail-conn-list" id="rmap-detail-conn-list"></ul>
+      </div>
+    </div>
+
+    <!-- Connection Tooltip -->
+    <div class="rmap__tooltip" id="rmap-tooltip"></div>
 
     <!-- Legend -->
     <div class="rmap__legend" id="rmap-legend"></div>

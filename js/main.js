@@ -139,6 +139,8 @@ function renderResearchMap() {
   const nodesContainer = document.getElementById('rmap-nodes');
   const svg = document.getElementById('rmap-svg');
   const legend = document.getElementById('rmap-legend');
+  const detailPanel = document.getElementById('rmap-detail');
+  const tooltip = document.getElementById('rmap-tooltip');
 
   if (title) title.textContent = ui('rmapTitle');
   if (subtitle) subtitle.textContent = ui('rmapSubtitle');
@@ -155,16 +157,19 @@ function renderResearchMap() {
     { x: 15, y: 28 },   // top-left
   ];
 
-  // Connections between areas: [fromIndex, toIndex, label]
+  // Connections between areas: [fromIndex, toIndex, label, tooltip description]
   const connections = [
-    [0, 1, "FL"],                     // AI Security <-> Autonomous Driving
-    [0, 4, "Privacy"],                // AI Security <-> Medical AI
-    [0, 5, "Adversarial"],            // AI Security <-> Network Security
-    [1, 3, "Real-time"],              // Autonomous Driving <-> AI Semiconductors
-    [2, 4, "Hybrid QC"],              // Quantum Computing <-> Medical AI
-    [2, 5, "QKD"],                    // Quantum Computing <-> Network Security
-    [3, 2, "Hardware"],               // AI Semiconductors <-> Quantum Computing
+    [0, 1, "FL",        { en: "Federated Learning bridges AI Security and Autonomous Driving", ko: "연합학습이 AI 보안과 자율주행을 연결", ja: "連合学習がAIセキュリティと自動運転を接続", es: "El aprendizaje federado conecta seguridad IA y conducción autónoma" }],
+    [0, 4, "Privacy",   { en: "Privacy-preserving techniques for Medical AI", ko: "의료 AI를 위한 프라이버시 보존 기술", ja: "医療AIのためのプライバシー保護技術", es: "Técnicas de preservación de privacidad para IA médica" }],
+    [0, 5, "Adversarial", { en: "Adversarial robustness in network communications", ko: "네트워크 통신에서의 적대적 강건성", ja: "ネットワーク通信における敵対的頑健性", es: "Robustez adversarial en comunicaciones de red" }],
+    [1, 3, "Real-time", { en: "Real-time AI processing on hardware accelerators", ko: "하드웨어 가속기에서의 실시간 AI 처리", ja: "ハードウェアアクセラレータでのリアルタイムAI処理", es: "Procesamiento de IA en tiempo real en aceleradores de hardware" }],
+    [2, 4, "Hybrid QC", { en: "Quantum-classical hybrid models for medical classification", ko: "의료 분류를 위한 양자-고전 하이브리드 모델", ja: "医療分類のための量子古典ハイブリッドモデル", es: "Modelos híbridos cuántico-clásicos para clasificación médica" }],
+    [2, 5, "QKD",       { en: "Quantum Key Distribution for secure communications", ko: "보안 통신을 위한 양자 키 분배", ja: "セキュア通信のための量子鍵配送", es: "Distribución de claves cuánticas para comunicaciones seguras" }],
+    [3, 2, "Hardware",  { en: "Hardware acceleration for quantum computing", ko: "양자 컴퓨팅을 위한 하드웨어 가속", ja: "量子コンピューティングのためのハードウェア加速", es: "Aceleración de hardware para computación cuántica" }],
   ];
+
+  // Track active (clicked) node
+  let activeNodeId = null;
 
   // Render area nodes
   nodesContainer.innerHTML = RESEARCH_AREAS.map((area, i) => `
@@ -180,22 +185,35 @@ function renderResearchMap() {
     </div>
   `).join('');
 
-  // Draw SVG lines (center connections + inter-area connections)
+  // Draw SVG lines with layered approach: bg track + animated foreground + hover target
   const cx = 50, cy = 50;
-  let svgContent = '';
+  // Preserve the <defs> filter
+  const defs = svg.querySelector('defs');
+  const defsHTML = defs ? defs.outerHTML : '';
+  let svgContent = defsHTML;
 
-  // Lines from center to each area
+  // Lines from center to each area (bg + animated)
   positions.forEach((pos, i) => {
+    svgContent += `<line class="rmap__line-bg rmap__line" data-from="center" data-to="${i}"
+      x1="${cx}%" y1="${cy}%" x2="${pos.x}%" y2="${pos.y}%" />`;
     svgContent += `<line class="rmap__line" data-from="center" data-to="${i}"
       x1="${cx}%" y1="${cy}%" x2="${pos.x}%" y2="${pos.y}%" />`;
   });
 
-  // Lines between areas
-  connections.forEach(([from, to, label]) => {
+  // Lines between areas (bg + animated + hover target + label)
+  connections.forEach(([from, to, label], ci) => {
     const p1 = positions[from], p2 = positions[to];
     const mx = (p1.x + p2.x) / 2, my = (p1.y + p2.y) / 2;
-    svgContent += `<line class="rmap__line" data-from="${from}" data-to="${to}"
+    // Background track
+    svgContent += `<line class="rmap__line-bg rmap__line" data-from="${from}" data-to="${to}"
       x1="${p1.x}%" y1="${p1.y}%" x2="${p2.x}%" y2="${p2.y}%" />`;
+    // Animated foreground
+    svgContent += `<line class="rmap__line rmap__line--inter" data-from="${from}" data-to="${to}"
+      x1="${p1.x}%" y1="${p1.y}%" x2="${p2.x}%" y2="${p2.y}%" />`;
+    // Invisible hover target
+    svgContent += `<line class="rmap__line-hover" data-conn-index="${ci}"
+      x1="${p1.x}%" y1="${p1.y}%" x2="${p2.x}%" y2="${p2.y}%" />`;
+    // Label
     svgContent += `<text class="rmap__line-label" x="${mx}%" y="${my}%" dy="-4">${label}</text>`;
   });
 
@@ -213,17 +231,21 @@ function renderResearchMap() {
         ${ui('rmapLegendArea')}
       </div>
       <div class="rmap__legend-item">
-        <span class="rmap__legend-line"></span>
+        <span class="rmap__legend-line rmap__legend-line--animated"></span>
         ${ui('rmapLegendConnection')}
+      </div>
+      <div class="rmap__legend-item rmap__legend-hint">
+        ${ui('rmapLegendClick')}
       </div>
     `;
   }
 
-  // Hover interaction
+  // Gather interactive elements
   const allNodes = nodesContainer.querySelectorAll('.rmap__node');
   const centerNode = document.querySelector('.rmap__node--center');
   const allLines = svg.querySelectorAll('.rmap__line');
   const allLabels = svg.querySelectorAll('.rmap__line-label');
+  const hoverLines = svg.querySelectorAll('.rmap__line-hover');
 
   function getConnected(nodeId) {
     const connected = new Set();
@@ -255,8 +277,9 @@ function renderResearchMap() {
     }
 
     allLines.forEach(line => {
-      const f = line.dataset.from, t = line.dataset.to;
-      const isConnected = connected.has(f) && connected.has(t);
+      const f = line.dataset.from, tt = line.dataset.to;
+      if (f === undefined || tt === undefined) return;
+      const isConnected = connected.has(f) && connected.has(tt);
       line.classList.toggle('rmap__line--highlight', isConnected);
       line.classList.toggle('rmap__line--dim', !isConnected);
     });
@@ -271,6 +294,7 @@ function renderResearchMap() {
   }
 
   function clearHighlight() {
+    if (activeNodeId !== null) return; // Don't clear if a node is clicked/active
     allNodes.forEach(n => {
       n.classList.remove('rmap__node--highlight', 'rmap__node--dim');
     });
@@ -285,15 +309,127 @@ function renderResearchMap() {
     });
   }
 
+  // ── Detail Panel logic ──
+  function showDetail(nodeIndex) {
+    if (!detailPanel) return;
+    const area = RESEARCH_AREAS[nodeIndex];
+    if (!area) return;
+
+    activeNodeId = String(nodeIndex);
+
+    // Populate detail panel
+    const icon = document.getElementById('rmap-detail-icon');
+    const titleEl = document.getElementById('rmap-detail-title');
+    const desc = document.getElementById('rmap-detail-desc');
+    const tagsEl = document.getElementById('rmap-detail-tags');
+    const connTitle = document.getElementById('rmap-detail-conn-title');
+    const connList = document.getElementById('rmap-detail-conn-list');
+
+    if (icon) { icon.src = `${BASE_PATH}/${area.icon}`; icon.alt = area.title.en; }
+    if (titleEl) titleEl.textContent = t(area.title);
+    if (desc) desc.textContent = t(area.description);
+    if (tagsEl) tagsEl.innerHTML = area.tags.map(tag =>
+      `<span class="rmap__detail-tag">${tag}</span>`
+    ).join('');
+
+    // Find connected areas
+    if (connTitle) connTitle.textContent = ui('rmapDetailConnections');
+    if (connList) {
+      const connectedAreas = [];
+      connections.forEach(([from, to, label]) => {
+        if (from === nodeIndex) connectedAreas.push({ area: RESEARCH_AREAS[to], label });
+        if (to === nodeIndex) connectedAreas.push({ area: RESEARCH_AREAS[from], label });
+      });
+      connList.innerHTML = connectedAreas.map(c =>
+        `<li class="rmap__detail-conn-item">${t(c.area.title)} <strong>(${c.label})</strong></li>`
+      ).join('');
+    }
+
+    // Mark active node
+    allNodes.forEach(n => n.classList.remove('rmap__node--active'));
+    const activeEl = nodesContainer.querySelector(`[data-node="${nodeIndex}"]`);
+    if (activeEl) activeEl.classList.add('rmap__node--active');
+
+    // Keep highlight locked
+    highlightNode(String(nodeIndex));
+
+    // Show panel
+    detailPanel.classList.add('rmap__detail--open');
+  }
+
+  function hideDetail() {
+    if (!detailPanel) return;
+    activeNodeId = null;
+    detailPanel.classList.remove('rmap__detail--open');
+    allNodes.forEach(n => n.classList.remove('rmap__node--active'));
+    clearHighlight();
+  }
+
+  // Close button
+  const closeBtn = document.getElementById('rmap-detail-close');
+  if (closeBtn) closeBtn.addEventListener('click', hideDetail);
+
+  // ── Connection Tooltip logic ──
+  function showTooltip(e, connIndex) {
+    if (!tooltip) return;
+    const conn = connections[connIndex];
+    if (!conn) return;
+    const fromName = t(RESEARCH_AREAS[conn[0]].title);
+    const toName = t(RESEARCH_AREAS[conn[1]].title);
+    const desc = t(conn[3]);
+    tooltip.innerHTML = `<strong>${fromName} &harr; ${toName}</strong><br>${desc}`;
+    tooltip.classList.add('rmap__tooltip--visible');
+    moveTooltip(e);
+  }
+
+  function moveTooltip(e) {
+    if (!tooltip) return;
+    tooltip.style.left = (e.clientX + 12) + 'px';
+    tooltip.style.top = (e.clientY - 8) + 'px';
+  }
+
+  function hideTooltip() {
+    if (!tooltip) return;
+    tooltip.classList.remove('rmap__tooltip--visible');
+  }
+
+  // ── Bind events ──
+  // Hover: highlight connected nodes
   allNodes.forEach(n => {
-    n.addEventListener('mouseenter', () => highlightNode(n.dataset.node));
-    n.addEventListener('mouseleave', clearHighlight);
+    n.addEventListener('mouseenter', () => {
+      if (activeNodeId === null) highlightNode(n.dataset.node);
+    });
+    n.addEventListener('mouseleave', () => {
+      if (activeNodeId === null) clearHighlight();
+    });
+    // Click: show detail panel
+    n.addEventListener('click', () => {
+      const idx = parseInt(n.dataset.node, 10);
+      if (activeNodeId === String(idx)) {
+        hideDetail();
+      } else {
+        showDetail(idx);
+      }
+    });
   });
 
   if (centerNode) {
-    centerNode.addEventListener('mouseenter', () => highlightNode('center'));
-    centerNode.addEventListener('mouseleave', clearHighlight);
+    centerNode.addEventListener('mouseenter', () => {
+      if (activeNodeId === null) highlightNode('center');
+    });
+    centerNode.addEventListener('mouseleave', () => {
+      if (activeNodeId === null) clearHighlight();
+    });
+    centerNode.addEventListener('click', hideDetail);
   }
+
+  // Connection hover tooltips
+  hoverLines.forEach(line => {
+    const ci = parseInt(line.dataset.connIndex, 10);
+    line.addEventListener('mouseenter', (e) => showTooltip(e, ci));
+    line.addEventListener('mousemove', moveTooltip);
+    line.addEventListener('mouseleave', hideTooltip);
+  });
 }
 
 /* ── Research Areas 렌더링 ── */
