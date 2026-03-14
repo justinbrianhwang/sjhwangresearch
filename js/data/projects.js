@@ -72,7 +72,7 @@ const PROJECTS = [
     progress: 15,
     status: "active",
     startDate: "2026",
-    teamLogos: ["assets/logos/sjjb logos.png"],
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/Permillion Logos.png"],
     tags: ["Federated Learning", "Cache Memory", "Client Selection", "Aggregation"],
   },
   {
