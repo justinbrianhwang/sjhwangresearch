@@ -225,4 +225,17 @@ const PAST_PROJECTS = [
     teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png", "assets/logos/Corex logo.png"],
     tags: ["Aquaponics", "Computer Vision", "IoT", "Real-time Monitoring"],
   },
+  {
+    title: { en: "AI-Based Dental Hygiene Hand Posture Training App", ko: "AI 기반 치위생 손 자세 교정 훈련 앱", ja: "AI基盤歯科衛生ハンドポスチャー訓練アプリ", es: "App de entrenamiento de postura de manos para higiene dental basada en IA" },
+    description: {
+      en: "A mobile application developed in collaboration with the Department of Dental Hygiene that uses AI-based hand pose estimation to evaluate whether the user's hand posture is correct during dental hygiene practice. Includes practice time tracking and feedback on posture accuracy.",
+      ko: "치위생학과와 공동 개발한 모바일 앱으로, AI 기반 손 자세 추정을 활용하여 치위생 실습 시 손 자세의 올바름을 판단합니다. 연습 시간 측정 및 자세 정확도 피드백 기능을 포함합니다.",
+      ja: "歯科衛生学科と共同開発したモバイルアプリ。AIによる手のポーズ推定を活用し、歯科衛生実習時の手の姿勢の正確さを判定。練習時間の計測と姿勢精度のフィードバック機能を搭載。",
+      es: "Aplicación móvil desarrollada en colaboración con el Departamento de Higiene Dental que utiliza estimación de postura de manos basada en IA para evaluar si la postura de la mano del usuario es correcta durante la práctica de higiene dental. Incluye seguimiento del tiempo de práctica y retroalimentación sobre la precisión de la postura."
+    },
+    year: "2025",
+    outcome: { en: "Completed (with Dept. of Dental Hygiene)", ko: "완료 (치위생학과 협업)", ja: "完了（歯科衛生学科協業）", es: "Completado (con Depto. de Higiene Dental)" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
+    tags: ["Hand Pose Estimation", "Mobile App", "Dental Hygiene", "AI"],
+  },
 ];

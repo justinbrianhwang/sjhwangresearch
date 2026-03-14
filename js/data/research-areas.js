@@ -109,4 +109,38 @@ const RESEARCH_AREAS = [
       { en: "Post-quantum cryptographic algorithms for network infrastructure", ko: "네트워크 인프라를 위한 포스트 양자 암호 알고리즘", ja: "ネットワークインフラ向けポスト量子暗号アルゴリズム", es: "Algoritmos criptográficos post-cuánticos para infraestructura de red" },
     ],
   },
+  {
+    icon: "assets/icons/Computer Vision.png",
+    title: { en: "Computer Vision", ko: "컴퓨터 비전", ja: "コンピュータビジョン", es: "Visión por computadora" },
+    description: {
+      en: "Research on visual understanding including object detection, semantic/instance segmentation, 3D reconstruction, and generative models for image synthesis and style transfer.",
+      ko: "객체 탐지, 시맨틱/인스턴스 분할, 3D 재구성, 이미지 생성 및 스타일 변환을 위한 생성 모델 등 시각적 이해 연구.",
+      ja: "物体検出、セマンティック/インスタンスセグメンテーション、3D再構成、画像生成とスタイル変換のための生成モデルなど視覚的理解の研究。",
+      es: "Investigación en comprensión visual incluyendo detección de objetos, segmentación semántica/de instancias, reconstrucción 3D y modelos generativos para síntesis de imágenes y transferencia de estilo."
+    },
+    tags: ["Object Detection", "Segmentation", "3D Vision", "Image Generation"],
+    directions: [
+      { en: "Real-time object detection and tracking in complex visual scenes", ko: "복잡한 시각적 장면에서의 실시간 객체 탐지 및 추적", ja: "複雑な視覚シーンにおけるリアルタイム物体検出と追跡", es: "Detección y seguimiento de objetos en tiempo real en escenas visuales complejas" },
+      { en: "Pixel-level scene understanding via semantic and instance segmentation", ko: "시맨틱 및 인스턴스 분할을 통한 픽셀 수준의 장면 이해", ja: "セマンティック・インスタンスセグメンテーションによるピクセルレベルのシーン理解", es: "Comprensión de escenas a nivel de píxel mediante segmentación semántica y de instancias" },
+      { en: "Depth estimation and 3D reconstruction from monocular and stereo imagery", ko: "단안 및 스테레오 영상으로부터의 깊이 추정 및 3D 재구성", ja: "単眼・ステレオ画像からの深度推定と3D再構成", es: "Estimación de profundidad y reconstrucción 3D a partir de imágenes monoculares y estéreo" },
+      { en: "Generative adversarial networks and diffusion models for image synthesis", ko: "이미지 합성을 위한 생성적 적대 신경망 및 확산 모델", ja: "画像合成のための敵対的生成ネットワークと拡散モデル", es: "Redes generativas adversariales y modelos de difusión para síntesis de imágenes" },
+    ],
+  },
+  {
+    icon: "assets/icons/Robotics.png",
+    title: { en: "Robotics", ko: "로보틱스", ja: "ロボティクス", es: "Robótica" },
+    description: {
+      en: "Research on intelligent robotic systems including motion planning, dexterous manipulation, sim-to-real transfer learning, and multi-agent coordination for collaborative tasks.",
+      ko: "모션 플래닝, 정밀 조작, 시뮬레이션-현실 전이 학습, 협업 작업을 위한 멀티 에이전트 조정 등 지능형 로봇 시스템 연구.",
+      ja: "モーションプランニング、器用な操作、シミュレーションから現実への転移学習、協調タスクのためのマルチエージェント調整など知能ロボットシステムの研究。",
+      es: "Investigación en sistemas robóticos inteligentes incluyendo planificación de movimiento, manipulación diestra, transferencia de aprendizaje de simulación a realidad y coordinación multiagente para tareas colaborativas."
+    },
+    tags: ["Motion Planning", "Manipulation", "Sim-to-Real", "Multi-Agent"],
+    directions: [
+      { en: "Collision-free path planning and trajectory optimization in dynamic environments", ko: "동적 환경에서의 충돌 회피 경로 계획 및 궤적 최적화", ja: "動的環境における衝突回避経路計画と軌道最適化", es: "Planificación de trayectorias libres de colisiones y optimización en entornos dinámicos" },
+      { en: "Contact-rich manipulation with force/torque feedback and tactile sensing", ko: "힘/토크 피드백 및 촉각 센싱을 활용한 접촉 기반 조작", ja: "力/トルクフィードバックと触覚センシングによる接触操作", es: "Manipulación con contacto mediante retroalimentación de fuerza/par y sensado táctil" },
+      { en: "Bridging the reality gap through domain randomization and adaptation", ko: "도메인 랜덤화 및 적응을 통한 현실 격차 해소", ja: "ドメインランダム化と適応によるリアリティギャップの解消", es: "Reducción de la brecha de realidad mediante aleatorización y adaptación de dominio" },
+      { en: "Decentralized coordination of multiple robots for cooperative task execution", ko: "협력적 작업 수행을 위한 다중 로봇의 분산 조정", ja: "協調タスク実行のための複数ロボットの分散制御", es: "Coordinación descentralizada de múltiples robots para ejecución cooperativa de tareas" },
+    ],
+  },
 ];

@@ -147,16 +147,19 @@ function renderResearchMap() {
   if (centerLabel) centerLabel.textContent = ui('rmapCenter');
   if (!nodesContainer || !svg) return;
 
-  // Node positions (%) — optimized so connected areas are adjacent
-  // Layout: Medical AI(top) → AI Security(top-right) → Auto Driving(bottom-right)
-  //         → AI Semi(bottom) → Quantum(bottom-left) → Network Security(top-left)
+  // Node positions (%) — 8 nodes in octagonal layout
+  // Layout: Medical AI(top) → AI Security(top-right) → Auto Driving(right)
+  //         → Computer Vision(bottom-right) → AI Semi(bottom) → Quantum(bottom-left)
+  //         → Network Security(left) → Robotics(top-left)
   const positions = [
-    { x: 85, y: 25 },   // 0: AI Security → top-right
-    { x: 85, y: 75 },   // 1: Autonomous Driving → bottom-right
-    { x: 15, y: 75 },   // 2: Quantum Computing → bottom-left
-    { x: 50, y: 92 },   // 3: AI Semiconductors → bottom
-    { x: 50, y: 8 },    // 4: Medical AI → top
-    { x: 15, y: 25 },   // 5: Network Security → top-left
+    { x: 82, y: 15 },   // 0: AI Security → top-right
+    { x: 95, y: 50 },   // 1: Autonomous Driving → right
+    { x: 18, y: 82 },   // 2: Quantum Computing → bottom-left
+    { x: 50, y: 95 },   // 3: AI Semiconductors → bottom
+    { x: 50, y: 5 },    // 4: Medical AI → top
+    { x: 5, y: 50 },    // 5: Network Security → left
+    { x: 82, y: 85 },   // 6: Computer Vision → bottom-right
+    { x: 18, y: 18 },   // 7: Robotics → top-left
   ];
 
   // Connections between areas: [fromIndex, toIndex, label, tooltip description]
@@ -168,6 +171,11 @@ function renderResearchMap() {
     [2, 4, "Hybrid QC", { en: "Quantum-classical hybrid models for medical classification", ko: "의료 분류를 위한 양자-고전 하이브리드 모델", ja: "医療分類のための量子古典ハイブリッドモデル", es: "Modelos híbridos cuántico-clásicos para clasificación médica" }],
     [2, 5, "QKD",       { en: "Quantum Key Distribution for secure communications", ko: "보안 통신을 위한 양자 키 분배", ja: "セキュア通信のための量子鍵配送", es: "Distribución de claves cuánticas para comunicaciones seguras" }],
     [3, 2, "Hardware",  { en: "Hardware acceleration for quantum computing", ko: "양자 컴퓨팅을 위한 하드웨어 가속", ja: "量子コンピューティングのためのハードウェア加速", es: "Aceleración de hardware para computación cuántica" }],
+    [6, 1, "Perception", { en: "Computer vision enables perception for autonomous driving", ko: "컴퓨터 비전이 자율주행의 인지 기능을 담당", ja: "コンピュータビジョンが自動運転の認知機能を実現", es: "La visión por computadora habilita la percepción para conducción autónoma" }],
+    [6, 4, "Imaging",   { en: "Visual analysis techniques for medical image diagnosis", ko: "의료 영상 진단을 위한 시각 분석 기술", ja: "医療画像診断のための視覚分析技術", es: "Técnicas de análisis visual para diagnóstico por imagen médica" }],
+    [7, 1, "Control",   { en: "Robotic control systems applied to autonomous vehicles", ko: "자율주행 차량에 적용되는 로봇 제어 시스템", ja: "自動運転車両に適用されるロボット制御システム", es: "Sistemas de control robótico aplicados a vehículos autónomos" }],
+    [7, 3, "Embedded",  { en: "Embedded AI hardware for real-time robotic inference", ko: "실시간 로봇 추론을 위한 임베디드 AI 하드웨어", ja: "リアルタイムロボット推論のための組込みAIハードウェア", es: "Hardware de IA embebido para inferencia robótica en tiempo real" }],
+    [6, 7, "Vision-Robot", { en: "Vision-guided robotic manipulation and navigation", ko: "비전 기반 로봇 조작 및 내비게이션", ja: "ビジョンガイドロボット操作とナビゲーション", es: "Manipulación y navegación robótica guiada por visión" }],
   ];
 
   // Track active (clicked) node
@@ -534,6 +542,26 @@ function renderAreas() {
       <div class="av__packet"></div>
       <div class="av__packet"></div>
       <div class="av__packet"></div>
+    </div>`,
+    // 6: Computer Vision — Bounding boxes + scanning frame
+    `<div class="area-card__visual area-visual--vision">
+      <div class="av__bbox av__bbox--1"></div>
+      <div class="av__bbox av__bbox--2"></div>
+      <div class="av__bbox av__bbox--3"></div>
+      <div class="av__scan-frame"></div>
+      <div class="av__detect-dot"></div>
+      <div class="av__detect-dot"></div>
+      <div class="av__detect-dot"></div>
+    </div>`,
+    // 7: Robotics — Robot arm + joint nodes
+    `<div class="area-card__visual area-visual--robotics">
+      <div class="av__arm-base"></div>
+      <div class="av__arm-segment av__arm-segment--1"></div>
+      <div class="av__arm-segment av__arm-segment--2"></div>
+      <div class="av__joint av__joint--1"></div>
+      <div class="av__joint av__joint--2"></div>
+      <div class="av__joint av__joint--3"></div>
+      <div class="av__gripper"></div>
     </div>`,
   ];
 

@@ -60,6 +60,8 @@
 .area-card:nth-child(4)::before { background: var(--progress-76-100); }
 .area-card:nth-child(5)::before { background: var(--progress-0-25); }
 .area-card:nth-child(6)::before { background: #6C63FF; }
+.area-card:nth-child(7)::before { background: #FF6B35; }
+.area-card:nth-child(8)::before { background: #2EC4B6; }
 
 /* ================================================================
    THEMATIC VISUAL ANIMATIONS
@@ -529,6 +531,187 @@
   100% { right: calc(50% - 20px); opacity: 0; }
 }
 
+/* ── 7. Computer Vision: Bounding Boxes & Detection ── */
+.area-visual--vision {
+  background: linear-gradient(180deg, rgba(255, 107, 53, 0.04) 0%, transparent 100%);
+  position: relative;
+}
+
+.area-visual--vision .av__bbox {
+  position: absolute;
+  border: 2px solid #FF6B35;
+  border-radius: 3px;
+  animation: bbox-detect 3s ease-in-out infinite;
+}
+
+.area-visual--vision .av__bbox--1 {
+  width: 40px;
+  height: 30px;
+  top: 20px;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.area-visual--vision .av__bbox--2 {
+  width: 50px;
+  height: 35px;
+  top: 30px;
+  left: 50%;
+  animation-delay: 0.8s;
+}
+
+.area-visual--vision .av__bbox--3 {
+  width: 35px;
+  height: 25px;
+  top: 15px;
+  left: 75%;
+  animation-delay: 1.6s;
+}
+
+@keyframes bbox-detect {
+  0%, 20% { opacity: 0; transform: scale(1.3); }
+  30%, 70% { opacity: 1; transform: scale(1); box-shadow: 0 0 8px rgba(255, 107, 53, 0.3); }
+  80%, 100% { opacity: 0; transform: scale(0.95); }
+}
+
+.area-visual--vision .av__scan-frame {
+  position: absolute;
+  top: 0;
+  left: -2px;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #FF6B35, transparent);
+  box-shadow: 0 0 8px rgba(255, 107, 53, 0.5);
+  animation: vision-scan 3s linear infinite;
+}
+
+@keyframes vision-scan {
+  0% { left: -2px; }
+  100% { left: 100%; }
+}
+
+.area-visual--vision .av__detect-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #FF6B35;
+  border-radius: 50%;
+  animation: detect-ping 2s ease-out infinite;
+}
+
+.area-visual--vision .av__detect-dot:nth-child(5) { top: 35px; left: 28%; animation-delay: 0.3s; }
+.area-visual--vision .av__detect-dot:nth-child(6) { top: 47px; left: 58%; animation-delay: 1.1s; }
+.area-visual--vision .av__detect-dot:nth-child(7) { top: 27px; left: 82%; animation-delay: 1.9s; }
+
+@keyframes detect-ping {
+  0% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.5); }
+  50% { transform: scale(1.5); opacity: 0.7; box-shadow: 0 0 0 8px rgba(255, 107, 53, 0); }
+  100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(255, 107, 53, 0); }
+}
+
+/* ── 8. Robotics: Robot Arm & Joints ── */
+.area-visual--robotics {
+  background: linear-gradient(180deg, rgba(46, 196, 182, 0.04) 0%, transparent 100%);
+  position: relative;
+}
+
+.area-visual--robotics .av__arm-base {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 12px;
+  background: #2EC4B6;
+  border-radius: 3px;
+}
+
+.area-visual--robotics .av__arm-segment {
+  position: absolute;
+  background: var(--color-gray-300);
+  border-radius: 2px;
+}
+
+.area-visual--robotics .av__arm-segment--1 {
+  width: 4px;
+  height: 35px;
+  bottom: 22px;
+  left: 50%;
+  transform-origin: bottom center;
+  transform: translateX(-50%) rotate(0deg);
+  animation: arm-swing-1 4s ease-in-out infinite;
+}
+
+.area-visual--robotics .av__arm-segment--2 {
+  width: 4px;
+  height: 28px;
+  bottom: 55px;
+  left: 50%;
+  transform-origin: bottom center;
+  animation: arm-swing-2 4s ease-in-out infinite;
+}
+
+@keyframes arm-swing-1 {
+  0%, 100% { transform: translateX(-50%) rotate(-15deg); }
+  50% { transform: translateX(-50%) rotate(15deg); }
+}
+
+@keyframes arm-swing-2 {
+  0%, 100% { transform: translateX(-2px) rotate(20deg); }
+  25% { transform: translateX(6px) rotate(-10deg); }
+  50% { transform: translateX(10px) rotate(-25deg); }
+  75% { transform: translateX(4px) rotate(5deg); }
+}
+
+.area-visual--robotics .av__joint {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #2EC4B6;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  animation: joint-pulse 2s ease-in-out infinite;
+}
+
+.area-visual--robotics .av__joint--1 {
+  bottom: 18px;
+  left: calc(50% - 5px);
+}
+
+.area-visual--robotics .av__joint--2 {
+  bottom: 52px;
+  left: calc(50% - 5px);
+  animation-delay: 0.4s;
+}
+
+.area-visual--robotics .av__joint--3 {
+  bottom: 78px;
+  left: calc(50% - 5px);
+  animation-delay: 0.8s;
+}
+
+@keyframes joint-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(46, 196, 182, 0.3); background: var(--bg-primary); }
+  50% { box-shadow: 0 0 0 6px rgba(46, 196, 182, 0); background: rgba(46, 196, 182, 0.15); }
+}
+
+.area-visual--robotics .av__gripper {
+  position: absolute;
+  bottom: 82px;
+  left: calc(50% - 8px);
+  width: 16px;
+  height: 8px;
+  border: 2px solid #2EC4B6;
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  animation: gripper-open 3s ease-in-out infinite;
+}
+
+@keyframes gripper-open {
+  0%, 100% { width: 16px; left: calc(50% - 8px); }
+  40%, 60% { width: 22px; left: calc(50% - 11px); }
+}
+
 /* ================================================================
    CARD CONTENT STYLES
    ================================================================ */
@@ -561,6 +744,8 @@
 .area-card:nth-child(4) .area-card__icon { background: rgba(0, 132, 61, 0.1); }
 .area-card:nth-child(5) .area-card__icon { background: rgba(227, 25, 55, 0.1); }
 .area-card:nth-child(6) .area-card__icon { background: rgba(108, 99, 255, 0.1); }
+.area-card:nth-child(7) .area-card__icon { background: rgba(255, 107, 53, 0.1); }
+.area-card:nth-child(8) .area-card__icon { background: rgba(46, 196, 182, 0.1); }
 
 /* ── Header ── */
 .area-card__header {
@@ -720,6 +905,8 @@
 .area-card:nth-child(4) .area-card__direction { border-left-color: var(--progress-76-100); }
 .area-card:nth-child(5) .area-card__direction { border-left-color: var(--progress-0-25); }
 .area-card:nth-child(6) .area-card__direction { border-left-color: #6C63FF; }
+.area-card:nth-child(7) .area-card__direction { border-left-color: #FF6B35; }
+.area-card:nth-child(8) .area-card__direction { border-left-color: #2EC4B6; }
 
 .area-card__direction:hover {
   background: var(--bg-primary);
@@ -756,6 +943,8 @@
 .area-card:nth-child(4) .area-card__direction-tag { color: var(--progress-76-100); }
 .area-card:nth-child(5) .area-card__direction-tag { color: var(--progress-0-25); }
 .area-card:nth-child(6) .area-card__direction-tag { color: #6C63FF; }
+.area-card:nth-child(7) .area-card__direction-tag { color: #FF6B35; }
+.area-card:nth-child(8) .area-card__direction-tag { color: #2EC4B6; }
 
 .area-card__direction-desc {
   font-size: var(--text-xs);

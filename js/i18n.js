@@ -23,10 +23,10 @@ const UI_TEXT = {
     es: "Mi objetivo es resolver problemas complejos del mundo real mediante inteligencia artificial, realizando investigación innovadora desde los fundamentos teóricos hasta las aplicaciones prácticas."
   },
   overviewVisionP2: {
-    en: "Focusing on AI security, autonomous driving with federated learning, quantum computing, AI semiconductors, and medical AI, I seek to maximize the societal impact of research through industry-academia collaboration.",
-    ko: "AI 보안, 연합학습 기반 자율주행, 양자컴퓨팅, AI 반도체, 의료 AI에 중점을 두고 있으며, 산학연 협력을 통해 연구의 사회적 영향력을 극대화하고자 합니다.",
-    ja: "AIセキュリティ、連合学習による自動運転、量子コンピューティング、AI半導体、医療AIに重点を置き、産学連携を通じて研究の社会的影響力を最大化することを目指しています。",
-    es: "Enfocado en seguridad de IA, conducción autónoma con aprendizaje federado, computación cuántica, semiconductores de IA e IA médica, buscando maximizar el impacto social de la investigación a través de la colaboración industria-academia."
+    en: "Focusing on AI security, autonomous driving with federated learning, quantum computing, AI semiconductors, medical AI, computer vision, and robotics, I seek to maximize the societal impact of research through industry-academia collaboration.",
+    ko: "AI 보안, 연합학습 기반 자율주행, 양자컴퓨팅, AI 반도체, 의료 AI, 컴퓨터 비전, 로보틱스에 중점을 두고 있으며, 산학연 협력을 통해 연구의 사회적 영향력을 극대화하고자 합니다.",
+    ja: "AIセキュリティ、連合学習による自動運転、量子コンピューティング、AI半導体、医療AI、コンピュータビジョン、ロボティクスに重点を置き、産学連携を通じて研究の社会的影響力を最大化することを目指しています。",
+    es: "Enfocado en seguridad de IA, conducción autónoma con aprendizaje federado, computación cuántica, semiconductores de IA, IA médica, visión por computadora y robótica, buscando maximizar el impacto social de la investigación a través de la colaboración industria-academia."
   },
   highlightGoalTitle: { en: "Core Goal", ko: "핵심 목표", ja: "核心目標", es: "Objetivo principal" },
   highlightGoalDesc: { en: "Building efficient and secure AI systems", ko: "효율적이고 안전한 AI 시스템 구축", ja: "効率的で安全なAIシステムの構築", es: "Construir sistemas de IA eficientes y seguros" },
