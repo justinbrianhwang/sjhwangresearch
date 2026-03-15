@@ -31,7 +31,7 @@ function initProgressBars() {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0.05 });
 
   // 프로그레스 바가 포함된 모든 섹션 관찰
   document.querySelectorAll('#projects, #experiments').forEach(section => {

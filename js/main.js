@@ -147,20 +147,19 @@ function renderResearchMap() {
   if (centerLabel) centerLabel.textContent = ui('rmapCenter');
   if (!nodesContainer || !svg) return;
 
-  // Node positions (%) — 8 nodes in octagonal layout
-  // Layout: Medical AI(top) → AI Security(top-right) → Auto Driving(right)
-  //         → Computer Vision(bottom-right) → AI Semi(bottom) → Quantum(bottom-left)
-  //         → Network Security(left) → Robotics(top-left)
-  const positions = [
-    { x: 82, y: 15 },   // 0: AI Security → top-right
-    { x: 95, y: 50 },   // 1: Autonomous Driving → right
-    { x: 18, y: 82 },   // 2: Quantum Computing → bottom-left
-    { x: 50, y: 95 },   // 3: AI Semiconductors → bottom
-    { x: 50, y: 5 },    // 4: Medical AI → top
-    { x: 5, y: 50 },    // 5: Network Security → left
-    { x: 82, y: 85 },   // 6: Computer Vision → bottom-right
-    { x: 18, y: 18 },   // 7: Robotics → top-left
-  ];
+  // Node positions (%) — 9 nodes evenly spaced on a circle (r=45, center=50,50)
+  // Starting from top (270°), going clockwise at 40° intervals
+  const R = 45, CX = 50, CY = 50;
+  const nodeOrder = [4, 0, 1, 6, 3, 2, 8, 5, 7];
+  // 4:Medical(top) → 0:AISec(upper-right) → 1:AutoDriv(right) → 6:CV(lower-right)
+  // → 3:AISemi(bottom) → 2:Quantum(lower-left) → 8:LLM(left) → 5:NetSec(upper-left) → 7:Robotics(top-left)
+  const allPos = nodeOrder.map((_, i) => {
+    const angle = (270 + i * 40) * Math.PI / 180;
+    return { x: Math.round(CX + R * Math.cos(angle)), y: Math.round(CY + R * Math.sin(angle)) };
+  });
+  // Map back: positions[areaIndex] = coordinate
+  const positions = new Array(9);
+  nodeOrder.forEach((areaIdx, i) => { positions[areaIdx] = allPos[i]; });
 
   // Connections between areas: [fromIndex, toIndex, label, tooltip description]
   const connections = [
@@ -176,6 +175,10 @@ function renderResearchMap() {
     [7, 1, "Control",   { en: "Robotic control systems applied to autonomous vehicles", ko: "자율주행 차량에 적용되는 로봇 제어 시스템", ja: "自動運転車両に適用されるロボット制御システム", es: "Sistemas de control robótico aplicados a vehículos autónomos" }],
     [7, 3, "Embedded",  { en: "Embedded AI hardware for real-time robotic inference", ko: "실시간 로봇 추론을 위한 임베디드 AI 하드웨어", ja: "リアルタイムロボット推論のための組込みAIハードウェア", es: "Hardware de IA embebido para inferencia robótica en tiempo real" }],
     [6, 7, "Vision-Robot", { en: "Vision-guided robotic manipulation and navigation", ko: "비전 기반 로봇 조작 및 내비게이션", ja: "ビジョンガイドロボット操作とナビゲーション", es: "Manipulación y navegación robótica guiada por visión" }],
+    [8, 1, "OpenEMMA", { en: "LLM-driven reasoning for autonomous driving decisions", ko: "자율주행 의사결정을 위한 LLM 기반 추론", ja: "自動運転判断のためのLLM駆動推論", es: "Razonamiento impulsado por LLM para decisiones de conducción autónoma" }],
+    [8, 4, "Med-NLP", { en: "LLM-based medical text analysis and clinical decision support", ko: "LLM 기반 의료 텍스트 분석 및 임상 의사결정 지원", ja: "LLMベースの医療テキスト分析と臨床意思決定支援", es: "Análisis de texto médico basado en LLM y soporte de decisiones clínicas" }],
+    [8, 6, "VLM", { en: "Vision-language models combining visual and textual understanding", ko: "시각과 텍스트 이해를 결합한 비전-언어 모델", ja: "視覚とテキスト理解を統合するビジョン言語モデル", es: "Modelos de visión-lenguaje que combinan comprensión visual y textual" }],
+    [8, 0, "Alignment", { en: "LLM safety and alignment for trustworthy AI systems", ko: "신뢰할 수 있는 AI 시스템을 위한 LLM 안전성 및 정렬", ja: "信頼性の高いAIシステムのためのLLM安全性とアラインメント", es: "Seguridad y alineación de LLM para sistemas de IA confiables" }],
   ];
 
   // Track active (clicked) node
@@ -563,6 +566,23 @@ function renderAreas() {
       <div class="av__joint av__joint--3"></div>
       <div class="av__gripper"></div>
     </div>`,
+    // 8: LLM — Token stream + attention
+    `<div class="area-card__visual area-visual--llm">
+      <div class="av__token-stream">
+        <span class="av__token">How</span>
+        <span class="av__token">can</span>
+        <span class="av__token">I</span>
+        <span class="av__token av__token--highlight">help</span>
+        <span class="av__token">you</span>
+        <span class="av__token av__token--highlight">today</span>
+        <span class="av__token">?</span>
+      </div>
+      <div class="av__attention-lines">
+        <div class="av__attn-line"></div>
+        <div class="av__attn-line"></div>
+        <div class="av__attn-line"></div>
+      </div>
+    </div>`,
   ];
 
   grid.innerHTML = RESEARCH_AREAS.map((area, i) => `
@@ -645,6 +665,7 @@ function renderAreas() {
     'Autonomous Driving': 'car', 'Simulation': 'car',
     // brain: neural & language models
     'LLM': 'brain', 'Neuromorphic': 'brain', 'Federated Learning': 'brain',
+    'Prompt Engineering': 'brain', 'Fine-tuning': 'brain', 'RAG': 'brain', 'Multi-modal': 'brain',
     // heartbeat: medical
     'Medical Imaging': 'heartbeat', 'Chest X-ray': 'heartbeat',
     // lock: cryptography & security protocols

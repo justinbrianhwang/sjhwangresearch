@@ -143,4 +143,21 @@ const RESEARCH_AREAS = [
       { en: "Decentralized coordination of multiple robots for cooperative task execution", ko: "협력적 작업 수행을 위한 다중 로봇의 분산 조정", ja: "協調タスク実行のための複数ロボットの分散制御", es: "Coordinación descentralizada de múltiples robots para ejecución cooperativa de tareas" },
     ],
   },
+  {
+    icon: "assets/icons/LLM.png",
+    title: { en: "Large Language Models", ko: "대규모 언어 모델", ja: "大規模言語モデル", es: "Modelos de lenguaje grande" },
+    description: {
+      en: "Research on large language model capabilities including prompt engineering, fine-tuning, retrieval-augmented generation (RAG), multi-modal LLMs, and alignment for safe and reliable AI systems.",
+      ko: "프롬프트 엔지니어링, 파인튜닝, 검색 증강 생성(RAG), 멀티모달 LLM, 안전하고 신뢰할 수 있는 AI 시스템을 위한 정렬 등 대규모 언어 모델 역량 연구.",
+      ja: "プロンプトエンジニアリング、ファインチューニング、検索拡張生成(RAG)、マルチモーダルLLM、安全で信頼性の高いAIシステムのためのアラインメントなど大規模言語モデルの研究。",
+      es: "Investigación sobre capacidades de modelos de lenguaje grande, incluyendo ingeniería de prompts, ajuste fino, generación aumentada por recuperación (RAG), LLMs multimodales y alineación para sistemas de IA seguros y confiables."
+    },
+    tags: ["Prompt Engineering", "Fine-tuning", "RAG", "Multi-modal"],
+    directions: [
+      { en: "Designing effective prompts and chain-of-thought strategies for complex reasoning", ko: "복잡한 추론을 위한 효과적인 프롬프트 및 사고 연쇄 전략 설계", ja: "複雑な推論のための効果的なプロンプトと思考連鎖戦略の設計", es: "Diseño de prompts efectivos y estrategias de cadena de pensamiento para razonamiento complejo" },
+      { en: "Domain-specific fine-tuning and parameter-efficient adaptation (LoRA, QLoRA)", ko: "도메인 특화 파인튜닝 및 매개변수 효율적 적응(LoRA, QLoRA)", ja: "ドメイン特化ファインチューニングとパラメータ効率的適応(LoRA、QLoRA)", es: "Ajuste fino específico de dominio y adaptación eficiente de parámetros (LoRA, QLoRA)" },
+      { en: "Retrieval-augmented generation for knowledge-grounded and up-to-date responses", ko: "지식 기반의 최신 응답을 위한 검색 증강 생성", ja: "知識に基づいた最新の応答のための検索拡張生成", es: "Generación aumentada por recuperación para respuestas fundamentadas y actualizadas" },
+      { en: "Vision-language models integrating visual and textual understanding", ko: "시각적, 텍스트적 이해를 통합하는 비전-언어 모델", ja: "視覚的・テキスト的理解を統合するビジョン-言語モデル", es: "Modelos de visión-lenguaje que integran comprensión visual y textual" },
+    ],
+  },
 ];

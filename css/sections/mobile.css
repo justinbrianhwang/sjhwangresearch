@@ -128,6 +128,18 @@
     font-size: var(--text-base);
   }
 
+  /* ── Progress Bar 모바일 ── */
+  .progress__track {
+    height: 14px;
+    background: var(--color-gray-300);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
+  }
+
+  .progress__bar--red { background: #E31937; }
+  .progress__bar--orange { background: #FF6C0C; }
+  .progress__bar--blue { background: #004191; }
+  .progress__bar--green { background: #00843D; }
+
   /* ── Experiments 모바일 ── */
   .experiment-card {
     padding: var(--space-5);
