@@ -363,7 +363,7 @@ function renderResearchMap() {
 
     if (icon) { icon.src = `${BASE_PATH}/${area.icon}`; icon.alt = area.title.en; }
     if (titleEl) titleEl.textContent = t(area.title);
-    if (desc) desc.textContent = t(area.description);
+    if (desc) desc.textContent = t(area.detailDescription || area.description);
     if (tagsEl) tagsEl.innerHTML = area.tags.map(tag =>
       `<span class="rmap__detail-tag">${tag}</span>`
     ).join('');

@@ -277,7 +277,7 @@
 /* ── Detail Panel ── */
 .rmap__detail {
   position: relative;
-  max-width: 600px;
+  max-width: 700px;
   margin: var(--space-8) auto 0;
   padding: var(--space-8);
   background: var(--bg-primary);
@@ -296,7 +296,7 @@
 .rmap__detail--open {
   opacity: 1;
   transform: translateY(0);
-  max-height: 500px;
+  max-height: 800px;
   padding: var(--space-8);
   margin-top: var(--space-8);
 }
@@ -332,9 +332,10 @@
 }
 
 .rmap__detail-icon {
-  width: 48px;
-  height: 48px;
+  width: 96px;
+  height: 96px;
   object-fit: contain;
+  flex-shrink: 0;
 }
 
 .rmap__detail-title {
