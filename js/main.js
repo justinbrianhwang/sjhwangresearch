@@ -771,7 +771,8 @@ function renderProjects() {
   if (subtitle) subtitle.textContent = ui('projectsSubtitle');
   if (!grid) return;
 
-  grid.innerHTML = PROJECTS.map(project => {
+  const sorted = [...PROJECTS].sort((a, b) => b.progress - a.progress);
+  grid.innerHTML = sorted.map(project => {
     const colorClass = getProgressColorClass(project.progress);
     const statusTag = getStatusTag(project.status);
 
