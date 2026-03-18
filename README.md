@@ -4,6 +4,10 @@ Personal research portfolio website showcasing ongoing and completed work in AI 
 
 **Live site:** [sjhwangresearch.com](https://sjhwangresearch.com)
 
+<img width="1907" height="909" alt="image" src="https://github.com/user-attachments/assets/693a835a-25f5-400b-b485-ef0c438a47ed" />
+
+
+
 ## About
 
 This is the open research portal of **Sunjun Hwang (황선준)**, an undergraduate researcher at Yonsei University's School of Computer Science, affiliated with [RAISE LAB](https://raise.yonsei.ac.kr/).
