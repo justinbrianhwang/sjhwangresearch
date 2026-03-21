@@ -13,7 +13,7 @@ const PROJECTS = [
       ja: "同一の走行環境で異種モデルを連合学習で訓練する研究。モデル間の知識転移と性能収束を分析。",
       es: "Entrenamiento de modelos heterogéneos mediante aprendizaje federado en el mismo entorno de conducción. Análisis de transferencia de conocimiento entre modelos y convergencia de rendimiento."
     },
-    progress: 85,
+    progress: 90,
     status: "active",
     startDate: "2025",
     teamLogos: ["assets/logos/sjjb logos.png"],
@@ -76,18 +76,18 @@ const PROJECTS = [
     tags: ["Federated Learning", "Cache Memory", "Client Selection", "Aggregation"],
   },
   {
-    title: { en: "Autonomous Driving + FL (Same Model, Different Environments)", ko: "자율주행 + FL (같은 모델, 다른 환경)", ja: "自動運転 + FL（同一モデル、異なる環境）", es: "Conducción autónoma + FL (mismo modelo, diferentes entornos)" },
+    title: { en: "Homogeneous FL for TCP Autonomous Driving (Different Environments)", ko: "TCP 자율 주행모델에 대한 Homogeneous Federated Learning (다른 환경)", ja: "TCP自律走行モデルのための同種連合学習（異なる環境）", es: "FL homogéneo para conducción autónoma TCP (diferentes entornos)" },
     description: {
-      en: "Training the same model via federated learning across diverse driving environments (urban, highway, night, etc.). Analyzing robustness against domain shift.",
-      ko: "다양한 주행 환경(도심, 고속도로, 야간 등)에서 동일 모델을 연합학습으로 훈련. 환경 이질성(Domain Shift)에 대한 강건성 분석.",
-      ja: "多様な走行環境（都心、高速道路、夜間等）で同一モデルを連合学習で訓練。Domain Shiftに対する頑健性を分析。",
-      es: "Entrenamiento del mismo modelo mediante aprendizaje federado en diversos entornos de conducción (urbano, autopista, nocturno, etc.). Análisis de robustez contra el cambio de dominio."
+      en: "Homogeneous federated learning research using TCP autonomous driving models across different driving environments. Training the same TCP model in diverse scenarios via FL to analyze robustness and performance convergence under environment heterogeneity.",
+      ko: "서로 다른 주행 환경에서 TCP 자율 주행 모델을 활용한 동질적(Homogeneous) 연합 학습 연구. 다양한 시나리오에서 동일 TCP 모델을 FL로 훈련하여 환경 이질성에 대한 강건성과 성능 수렴을 분석.",
+      ja: "異なる走行環境でTCP自律走行モデルを活用した同種連合学習の研究。多様なシナリオで同一TCPモデルをFLで訓練し、環境の異質性に対する頑健性と性能収束を分析。",
+      es: "Investigación de aprendizaje federado homogéneo utilizando modelos de conducción autónoma TCP en diferentes entornos de conducción. Entrenamiento del mismo modelo TCP en diversos escenarios mediante FL para analizar la robustez y convergencia del rendimiento bajo heterogeneidad ambiental."
     },
-    progress: 10,
+    progress: 2,
     status: "active",
     startDate: "2026",
-    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/RAISE LAB_current research.png"],
-    tags: ["Federated Learning", "Domain Shift", "Autonomous Driving"],
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
+    tags: ["Federated Learning", "TCP", "Autonomous Driving", "Carla", "Homogeneous FL"],
   },
   {
     title: { en: "TDA for Medical Data Analysis", ko: "TDA 기반 의료 데이터 분석", ja: "TDA基盤医療データ分析", es: "TDA para análisis de datos médicos" },
@@ -102,20 +102,6 @@ const PROJECTS = [
     startDate: "2026",
     teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/Permillion Logos.png"],
     tags: ["TDA", "Medical Data", "Topological Analysis", "Healthcare", "Cancer Data", "Biosignal"],
-  },
-  {
-    title: { en: "Quantum Tunneling Mathematical Modeling & Simulation", ko: "양자 터널링 수학적 모델링 시뮬레이션", ja: "量子トンネリング数学的モデリング＆シミュレーション", es: "Modelado matemático y simulación de túnel cuántico" },
-    description: {
-      en: "Mathematical modeling and simulation of quantum tunneling phenomena. Implementing numerical solutions and visualizations using C++ for quantum mechanical barrier penetration problems.",
-      ko: "양자 터널링 현상의 수학적 모델링 및 시뮬레이션. C++을 활용한 양자역학적 장벽 투과 문제의 수치 해석 및 시각화 구현.",
-      ja: "量子トンネリング現象の数学的モデリングとシミュレーション。C++を活用した量子力学的障壁透過問題の数値解析と可視化の実装。",
-      es: "Modelado matemático y simulación de fenómenos de túnel cuántico. Implementación de soluciones numéricas y visualizaciones usando C++ para problemas de penetración de barreras de mecánica cuántica."
-    },
-    progress: 2,
-    status: "active",
-    startDate: "2026",
-    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
-    tags: ["C++", "Modeling", "Simulation", "Quantum Tunneling"],
   },
   {
     title: { en: "TDA-based Detection of Generative AI Attacks", ko: "TDA 기반 생성형 AI 공격 탐지", ja: "TDA基盤生成AI攻撃検出", es: "Detección de ataques de IA generativa basada en TDA" },
