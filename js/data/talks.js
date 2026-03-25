@@ -29,18 +29,18 @@ const TALKS = [
   {
     type: "conference",
     title: {
-      ko: "이질적 의료 영상 연합학습을 위한 로짓 기반 지식 증류",
-      en: "Logit-Based Knowledge Distillation for Heterogeneous Medical Image Federated Learning",
+      ko: "가을 Conference 2025 – 학부생 논문 경진대회",
+      en: "Fall Conference 2025 – Undergraduate Paper Competition",
     },
-    event: "KIIT 2025",
+    event: "KIIT Fall Conference 2025",
     date: "2025-12",
     location: {
       ko: "제주도, 한국",
       en: "Jeju, Korea",
     },
     description: {
-      ko: "의료 영상 연합학습 환경에서 이질적 데이터를 다루기 위한 로짓 기반 지식 증류 기법 발표",
-      en: "Presentation on logit-based knowledge distillation for handling heterogeneous data in medical image federated learning",
+      ko: "KIIT 추계학술대회 학부생 논문 경진대회 발표",
+      en: "Undergraduate paper competition presentation at KIIT Fall Conference",
     },
     links: [
       { label: "Video", url: "https://youtu.be/AxJseDD7ISs" },
