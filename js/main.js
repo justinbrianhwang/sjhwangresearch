@@ -1004,12 +1004,13 @@ function renderFooter() {
       <div class="footer__content">
         <div class="footer__logo">${PROFILE.name} <span style="color: var(--color-accent);">Research</span></div>
         <div class="footer__links">
-          <a href="${PROFILE.links.github}" class="footer__link" target="_blank">GitHub</a>
-          <a href="${PROFILE.links.scholar}" class="footer__link" target="_blank">Google Scholar</a>
-          <a href="${PROFILE.links.email}" class="footer__link">Email</a>
-          <a href="${PROFILE.links.linkedin}" class="footer__link" target="_blank">LinkedIn</a>
-          ${PROFILE.links.cv ? `<a href="${PROFILE.links.cv}" class="footer__link" target="_blank">CV</a>` : ''}
-          ${PROFILE.links.website ? `<a href="${PROFILE.links.website}" class="footer__link" target="_blank">Website</a>` : ''}
+          <a href="${PROFILE.links.github}" class="footer__link" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="${PROFILE.links.scholar}" class="footer__link" target="_blank" title="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>
+          <a href="${PROFILE.links.email}" class="footer__link" title="Email"><i class="fa-solid fa-envelope"></i></a>
+          <a href="${PROFILE.links.linkedin}" class="footer__link" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          ${PROFILE.links.orcid ? `<a href="${PROFILE.links.orcid}" class="footer__link" target="_blank" title="ORCID"><i class="fa-brands fa-orcid"></i></a>` : ''}
+          ${PROFILE.links.cv ? `<a href="${PROFILE.links.cv}" class="footer__link" target="_blank" title="CV"><i class="fa-solid fa-file-lines"></i></a>` : ''}
+          ${PROFILE.links.website ? `<a href="${PROFILE.links.website}" class="footer__link" target="_blank" title="Website"><i class="fa-solid fa-globe"></i></a>` : ''}
         </div>
       </div>
       <div class="footer__bottom">

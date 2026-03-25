@@ -34,5 +34,6 @@ const PROFILE = {
     linkedin: "https://www.linkedin.com/in/sunjunhwang/",
     cv: "https://www.sjhwangcv.com/",
     website: "https://www.sjhwang.com/",
+    orcid: "https://orcid.org/0009-0007-5173-2876",
   },
 };
