@@ -13,7 +13,7 @@ const PROJECTS = [
       ja: "同一の走行環境で異種モデルを連合学習で訓練する研究。モデル間の知識転移と性能収束を分析。",
       es: "Entrenamiento de modelos heterogéneos mediante aprendizaje federado en el mismo entorno de conducción. Análisis de transferencia de conocimiento entre modelos y convergencia de rendimiento."
     },
-    progress: 90,
+    progress: 95,
     status: "active",
     startDate: "2025",
     teamLogos: ["assets/logos/sjjb logos.png"],
