@@ -1011,6 +1011,8 @@ function renderFooter() {
           ${PROFILE.links.orcid ? `<a href="${PROFILE.links.orcid}" class="footer__link" target="_blank" title="ORCID"><i class="fa-brands fa-orcid"></i></a>` : ''}
           ${PROFILE.links.cv ? `<a href="${PROFILE.links.cv}" class="footer__link" target="_blank" title="CV"><i class="fa-solid fa-file-lines"></i></a>` : ''}
           ${PROFILE.links.website ? `<a href="${PROFILE.links.website}" class="footer__link" target="_blank" title="Website"><i class="fa-solid fa-globe"></i></a>` : ''}
+          ${PROFILE.links.youtube ? `<a href="${PROFILE.links.youtube}" class="footer__link" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>` : ''}
+          ${PROFILE.links.instagram ? `<a href="${PROFILE.links.instagram}" class="footer__link" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>` : ''}
         </div>
       </div>
       <div class="footer__bottom">
