@@ -97,7 +97,7 @@ const PROJECTS = [
       ja: "位相的データ分析(TDA)を医療データに適用し、頑健な特徴抽出とパターン発見の研究。腫瘍分類とバイオマーカー同定のためのがんデータ分析、および生理学的パターン認識と異常検出のための生体信号（EEG、ECG、EMG）データ分析に注力。",
       es: "Aplicación de análisis topológico de datos (TDA) a conjuntos de datos médicos para extracción robusta de características y descubrimiento de patrones. Enfocado en análisis de datos de cáncer para clasificación de tumores e identificación de biomarcadores, así como análisis de datos de bioseñales (EEG, ECG, EMG) para reconocimiento de patrones fisiológicos y detección de anomalías."
     },
-    progress: 5,
+    progress: 60,
     status: "active",
     startDate: "2026",
     teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/Permillion Logos.png"],
