@@ -84,14 +84,13 @@ const COLLABORATIONS = [
     logo: "assets/logos/Corex logo.png",
     type: "Industry Partner",
     description: {
-      en: "Aquaponics technology company. Collaborated on AI-based aquaponics monitoring and growth prediction systems with camera-based plant analysis and real-time environmental monitoring.",
-      ko: "아쿠아포닉스 기술 기업. AI 기반 아쿠아포닉스 모니터링 및 성장 예측 시스템을 카메라 기반 식물 분석과 실시간 환경 모니터링으로 공동 개발.",
-      ja: "アクアポニクス技術企業。カメラ基盤の植物分析とリアルタイム環境モニタリングによるAI基盤アクアポニクスモニタリング・成長予測システムを共同開発。",
-      es: "Empresa de tecnología de acuaponía. Colaboró en sistemas de monitoreo y predicción de crecimiento de acuaponía basados en IA con análisis de plantas por cámara y monitoreo ambiental en tiempo real."
+      en: "Aquaponics technology company where I served as CTO. Collaborated on AI-based aquaponics monitoring and growth prediction systems with camera-based plant analysis and real-time environmental monitoring.",
+      ko: "CTO로 참여한 아쿠아포닉스 기술 기업. AI 기반 아쿠아포닉스 모니터링 및 성장 예측 시스템을 카메라 기반 식물 분석과 실시간 환경 모니터링으로 공동 개발.",
+      ja: "CTOとして参加したアクアポニクス技術企業。カメラ基盤の植物分析とリアルタイム環境モニタリングによるAI基盤アクアポニクスモニタリング・成長予測システムを共同開発。",
+      es: "Empresa de tecnología de acuaponía donde participé como CTO. Colaboró en sistemas de monitoreo y predicción de crecimiento de acuaponía basados en IA con análisis de plantas por cámara y monitoreo ambiental en tiempo real."
     },
     members: [
       { name: { en: "Dongkyu Yoo", ko: "유동규" }, role: { en: "CEO", ko: "CEO", ja: "CEO", es: "CEO" } },
-      { name: { en: "Sunjun Hwang", ko: "황선준" }, role: { en: "CTO", ko: "CTO", ja: "CTO", es: "CTO" } },
       { name: { en: "Suchan Kim", ko: "김수찬" }, role: { en: "Member", ko: "팀원", ja: "メンバー", es: "Miembro" } },
       { name: { en: "Sehee Park", ko: "박세희" }, role: { en: "Member", ko: "팀원", ja: "メンバー", es: "Miembro" } },
     ],
