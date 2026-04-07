@@ -83,7 +83,7 @@ const PROJECTS = [
       ja: "異なる走行環境でTCP自律走行モデルを活用した同種連合学習の研究。多様なシナリオで同一TCPモデルをFLで訓練し、環境の異質性に対する頑健性と性能収束を分析。",
       es: "Investigación de aprendizaje federado homogéneo utilizando modelos de conducción autónoma TCP en diferentes entornos de conducción. Entrenamiento del mismo modelo TCP en diversos escenarios mediante FL para analizar la robustez y convergencia del rendimiento bajo heterogeneidad ambiental."
     },
-    progress: 2,
+    progress: 15,
     status: "active",
     startDate: "2026",
     teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
