@@ -81,7 +81,7 @@ const COLLABORATIONS = [
   {
     name: "COREX",
     status: "past",
-    logo: "",
+    logo: "assets/logos/Corex logo.png",
     type: "Industry Partner",
     description: {
       en: "Aquaponics technology company. Collaborated on AI-based aquaponics monitoring and growth prediction systems with camera-based plant analysis and real-time environmental monitoring.",
