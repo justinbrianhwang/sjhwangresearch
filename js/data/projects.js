@@ -92,10 +92,10 @@ const PROJECTS = [
   {
     title: { en: "TDA for Medical Data Analysis", ko: "TDA 기반 의료 데이터 분석", ja: "TDA基盤医療データ分析", es: "TDA para análisis de datos médicos" },
     description: {
-      en: "Applying Topological Data Analysis (TDA) to medical datasets for robust feature extraction and pattern discovery. Focused on cancer data analysis for tumor classification and biomarker identification, as well as biosignal data (EEG, ECG, EMG) analysis for physiological pattern recognition and anomaly detection.",
-      ko: "위상적 데이터 분석(TDA)을 의료 데이터에 적용하여 강건한 특징 추출 및 패턴 발견 연구. 종양 분류 및 바이오마커 식별을 위한 암 데이터 분석과 생리학적 패턴 인식 및 이상 탐지를 위한 생체 신호(EEG, ECG, EMG) 데이터 분석에 집중합니다.",
-      ja: "位相的データ分析(TDA)を医療データに適用し、頑健な特徴抽出とパターン発見の研究。腫瘍分類とバイオマーカー同定のためのがんデータ分析、および生理学的パターン認識と異常検出のための生体信号（EEG、ECG、EMG）データ分析に注力。",
-      es: "Aplicación de análisis topológico de datos (TDA) a conjuntos de datos médicos para extracción robusta de características y descubrimiento de patrones. Enfocado en análisis de datos de cáncer para clasificación de tumores e identificación de biomarcadores, así como análisis de datos de bioseñales (EEG, ECG, EMG) para reconocimiento de patrones fisiológicos y detección de anomalías."
+      en: "Applying Topological Data Analysis (TDA) to BRCA breast cancer datasets to discover novel variables and hidden topological structures. Focused on identifying new biomarkers and feature patterns in breast cancer genomic data that conventional statistical methods fail to capture.",
+      ko: "위상적 데이터 분석(TDA)을 BRCA 유방암 데이터셋에 적용하여 새로운 변수와 숨겨진 위상적 구조를 발견하는 연구. 기존 통계 방법으로는 포착할 수 없는 유방암 유전체 데이터의 새로운 바이오마커와 특징 패턴을 식별하는 데 집중합니다.",
+      ja: "位相的データ分析(TDA)をBRCA乳がんデータセットに適用し、新たな変数と隠れた位相的構造を発見する研究。従来の統計手法では捉えられない乳がんゲノムデータの新しいバイオマーカーと特徴パターンの同定に注力。",
+      es: "Aplicación de análisis topológico de datos (TDA) a conjuntos de datos de cáncer de mama BRCA para descubrir nuevas variables y estructuras topológicas ocultas. Enfocado en identificar nuevos biomarcadores y patrones de características en datos genómicos de cáncer de mama que los métodos estadísticos convencionales no logran capturar."
     },
     progress: 90,
     status: "active",
