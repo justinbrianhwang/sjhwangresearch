@@ -962,13 +962,16 @@ function renderCollaborations() {
   if (subtitle) subtitle.textContent = ui('collabsSubtitle');
   if (!grid) return;
 
-  grid.innerHTML = COLLABORATIONS.map(collab => `
+  const current = COLLABORATIONS.filter(c => c.status === 'current');
+  const past = COLLABORATIONS.filter(c => c.status === 'past');
+
+  const renderCard = (collab) => `
     <div class="collab-card fade-in">
       <div class="collab-card__info">
         <div class="collab-card__logo">${
-          collab.logo.endsWith('.png') || collab.logo.endsWith('.jpg') || collab.logo.endsWith('.svg') || collab.logo.endsWith('.webp')
+          collab.logo && (collab.logo.endsWith('.png') || collab.logo.endsWith('.jpg') || collab.logo.endsWith('.svg') || collab.logo.endsWith('.webp'))
             ? `<img src="${BASE_PATH}/${collab.logo}" alt="${collab.name}" class="collab-card__logo-img${collab.logo.endsWith('.webp') ? ' collab-card__logo-img--invert' : ''}${collab.darkBg ? ' collab-card__logo-img--dark-bg' : ''}" onerror="this.style.display='none';this.parentElement.textContent='🔬'">`
-            : collab.logo
+            : '🏢'
         }</div>
         <h3 class="collab-card__name">${collab.name}</h3>
         <p class="collab-card__type">${collab.type}</p>
@@ -991,7 +994,17 @@ function renderCollaborations() {
         </div>
       ` : ''}
     </div>
-  `).join('');
+  `;
+
+  const currentLabel = currentLang === 'ko' ? '현재 협업' : currentLang === 'ja' ? '現在のコラボレーション' : currentLang === 'es' ? 'Colaboraciones actuales' : 'Current Collaborations';
+  const pastLabel = currentLang === 'ko' ? '과거 협업' : currentLang === 'ja' ? '過去のコラボレーション' : currentLang === 'es' ? 'Colaboraciones pasadas' : 'Past Collaborations';
+
+  grid.innerHTML = `
+    <h3 class="collab-section-label collab-section-label--current">${currentLabel}</h3>
+    ${current.map(renderCard).join('')}
+    <h3 class="collab-section-label collab-section-label--past">${pastLabel}</h3>
+    ${past.map(renderCard).join('')}
+  `;
 }
 
 /* ── Footer 렌더링 ── */

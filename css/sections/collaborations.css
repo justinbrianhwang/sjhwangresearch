@@ -2,6 +2,40 @@
    COLLABORATIONS SECTION
    ============================================ */
 
+/* Section labels for current/past */
+.collab-section-label {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
+  border-bottom: 2px solid var(--color-gray-200);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.collab-section-label::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.collab-section-label--current::before {
+  background: #00c9a7;
+  box-shadow: 0 0 8px rgba(0, 201, 167, 0.4);
+}
+
+.collab-section-label--past::before {
+  background: var(--color-gray-400, #9ca3af);
+}
+
+.collab-section-label--past {
+  margin-top: var(--space-10);
+  color: var(--text-muted);
+}
+
 .collabs__grid {
   display: flex;
   flex-direction: column;

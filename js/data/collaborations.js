@@ -4,8 +4,10 @@
    ============================================ */
 
 const COLLABORATIONS = [
+  // ── Current Collaborations ──
   {
     name: "RAISE LAB",
+    status: "current",
     logo: "assets/logos/RAISE LAB_current research.png",  // 이미지 파일 경로 (없으면 폴백 이모지 표시)
     type: "Research Lab",
     description: {
@@ -24,6 +26,7 @@ const COLLABORATIONS = [
   },
   {
     name: "MPS LAB",
+    status: "current",
     logo: "assets/logos/MPS LAB_current research.webp",
     type: "Research Lab",
     description: {
@@ -39,7 +42,28 @@ const COLLABORATIONS = [
     topics: ["Autonomous Driving", "LLM", "Mobile Systems"],
   },
   {
+    name: "Permillion",
+    status: "current",
+    logo: "assets/logos/Permillion Logos.png",
+    darkBg: true,
+    type: "Industry Partner",
+    description: {
+      en: "Collaborating on TDA (Topological Data Analysis) project for medical data analysis and cache-inspired federated learning research.",
+      ko: "의료 데이터 분석을 위한 TDA(위상적 데이터 분석) 및 캐시 기반 연합학습 연구 프로젝트 공동 수행 중.",
+      ja: "医療データ分析のためのTDA（位相的データ分析）およびキャッシュ基盤連合学習研究プロジェクト共同遂行中。",
+      es: "Colaborando en proyecto de TDA (análisis topológico de datos) para análisis de datos médicos e investigación de aprendizaje federado inspirado en caché."
+    },
+    members: [
+      { name: { en: "Eunho Choi", ko: "최은호" }, role: { en: "CEO", ko: "CEO", ja: "CEO", es: "CEO" } },
+      { name: { en: "Dohyun Hwang", ko: "황도현" }, role: { en: "CTO", ko: "CTO", ja: "CTO", es: "CTO" } },
+    ],
+    topics: ["TDA", "Medical Data", "Data Analysis", "Federated Learning"],
+  },
+
+  // ── Past Collaborations ──
+  {
     name: "DH Soft",
+    status: "past",
     logo: "assets/logos/dhsoft logo Project.png",
     type: "Industry Partner",
     description: {
@@ -55,20 +79,22 @@ const COLLABORATIONS = [
     topics: ["OCR", "Medical AI", "Document Automation"],
   },
   {
-    name: "Permillion",
-    logo: "assets/logos/Permillion Logos.png",
-    darkBg: true,
+    name: "COREX",
+    status: "past",
+    logo: "",
     type: "Industry Partner",
     description: {
-      en: "Collaborated on TDA (Topological Data Analysis) project for medical data analysis.",
-      ko: "의료 데이터 분석을 위한 TDA(위상적 데이터 분석) 프로젝트 공동 수행.",
-      ja: "医療データ分析のためのTDA（位相的データ分析）プロジェクト共同遂行。",
-      es: "Colaboración en proyecto de TDA (análisis topológico de datos) para análisis de datos médicos."
+      en: "Aquaponics technology company. Collaborated on AI-based aquaponics monitoring and growth prediction systems with camera-based plant analysis and real-time environmental monitoring.",
+      ko: "아쿠아포닉스 기술 기업. AI 기반 아쿠아포닉스 모니터링 및 성장 예측 시스템을 카메라 기반 식물 분석과 실시간 환경 모니터링으로 공동 개발.",
+      ja: "アクアポニクス技術企業。カメラ基盤の植物分析とリアルタイム環境モニタリングによるAI基盤アクアポニクスモニタリング・成長予測システムを共同開発。",
+      es: "Empresa de tecnología de acuaponía. Colaboró en sistemas de monitoreo y predicción de crecimiento de acuaponía basados en IA con análisis de plantas por cámara y monitoreo ambiental en tiempo real."
     },
     members: [
-      { name: { en: "Eunho Choi", ko: "최은호" }, role: { en: "CEO", ko: "CEO", ja: "CEO", es: "CEO" } },
-      { name: { en: "Dohyun Hwang", ko: "황도현" }, role: { en: "CTO", ko: "CTO", ja: "CTO", es: "CTO" } },
+      { name: { en: "Dongkyu Yoo", ko: "유동규" }, role: { en: "CEO", ko: "CEO", ja: "CEO", es: "CEO" } },
+      { name: { en: "Sunjun Hwang", ko: "황선준" }, role: { en: "CTO", ko: "CTO", ja: "CTO", es: "CTO" } },
+      { name: { en: "Suchan Kim", ko: "김수찬" }, role: { en: "Member", ko: "팀원", ja: "メンバー", es: "Miembro" } },
+      { name: { en: "Sehee Park", ko: "박세희" }, role: { en: "Member", ko: "팀원", ja: "メンバー", es: "Miembro" } },
     ],
-    topics: ["TDA", "Medical Data", "Data Analysis"],
+    topics: ["Aquaponics", "Computer Vision", "IoT", "Real-time Monitoring"],
   },
 ];
