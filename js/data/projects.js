@@ -69,7 +69,7 @@ const PROJECTS = [
       ja: "キャッシュメモリ階層構造から着想を得た新しい連合学習フレームワーク。キャッシュシステムの局所性と置換ポリシーの概念を借用し、FLにおけるクライアント選択、モデル集約、通信効率を最適化。",
       es: "Un marco de aprendizaje federado novedoso inspirado en la jerarquía de memoria caché. Tomando prestados conceptos de localidad y políticas de reemplazo de sistemas de caché para optimizar la selección de clientes, agregación de modelos y eficiencia de comunicación en FL."
     },
-    progress: 15,
+    progress: 50,
     status: "active",
     startDate: "2026",
     teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/Permillion Logos.png"],
