@@ -37,5 +37,6 @@ const PROFILE = {
     orcid: "https://orcid.org/0009-0007-5173-2876",
     youtube: "https://www.youtube.com/@sjquantumprof",
     instagram: "https://www.instagram.com/jun_bri0123/",
+    paperReview: "https://sjhwangpaper.com/",
   },
 };

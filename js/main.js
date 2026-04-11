@@ -1026,6 +1026,7 @@ function renderFooter() {
           ${PROFILE.links.website ? `<a href="${PROFILE.links.website}" class="footer__link" target="_blank" title="Website"><i class="fa-solid fa-globe"></i></a>` : ''}
           ${PROFILE.links.youtube ? `<a href="${PROFILE.links.youtube}" class="footer__link" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>` : ''}
           ${PROFILE.links.instagram ? `<a href="${PROFILE.links.instagram}" class="footer__link" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>` : ''}
+          ${PROFILE.links.paperReview ? `<a href="${PROFILE.links.paperReview}" class="footer__link" target="_blank" title="Paper Review"><i class="fa-solid fa-book-open"></i></a>` : ''}
         </div>
       </div>
       <div class="footer__bottom">
