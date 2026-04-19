@@ -182,7 +182,7 @@ const TIMELINE_EVENTS = [
   },
   {
     date: "2022 – 2026",
-    logo: "assets/logos/Yonsei Logo2.svg",
+    logo: "assets/logos/yonsei logo.png",
     title: { en: "Bachelor of Science at Yonsei University", ko: "연세대학교 학사 (Bachelor of Science)", ja: "延世大学校 学士課程", es: "Licenciatura en la Universidad Yonsei" },
     description: {
       en: "Enrolled in the School of Computer Science (with Physics / Quantum Mechanics coursework). Expected graduation: August 2026.",
