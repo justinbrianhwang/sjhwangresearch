@@ -886,8 +886,15 @@ function renderTalks() {
     return;
   }
 
+  const getYouTubeId = (url) => {
+    const m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([A-Za-z0-9_-]{6,})/);
+    return m ? m[1] : null;
+  };
+
   grid.innerHTML = TALKS.map(talk => {
     const typeTag = getTalkTypeTag(talk.type);
+    const videoLink = talk.links.find(l => /video|youtu/i.test(l.label) || /youtu/i.test(l.url));
+    const ytId = videoLink ? getYouTubeId(videoLink.url) : null;
     return `
       <div class="talk-card fade-in">
         <div class="talk-card__type">${typeTag}</div>
@@ -902,7 +909,21 @@ function renderTalks() {
           ${talk.links.map(link => `
             <a href="${link.url}" class="btn btn--outline" target="_blank">${link.label}</a>
           `).join('')}
+          ${ytId ? `<a href="${videoLink.url}" class="talk-card__video-link" target="_blank">Go to video <span aria-hidden="true">→</span></a>` : ''}
         </div>
+        ${ytId ? `
+          <div class="talk-card__video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/${ytId}"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+        ` : ''}
       </div>
     `;
   }).join('');

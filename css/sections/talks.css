@@ -68,3 +68,41 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ── Inline YouTube video embed in talk card ── */
+.talk-card__video-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+  text-decoration: none;
+  padding: 8px 0;
+  transition: transform var(--transition-fast);
+}
+
+.talk-card__video-link:hover {
+  transform: translateX(2px);
+  text-decoration: underline;
+}
+
+.talk-card__video-embed {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  margin-top: var(--space-3);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #000;
+}
+
+.talk-card__video-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
