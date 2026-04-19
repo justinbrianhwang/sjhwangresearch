@@ -5,6 +5,17 @@
 
 const TIMELINE_EVENTS = [
   {
+    date: "2026 Sep – 2027 Apr",
+    title: { en: "Language Study Abroad — Vancouver, Canada", ko: "어학연수 (밴쿠버, 캐나다)", ja: "語学研修（バンクーバー、カナダ）", es: "Estudios de idioma en Vancouver, Canadá" },
+    description: {
+      en: "Intensive English language program focusing on academic English, professional communication, and cross-cultural collaboration for international research engagement.",
+      ko: "학술 영어, 전문 커뮤니케이션, 다문화 협업을 중심으로 한 집중 영어 어학연수 과정 참여 예정.",
+      ja: "学術英語、プロフェッショナルコミュニケーション、異文化協業を中心とした集中英語語学研修に参加予定。",
+      es: "Programa intensivo de inglés enfocado en inglés académico, comunicación profesional y colaboración intercultural."
+    },
+    tags: ["Education", "Language Study", "Vancouver"],
+  },
+  {
     date: "2026 Q1",
     title: { en: "3 Papers Accepted: KICS, IEEE ICAIIC, KCS", ko: "KICS, IEEE ICAIIC, KCS 논문 3편 동시 채택", ja: "KICS、IEEE ICAIIC、KCS論文3編同時採択", es: "3 artículos aceptados: KICS, IEEE ICAIIC, KCS" },
     description: {
@@ -170,14 +181,51 @@ const TIMELINE_EVENTS = [
     tags: ["Certificate", "LG Aimers", "Data Intelligence"],
   },
   {
-    date: "2022",
-    title: { en: "Enrolled at Yonsei University", ko: "연세대학교 소프트웨어학부 입학", ja: "延世大学校入学", es: "Ingreso a la Universidad Yonsei" },
+    date: "2022 – 2026",
+    logo: "assets/logos/Yonsei Logo2.svg",
+    title: { en: "Bachelor of Science at Yonsei University", ko: "연세대학교 학사 (Bachelor of Science)", ja: "延世大学校 学士課程", es: "Licenciatura en la Universidad Yonsei" },
     description: {
-      en: "Enrolled in the School of Computer Science at Yonsei University, beginning the CS major curriculum.",
-      ko: "연세대학교 소프트웨어학부(컴퓨터과학)에 입학하여 CS 전공 과정 시작.",
-      ja: "延世大学校コンピュータサイエンス学部に入学し、CS専攻課程を開始。",
-      es: "Inscripción en la Facultad de Ciencias de la Computación de la Universidad Yonsei, comenzando el plan de estudios de CS."
+      en: "Enrolled in the School of Computer Science (with Physics / Quantum Mechanics coursework). Expected graduation: August 2026.",
+      ko: "연세대학교 소프트웨어학부(컴퓨터과학) 재학 중, 물리학 및 양자역학 관련 과목 이수. 2026년 8월 졸업 예정.",
+      ja: "延世大学校コンピュータサイエンス学部在学中、物理学・量子力学関連科目を履修。2026年8月卒業予定。",
+      es: "Facultad de Ciencias de la Computación (con cursos de Física / Mecánica Cuántica). Graduación prevista: agosto de 2026."
     },
-    tags: ["Education", "Yonsei University"],
+    tags: ["Education", "Yonsei University", "BS"],
+  },
+  {
+    date: "2018 – 2021",
+    logo: "assets/logos/schools/cheongdam-high.webp",
+    title: { en: "Cheongdam High School", ko: "청담고등학교", ja: "清潭高等学校", es: "Cheongdam High School" },
+    description: {
+      en: "Member and 1st-year Deputy of Computer Club \"Shift\" (2018); elected Club President in 2019. Led programming workshops and software projects with fellow members.",
+      ko: "컴퓨터 동아리 'Shift' 부원 및 1학년 차장 (2018), 2019년 동아리 부장 역임. 프로그래밍 워크숍 및 소프트웨어 프로젝트를 주도.",
+      ja: "コンピュータ部活動「Shift」部員・1年次副部長(2018)、2019年部長を歴任。プログラミングワークショップとソフトウェアプロジェクトを主導。",
+      es: "Miembro y Subjefe de 1er año del Club de Computación \"Shift\" (2018); elegido Presidente del club en 2019. Lideró talleres de programación y proyectos de software."
+    },
+    tags: ["Education", "High School", "Computer Club"],
+  },
+  {
+    date: "2015 – 2018",
+    logo: "assets/logos/schools/bongeun-middle.webp",
+    title: { en: "Bongeun Middle School", ko: "봉은중학교", ja: "奉恩中学校", es: "Bongeun Middle School" },
+    description: {
+      en: "Active member of the Science Club and Robotics Club. Early hands-on exposure to scientific experimentation and robotics, which shaped my interest in computing and engineering.",
+      ko: "과학 동아리 및 로봇 동아리 활동. 과학 실험과 로봇 공학에 대한 초기 경험을 통해 컴퓨팅 및 공학에 대한 관심을 형성.",
+      ja: "科学クラブとロボットクラブで活動。科学実験とロボット工学の初期体験を通じてコンピューティング・工学への関心を形成。",
+      es: "Miembro activo del Club de Ciencias y del Club de Robótica. Primeras experiencias prácticas en experimentación científica y robótica que moldearon mi interés por la computación y la ingeniería."
+    },
+    tags: ["Education", "Middle School", "Science", "Robotics"],
+  },
+  {
+    date: "2009 – 2015",
+    logo: "assets/logos/schools/eonbuk-elementary.webp",
+    title: { en: "Eonbuk Elementary School", ko: "언북초등학교", ja: "彦北小学校", es: "Eonbuk Elementary School" },
+    description: {
+      en: "Completed primary education in Seoul, Republic of Korea.",
+      ko: "서울에서 초등 교육을 마침.",
+      ja: "ソウルで初等教育を修了。",
+      es: "Educación primaria en Seúl, República de Corea."
+    },
+    tags: ["Education", "Elementary School"],
   },
 ];

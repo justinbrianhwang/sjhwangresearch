@@ -943,7 +943,7 @@ function renderTimeline() {
       <div class="timeline__dot"></div>
       <div class="timeline__content">
         <span class="timeline__date">${event.date}</span>
-        <h3 class="timeline__title">${t(event.title)}</h3>
+        <h3 class="timeline__title">${event.logo ? `<img src="${BASE_PATH}/${event.logo}" alt="" class="timeline__logo">` : ''}${t(event.title)}</h3>
         <p class="timeline__description">${t(event.description)}</p>
         <div class="timeline__tags">
           ${event.tags.map(tag => `<span class="tag tag--accent">${tag}</span>`).join('')}
