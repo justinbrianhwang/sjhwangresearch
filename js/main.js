@@ -906,7 +906,7 @@ function renderTalks() {
         </div>
         <p class="talk-card__description">${t(talk.description)}</p>
         <div class="talk-card__links">
-          ${talk.links.map(link => `
+          ${talk.links.filter(l => l !== videoLink).map(link => `
             <a href="${link.url}" class="btn btn--outline" target="_blank">${link.label}</a>
           `).join('')}
           ${ytId ? `<a href="${videoLink.url}" class="talk-card__video-link" target="_blank">Go to video <span aria-hidden="true">→</span></a>` : ''}
