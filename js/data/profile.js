@@ -21,7 +21,7 @@ const PROFILE = {
   },
 
   stats: [
-    { number: "8", label: { en: "Active Projects", ko: "진행 중 프로젝트", ja: "進行中のプロジェクト", es: "Proyectos activos" } },
+    { number: "9", label: { en: "Active Projects", ko: "진행 중 프로젝트", ja: "進行中のプロジェクト", es: "Proyectos activos" } },
     { number: "10", label: { en: "Publications", ko: "출판물", ja: "出版物", es: "Publicaciones" } },
     { number: "2", label: { en: "Outstanding Paper Awards", ko: "우수논문상", ja: "優秀論文賞", es: "Premios de artículos destacados" } },
     { number: "3+", label: { en: "Years at Yonsei", ko: "연세대 재학 연수", ja: "延世大在学年数", es: "Años en Yonsei" } },
