@@ -84,3 +84,32 @@
     flex-direction: column;
   }
 }
+
+/* Publication type badge (Conference vs Journal) */
+.pub-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 14px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  margin-right: 10px;
+  vertical-align: middle;
+  text-transform: uppercase;
+}
+
+.pub-type i {
+  font-size: 0.7rem;
+}
+
+.pub-type--conf {
+  background: #e0e7ff;
+  color: #4c51bf;
+}
+
+.pub-type--journal {
+  background: #fbeae5;
+  color: #c53030;
+}

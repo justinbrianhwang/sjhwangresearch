@@ -843,11 +843,18 @@ function renderPublications() {
   if (subtitle) subtitle.textContent = ui('pubsSubtitle');
   if (!list) return;
 
+  const typeBadge = (type) => {
+    if (!type) return '';
+    const cls = type === 'Journal' ? 'pub-type--journal' : 'pub-type--conf';
+    const icon = type === 'Journal' ? 'fa-book' : 'fa-microphone-lines';
+    return `<span class="pub-type ${cls}"><i class="fa-solid ${icon}"></i>${type}</span>`;
+  };
+
   list.innerHTML = PUBLICATIONS.map(pub => `
     <div class="publication-item fade-in">
       <span class="publication-item__year">${pub.year}</span>
       <div class="publication-item__content">
-        <h4 class="publication-item__title">${pub.title}</h4>
+        <h4 class="publication-item__title">${typeBadge(pub.type)}${pub.title}</h4>
         <p class="publication-item__authors">${pub.authors}</p>
         <p class="publication-item__venue">${pub.venue} ${pub.status ? `<span class="tag tag--success" style="font-style: normal; margin-left: 8px;">${pub.status}</span>` : ''}</p>
         <div class="publication-item__links">
