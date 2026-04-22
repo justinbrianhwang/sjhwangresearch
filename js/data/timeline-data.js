@@ -6,14 +6,15 @@
 const TIMELINE_EVENTS = [
   {
     date: "2026 Sep – 2027 Apr",
-    title: { en: "Language Study Abroad — Vancouver, Canada", ko: "어학연수 (밴쿠버, 캐나다)", ja: "語学研修（バンクーバー、カナダ）", es: "Estudios de idioma en Vancouver, Canadá" },
+    logo: "assets/logos/schools/ilsc.png",
+    title: { en: "Language Study Abroad — ILSC Vancouver, Canada", ko: "어학연수 — ILSC 밴쿠버, 캐나다", ja: "語学研修 — ILSCバンクーバー、カナダ", es: "Estudios de idioma en ILSC Vancouver, Canadá" },
     description: {
-      en: "Intensive English language program focusing on academic English, professional communication, and cross-cultural collaboration for international research engagement.",
-      ko: "학술 영어, 전문 커뮤니케이션, 다문화 협업을 중심으로 한 집중 영어 어학연수 과정 참여 예정.",
-      ja: "学術英語、プロフェッショナルコミュニケーション、異文化協業を中心とした集中英語語学研修に参加予定。",
-      es: "Programa intensivo de inglés enfocado en inglés académico, comunicación profesional y colaboración intercultural."
+      en: "Intensive English language program at ILSC (International Language Schools of Canada), Vancouver campus — focusing on academic English, professional communication, and cross-cultural collaboration for international research engagement.",
+      ko: "ILSC(International Language Schools of Canada) 밴쿠버 캠퍼스에서 학술 영어, 전문 커뮤니케이션, 다문화 협업을 중심으로 한 집중 영어 어학연수 과정 참여 예정.",
+      ja: "ILSC(International Language Schools of Canada)バンクーバーキャンパスで学術英語、プロフェッショナルコミュニケーション、異文化協業を中心とした集中英語語学研修に参加予定。",
+      es: "Programa intensivo de inglés en ILSC (International Language Schools of Canada), campus de Vancouver, enfocado en inglés académico, comunicación profesional y colaboración intercultural."
     },
-    tags: ["Education", "Language Study", "Vancouver"],
+    tags: ["Education", "Language Study", "ILSC", "Vancouver"],
   },
   {
     date: "2026 Q1",
