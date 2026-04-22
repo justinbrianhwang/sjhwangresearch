@@ -150,6 +150,7 @@ const TIMELINE_EVENTS = [
   },
   {
     date: "2024 Q4",
+    logo: "assets/logos/RAISE LAB.png",
     title: { en: "Joined RAISE LAB as Undergraduate Researcher", ko: "RAISE LAB 학부연구원 합류", ja: "RAISE LAB学部研究員として参加", es: "Incorporación a RAISE LAB como investigador de pregrado" },
     description: {
       en: "Joined RAISE LAB at Yonsei University as an undergraduate researcher, beginning research in AI security and quantum computing.",
