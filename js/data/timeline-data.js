@@ -161,7 +161,7 @@ const TIMELINE_EVENTS = [
     tags: ["Milestone", "RAISE LAB"],
   },
   {
-    date: "2024",
+    date: "2025",
     title: { en: "Multiple Independent Research Projects", ko: "다수 개인 연구 프로젝트 수행", ja: "複数の個人研究プロジェクト遂行", es: "Múltiples proyectos de investigación independientes" },
     description: {
       en: "Completed electricity usage prediction (weather + consumption data), OCR + LLM medical document automation, voice-based risk prediction, and LLM search query optimization projects.",
