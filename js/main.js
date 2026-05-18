@@ -814,9 +814,10 @@ function renderExperiments() {
   if (!list) return;
 
   list.innerHTML = PAST_PROJECTS.map((project, i) => {
+    const reverseNumber = PAST_PROJECTS.length - i;
     return `
       <div class="experiment-card fade-in">
-        <div class="experiment-card__number">${String(i + 1).padStart(2, '0')}</div>
+        <div class="experiment-card__number">${String(reverseNumber).padStart(2, '0')}</div>
         <div class="experiment-card__content">
           <h3 class="experiment-card__title">${t(project.title)}</h3>
           <p class="experiment-card__description">${t(project.description)}</p>
