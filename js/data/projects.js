@@ -6,20 +6,6 @@
 
 const PROJECTS = [
   {
-    title: { en: "Autonomous Driving + FL (Different Models, Same Environment)", ko: "자율주행 + FL (다른 모델, 같은 환경)", ja: "自動運転 + FL（異種モデル、同一環境）", es: "Conducción autónoma + FL (diferentes modelos, mismo entorno)" },
-    description: {
-      en: "Training heterogeneous models via federated learning in the same driving environment. Analyzing knowledge transfer between models and performance convergence.",
-      ko: "동일한 주행 환경에서 이기종(Heterogeneous) 모델들을 연합학습으로 훈련하는 연구. 모델 간 지식 전이와 성능 수렴을 분석합니다.",
-      ja: "同一の走行環境で異種モデルを連合学習で訓練する研究。モデル間の知識転移と性能収束を分析。",
-      es: "Entrenamiento de modelos heterogéneos mediante aprendizaje federado en el mismo entorno de conducción. Análisis de transferencia de conocimiento entre modelos y convergencia de rendimiento."
-    },
-    progress: 95,
-    status: "active",
-    startDate: "2025",
-    teamLogos: ["assets/logos/sjjb logos.png"],
-    tags: ["Federated Learning", "Heterogeneous Models", "Autonomous Driving"],
-  },
-  {
     title: { en: "Fault Injection Research", ko: "Fault Injection 연구", ja: "Fault Injection研究", es: "Investigación de inyección de fallos" },
     description: {
       en: "Research on software fault injection in deep neural networks and functional recovery via logit-based external calibration techniques.",
@@ -69,25 +55,11 @@ const PROJECTS = [
       ja: "キャッシュメモリ階層構造から着想を得た新しい連合学習フレームワーク。キャッシュシステムの局所性と置換ポリシーの概念を借用し、FLにおけるクライアント選択、モデル集約、通信効率を最適化。",
       es: "Un marco de aprendizaje federado novedoso inspirado en la jerarquía de memoria caché. Tomando prestados conceptos de localidad y políticas de reemplazo de sistemas de caché para optimizar la selección de clientes, agregación de modelos y eficiencia de comunicación en FL."
     },
-    progress: 60,
+    progress: 95,
     status: "active",
     startDate: "2026",
     teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/Permillion Logos.png"],
     tags: ["Federated Learning", "Cache Memory", "Client Selection", "Aggregation"],
-  },
-  {
-    title: { en: "Homogeneous FL for TCP Autonomous Driving (Different Environments)", ko: "TCP 자율 주행모델에 대한 Homogeneous Federated Learning (다른 환경)", ja: "TCP自律走行モデルのための同種連合学習（異なる環境）", es: "FL homogéneo para conducción autónoma TCP (diferentes entornos)" },
-    description: {
-      en: "Homogeneous federated learning research using TCP autonomous driving models across different driving environments. Training the same TCP model in diverse scenarios via FL to analyze robustness and performance convergence under environment heterogeneity.",
-      ko: "서로 다른 주행 환경에서 TCP 자율 주행 모델을 활용한 동질적(Homogeneous) 연합 학습 연구. 다양한 시나리오에서 동일 TCP 모델을 FL로 훈련하여 환경 이질성에 대한 강건성과 성능 수렴을 분석.",
-      ja: "異なる走行環境でTCP自律走行モデルを活用した同種連合学習の研究。多様なシナリオで同一TCPモデルをFLで訓練し、環境の異質性に対する頑健性と性能収束を分析。",
-      es: "Investigación de aprendizaje federado homogéneo utilizando modelos de conducción autónoma TCP en diferentes entornos de conducción. Entrenamiento del mismo modelo TCP en diversos escenarios mediante FL para analizar la robustez y convergencia del rendimiento bajo heterogeneidad ambiental."
-    },
-    progress: 15,
-    status: "active",
-    startDate: "2026",
-    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
-    tags: ["Federated Learning", "TCP", "Autonomous Driving", "Carla", "Homogeneous FL"],
   },
   {
     title: { en: "Mamba-based Autonomous Vehicle", ko: "Mamba 기반 자율주행", ja: "Mambaベースの自動運転", es: "Vehículo autónomo basado en Mamba" },
@@ -102,5 +74,33 @@ const PROJECTS = [
     startDate: "2026",
     teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png", "assets/logos/Permillion Logos.png"],
     tags: ["Mamba", "State Space Model", "Autonomous Driving", "Sequence Modeling", "End-to-End"],
+  },
+  {
+    title: { en: "TDA-based Drug Discovery", ko: "TDA 기반 신약 개발", ja: "TDA基盤の創薬", es: "Descubrimiento de fármacos basado en TDA" },
+    description: {
+      en: "Applying Topological Data Analysis (TDA) to molecular point clouds, protein-ligand interaction networks, and binding pocket geometries for drug discovery. Persistent homology and Mapper-based shape features guide virtual screening, lead optimization, and structure-based drug design — providing topology-aware representations that complement conventional cheminformatics descriptors.",
+      ko: "분자 점군(molecular point cloud), 단백질-리간드 상호작용 네트워크, 결합 포켓 기하 구조에 위상적 데이터 분석(TDA)을 적용하여 신약 개발을 진행. Persistent Homology와 Mapper 기반 shape feature를 활용하여 virtual screening, lead optimization, 구조 기반 신약 설계를 가이드하며, 기존 cheminformatics 디스크립터를 보완하는 topology-aware 표현을 제공합니다.",
+      ja: "分子点群、タンパク質-リガンド相互作用ネットワーク、結合ポケット形状にTDAを適用した創薬研究。Persistent HomologyとMapperによる形状特徴でバーチャルスクリーニング、リード最適化、構造ベース創薬を支援。",
+      es: "Aplicación de TDA a nubes de puntos moleculares, redes de interacción proteína-ligando y geometrías de bolsillos de unión para el descubrimiento de fármacos. Las características de forma basadas en homología persistente y Mapper guían el cribado virtual, la optimización de líderes y el diseño basado en estructura."
+    },
+    progress: 5,
+    status: "active",
+    startDate: "2026",
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/Permillion Logos.png"],
+    tags: ["TDA", "Drug Discovery", "Molecular Design", "Persistent Homology", "Cheminformatics"],
+  },
+  {
+    title: { en: "TDA-based Detection of Generative AI Attacks", ko: "TDA 기반 생성형 AI 공격 탐지", ja: "TDA基盤生成AI攻撃検出", es: "Detección de ataques de IA generativa basada en TDA" },
+    description: {
+      en: "Detecting adversarial attacks generated by generative AI models using Topological Data Analysis (TDA). Since generative AI-based attacks produce perturbations imperceptible to the human eye, TDA is leveraged to capture hidden topological features and structural anomalies that conventional detection methods cannot identify.",
+      ko: "생성형 AI 모델이 만들어낸 적대적 공격을 위상적 데이터 분석(TDA)으로 탐지하는 연구. 생성형 AI 기반 공격은 육안으로 식별할 수 없는 미세한 변조를 생성하므로, TDA를 활용하여 기존 탐지 기법으로는 포착할 수 없는 숨겨진 위상적 특징과 구조적 이상을 감지합니다.",
+      ja: "生成AIモデルによる敵対的攻撃を位相的データ分析(TDA)で検出する研究。生成AIベースの攻撃は肉眼で識別できない微細な摂動を生成するため、TDAを活用して従来の検出手法では捉えられない隠れた位相的特徴と構造的異常を検知。",
+      es: "Detección de ataques adversariales generados por modelos de IA generativa mediante análisis topológico de datos (TDA). Dado que los ataques basados en IA generativa producen perturbaciones imperceptibles al ojo humano, se aprovecha TDA para capturar características topológicas ocultas y anomalías estructurales que los métodos de detección convencionales no pueden identificar."
+    },
+    progress: 0,
+    status: "planning",
+    startDate: "2026",
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/Permillion Logos.png"],
+    tags: ["TDA", "Generative AI", "Adversarial Attack", "Detection", "Security"],
   },
 ];
