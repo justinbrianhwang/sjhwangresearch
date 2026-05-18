@@ -44,58 +44,6 @@ const PAST_PROJECTS = [
     tags: ["Federated Learning", "TCP", "Autonomous Driving", "Carla", "Homogeneous FL"],
   },
   {
-    title: { en: "Electricity Usage Prediction Based on Weather & Consumption Data", ko: "기상 데이터 및 전기 사용량 기반 전력 수요 예측", ja: "気象データおよび電力使用量に基づく電力需要予測", es: "Predicción de uso de electricidad basada en datos meteorológicos y de consumo" },
-    description: {
-      en: "Predicting electricity consumption by integrating weather data and historical usage patterns using machine learning models.",
-      ko: "기상 데이터와 과거 전기 사용량 패턴을 결합하여 머신러닝 모델로 전력 수요를 예측하는 연구.",
-      ja: "気象データと過去の電力使用パターンを組み合わせて機械学習モデルで電力需要を予測する研究。",
-      es: "Predicción del consumo de electricidad integrando datos meteorológicos y patrones de uso histórico mediante modelos de aprendizaje automático."
-    },
-    year: "2024",
-    outcome: { en: "Completed", ko: "완료", ja: "完了", es: "Completado" },
-    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/Korea it academi.png"],
-    tags: ["Time Series", "Prediction", "Weather Data", "Energy"],
-  },
-  {
-    title: { en: "OCR + LLM-Based Medical Document Automation", ko: "OCR 및 LLM 기반 의료 문서 자동화", ja: "OCRおよびLLMによる医療文書自動化", es: "Automatización de documentos médicos basada en OCR + LLM" },
-    description: {
-      en: "Automated processing and structuring of medical documents by combining OCR text extraction with LLM-based understanding and summarization.",
-      ko: "OCR 텍스트 추출과 LLM 기반 이해 및 요약을 결합하여 의료 문서를 자동으로 처리하고 구조화하는 연구.",
-      ja: "OCRテキスト抽出とLLMによる理解・要約を組み合わせて医療文書を自動処理・構造化する研究。",
-      es: "Procesamiento automatizado y estructuración de documentos médicos combinando extracción de texto OCR con comprensión y resumen basados en LLM."
-    },
-    year: "2024",
-    outcome: { en: "Completed", ko: "완료", ja: "完了", es: "Completado" },
-    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/RAISE LAB_current research.png", "assets/logos/dhsoft logo Project.png", "assets/logos/yonsei logo.png"],
-    tags: ["OCR", "LLM", "Medical Document", "NLP"],
-  },
-  {
-    title: { en: "Voice Data-Based Risk Situation Prediction", ko: "음성 데이터 기반 위험 상황 예측", ja: "音声データによる危険状況予測", es: "Predicción de situaciones de riesgo basada en datos de voz" },
-    description: {
-      en: "Detecting and predicting risk situations from voice data using audio feature extraction and deep learning classification. Follow-up research led to FPGA-based implementation (KCS 2026).",
-      ko: "음성 데이터에서 오디오 특징을 추출하고 딥러닝 분류를 통해 위험 상황을 탐지 및 예측하는 연구. 후속 연구로 FPGA 기반 구현(KCS 2026 채택)으로 이어짐.",
-      ja: "音声データから特徴を抽出しディープラーニング分類で危険状況を検知・予測する研究。後続研究でFPGA実装（KCS 2026採択）に発展。",
-      es: "Detección y predicción de situaciones de riesgo a partir de datos de voz utilizando extracción de características de audio y clasificación por aprendizaje profundo. La investigación de seguimiento llevó a una implementación basada en FPGA (KCS 2026)."
-    },
-    year: "2024",
-    outcome: { en: "Completed → Follow-up accepted at KCS 2026", ko: "완료 → 후속 연구 KCS 2026 채택", ja: "完了 → 後続研究KCS 2026採択", es: "Completado → Seguimiento aceptado en KCS 2026" },
-    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
-    tags: ["Voice Analysis", "Risk Detection", "Audio Classification"],
-  },
-  {
-    title: { en: "LLM-Based Search Query Optimization for User Convenience", ko: "사용자 편의를 위한 LLM 기반 검색어 최적화", ja: "ユーザー利便性のためのLLM検索クエリ最適化", es: "Optimización de consultas de búsqueda basada en LLM para comodidad del usuario" },
-    description: {
-      en: "Optimizing search queries using LLMs to improve search accuracy and user experience through intent understanding and query reformulation.",
-      ko: "LLM을 활용하여 사용자 의도를 파악하고 검색어를 재구성함으로써 검색 정확도와 사용자 경험을 향상시키는 연구.",
-      ja: "LLMを活用してユーザー意図を把握し検索クエリを再構成することで検索精度とUXを向上させる研究。",
-      es: "Optimización de consultas de búsqueda usando LLM para mejorar la precisión de búsqueda y la experiencia del usuario mediante comprensión de intención y reformulación de consultas."
-    },
-    year: "2024",
-    outcome: { en: "Completed", ko: "완료", ja: "完了", es: "Completado" },
-    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
-    tags: ["LLM", "Search Optimization", "NLP", "UX"],
-  },
-  {
     title: { en: "Optimal AI Model for Side-Channel Attack Detection", ko: "부채널 공격 탐지에 최적화된 AI 모델 연구", ja: "サイドチャネル攻撃検知に最適なAIモデル研究", es: "Modelo de IA óptimo para detección de ataques de canal lateral" },
     description: {
       en: "Comparative analysis of AI models to identify the most effective architecture for detecting side-channel attacks in hardware systems.",
@@ -276,5 +224,57 @@ const PAST_PROJECTS = [
     outcome: { en: "Completed (with Dept. of Dental Hygiene)", ko: "완료 (치위생학과 협업)", ja: "完了（歯科衛生学科協業）", es: "Completado (con Depto. de Higiene Dental)" },
     teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
     tags: ["Hand Pose Estimation", "Mobile App", "Dental Hygiene", "AI"],
+  },
+  {
+    title: { en: "Electricity Usage Prediction Based on Weather & Consumption Data", ko: "기상 데이터 및 전기 사용량 기반 전력 수요 예측", ja: "気象データおよび電力使用量に基づく電力需要予測", es: "Predicción de uso de electricidad basada en datos meteorológicos y de consumo" },
+    description: {
+      en: "Predicting electricity consumption by integrating weather data and historical usage patterns using machine learning models.",
+      ko: "기상 데이터와 과거 전기 사용량 패턴을 결합하여 머신러닝 모델로 전력 수요를 예측하는 연구.",
+      ja: "気象データと過去の電力使用パターンを組み合わせて機械学習モデルで電力需要を予測する研究。",
+      es: "Predicción del consumo de electricidad integrando datos meteorológicos y patrones de uso histórico mediante modelos de aprendizaje automático."
+    },
+    year: "2024",
+    outcome: { en: "Completed", ko: "완료", ja: "完了", es: "Completado" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/Korea it academi.png"],
+    tags: ["Time Series", "Prediction", "Weather Data", "Energy"],
+  },
+  {
+    title: { en: "OCR + LLM-Based Medical Document Automation", ko: "OCR 및 LLM 기반 의료 문서 자동화", ja: "OCRおよびLLMによる医療文書自動化", es: "Automatización de documentos médicos basada en OCR + LLM" },
+    description: {
+      en: "Automated processing and structuring of medical documents by combining OCR text extraction with LLM-based understanding and summarization.",
+      ko: "OCR 텍스트 추출과 LLM 기반 이해 및 요약을 결합하여 의료 문서를 자동으로 처리하고 구조화하는 연구.",
+      ja: "OCRテキスト抽出とLLMによる理解・要約を組み合わせて医療文書を自動処理・構造化する研究。",
+      es: "Procesamiento automatizado y estructuración de documentos médicos combinando extracción de texto OCR con comprensión y resumen basados en LLM."
+    },
+    year: "2024",
+    outcome: { en: "Completed", ko: "완료", ja: "完了", es: "Completado" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/RAISE LAB_current research.png", "assets/logos/dhsoft logo Project.png", "assets/logos/yonsei logo.png"],
+    tags: ["OCR", "LLM", "Medical Document", "NLP"],
+  },
+  {
+    title: { en: "Voice Data-Based Risk Situation Prediction", ko: "음성 데이터 기반 위험 상황 예측", ja: "音声データによる危険状況予測", es: "Predicción de situaciones de riesgo basada en datos de voz" },
+    description: {
+      en: "Detecting and predicting risk situations from voice data using audio feature extraction and deep learning classification. Follow-up research led to FPGA-based implementation (KCS 2026).",
+      ko: "음성 데이터에서 오디오 특징을 추출하고 딥러닝 분류를 통해 위험 상황을 탐지 및 예측하는 연구. 후속 연구로 FPGA 기반 구현(KCS 2026 채택)으로 이어짐.",
+      ja: "音声データから特徴を抽出しディープラーニング分類で危険状況を検知・予測する研究。後続研究でFPGA実装（KCS 2026採択）に発展。",
+      es: "Detección y predicción de situaciones de riesgo a partir de datos de voz utilizando extracción de características de audio y clasificación por aprendizaje profundo. La investigación de seguimiento llevó a una implementación basada en FPGA (KCS 2026)."
+    },
+    year: "2024",
+    outcome: { en: "Completed → Follow-up accepted at KCS 2026", ko: "완료 → 후속 연구 KCS 2026 채택", ja: "完了 → 後続研究KCS 2026採択", es: "Completado → Seguimiento aceptado en KCS 2026" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
+    tags: ["Voice Analysis", "Risk Detection", "Audio Classification"],
+  },
+  {
+    title: { en: "LLM-Based Search Query Optimization for User Convenience", ko: "사용자 편의를 위한 LLM 기반 검색어 최적화", ja: "ユーザー利便性のためのLLM検索クエリ最適化", es: "Optimización de consultas de búsqueda basada en LLM para comodidad del usuario" },
+    description: {
+      en: "Optimizing search queries using LLMs to improve search accuracy and user experience through intent understanding and query reformulation.",
+      ko: "LLM을 활용하여 사용자 의도를 파악하고 검색어를 재구성함으로써 검색 정확도와 사용자 경험을 향상시키는 연구.",
+      ja: "LLMを活用してユーザー意図を把握し検索クエリを再構成することで検索精度とUXを向上させる研究。",
+      es: "Optimización de consultas de búsqueda usando LLM para mejorar la precisión de búsqueda y la experiencia del usuario mediante comprensión de intención y reformulación de consultas."
+    },
+    year: "2024",
+    outcome: { en: "Completed", ko: "완료", ja: "完了", es: "Completado" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/yonsei logo.png"],
+    tags: ["LLM", "Search Optimization", "NLP", "UX"],
   },
 ];
