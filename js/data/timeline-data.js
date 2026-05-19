@@ -17,6 +17,17 @@ const TIMELINE_EVENTS = [
     tags: ["Education", "Language Study", "ILSC", "Vancouver"],
   },
   {
+    date: "2026 May",
+    title: { en: "ICUFN 2026 Paper Accepted — AdaFed (FL for Autonomous Driving)", ko: "ICUFN 2026 논문 채택 — AdaFed (자율주행 연합학습)", ja: "ICUFN 2026論文採択 — AdaFed（自動運転連合学習）", es: "Artículo ICUFN 2026 aceptado — AdaFed (FL para conducción autónoma)" },
+    description: {
+      en: "\"AdaFed: Adaptive Selective Aggregation for Heterogeneous Federated Learning in Autonomous Driving\" accepted at ICUFN 2026 (International Conference on Ubiquitous and Future Networks).",
+      ko: "「AdaFed: Adaptive Selective Aggregation for Heterogeneous Federated Learning in Autonomous Driving」 논문이 ICUFN 2026 (International Conference on Ubiquitous and Future Networks)에 채택되었습니다.",
+      ja: "「AdaFed: Adaptive Selective Aggregation for Heterogeneous Federated Learning in Autonomous Driving」がICUFN 2026 (International Conference on Ubiquitous and Future Networks)に採択されました。",
+      es: "\"AdaFed: Adaptive Selective Aggregation for Heterogeneous Federated Learning in Autonomous Driving\" aceptado en ICUFN 2026 (International Conference on Ubiquitous and Future Networks)."
+    },
+    tags: ["Publication", "ICUFN", "Federated Learning", "Autonomous Driving"],
+  },
+  {
     date: "2026 Q1",
     title: { en: "3 Papers Accepted: KICS, IEEE ICAIIC, KCS", ko: "KICS, IEEE ICAIIC, KCS 논문 3편 동시 채택", ja: "KICS、IEEE ICAIIC、KCS論文3編同時採択", es: "3 artículos aceptados: KICS, IEEE ICAIIC, KCS" },
     description: {
