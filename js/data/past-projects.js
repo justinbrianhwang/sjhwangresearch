@@ -26,9 +26,9 @@ const PAST_PROJECTS = [
       es: "Entrenamiento de modelos heterogéneos mediante FL en el mismo entorno de conducción. Análisis de transferencia de conocimiento y convergencia entre arquitecturas."
     },
     year: "2026",
-    outcome: { en: "Completed", ko: "완료", ja: "完了", es: "Completado" },
+    outcome: { en: "Accepted at ICUFN 2026 (AdaFed)", ko: "ICUFN 2026 채택 (AdaFed)", ja: "ICUFN 2026採択（AdaFed）", es: "Aceptado en ICUFN 2026 (AdaFed)" },
     teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/RAISE LAB_current research.png"],
-    tags: ["Federated Learning", "Heterogeneous Models", "Autonomous Driving"],
+    tags: ["Federated Learning", "Heterogeneous Models", "Autonomous Driving", "ICUFN 2026"],
   },
   {
     title: { en: "Homogeneous FL for TCP Autonomous Driving (Different Environments)", ko: "TCP 자율 주행모델에 대한 Homogeneous Federated Learning (다른 환경)", ja: "TCP自律走行モデルのための同種連合学習（異なる環境）", es: "FL homogéneo para conducción autónoma TCP (diferentes entornos)" },
