@@ -6,6 +6,15 @@
 const PUBLICATIONS = [
   {
     year: "2026",
+    title: "AdaFed: Adaptive Selective Aggregation for Heterogeneous Federated Learning in Autonomous Driving",
+    authors: "Sunjun Hwang",
+    venue: "ICUFN 2026",
+    type: "Conference",
+    status: "Accepted",
+    links: [],
+  },
+  {
+    year: "2026",
     title: "Functional Recovery of Deep Neural Networks via Logit-Based External Calibration",
     authors: "Sunjun Hwang, Jihyuk Ha",
     venue: "KICS 2026",
