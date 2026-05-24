@@ -7,7 +7,7 @@ const PUBLICATIONS = [
   {
     year: "2026",
     title: "AdaFed: Adaptive Selective Aggregation for Heterogeneous Federated Learning in Autonomous Driving",
-    authors: "Sunjun Hwang",
+    authors: "Sunjun Hwang, Dohyun Hwang",
     venue: "ICUFN 2026",
     type: "Conference",
     status: "Accepted",
