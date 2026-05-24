@@ -27,7 +27,7 @@ const PAST_PROJECTS = [
     },
     year: "2026",
     outcome: { en: "Accepted at ICUFN 2026 (AdaFed)", ko: "ICUFN 2026 채택 (AdaFed)", ja: "ICUFN 2026採択（AdaFed）", es: "Aceptado en ICUFN 2026 (AdaFed)" },
-    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/RAISE LAB_current research.png"],
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/Permillion Logos.png"],
     tags: ["Federated Learning", "Heterogeneous Models", "Autonomous Driving", "ICUFN 2026"],
   },
   {
