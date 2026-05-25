@@ -1451,6 +1451,109 @@
   .area-card__directions { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* ── 10. Compilers: Compilation Pipeline + Flowing Tokens ── */
+.area-visual--compiler {
+  background: linear-gradient(180deg, rgba(0, 132, 61, 0.05) 0%, transparent 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.area-visual--compiler .av__cc-pipeline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  z-index: 2;
+  position: relative;
+}
+
+.area-visual--compiler .av__cc-stage {
+  padding: 4px 8px;
+  border-radius: 5px;
+  background: rgba(0, 132, 61, 0.12);
+  color: #00843D;
+  border: 1px solid rgba(0, 132, 61, 0.25);
+  letter-spacing: 0.5px;
+  animation: cc-stage-pulse 2.4s ease-in-out infinite;
+}
+
+.area-visual--compiler .av__cc-stage:nth-of-type(1)     { animation-delay: 0s;   }
+.area-visual--compiler .av__cc-stage--parse             { animation-delay: 0.3s; }
+.area-visual--compiler .av__cc-stage--ir                { animation-delay: 0.6s; background: rgba(78, 205, 196, 0.18); color: #2aa198; border-color: rgba(78, 205, 196, 0.35); }
+.area-visual--compiler .av__cc-stage--opt               { animation-delay: 0.9s; background: rgba(245, 166, 35, 0.16); color: #c08300; border-color: rgba(245, 166, 35, 0.35); }
+.area-visual--compiler .av__cc-stage--bin               { animation-delay: 1.2s; background: rgba(108, 99, 255, 0.14); color: #6c63ff; border-color: rgba(108, 99, 255, 0.35); }
+
+@keyframes cc-stage-pulse {
+  0%, 100% { transform: translateY(0); box-shadow: 0 0 0 rgba(0, 132, 61, 0); }
+  50%      { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0, 132, 61, 0.18); }
+}
+
+.area-visual--compiler .av__cc-arrow {
+  color: rgba(0, 132, 61, 0.45);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.area-visual--compiler .av__cc-tokens {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.area-visual--compiler .av__cc-tok {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(0, 132, 61, 0.22);
+  white-space: nowrap;
+  animation: cc-tok-drift 6s linear infinite;
+}
+
+.area-visual--compiler .av__cc-tok:nth-child(1) { top: 8px;   left: -10%; animation-delay: 0s; }
+.area-visual--compiler .av__cc-tok:nth-child(2) { top: 78px;  left: -10%; animation-delay: 1s; }
+.area-visual--compiler .av__cc-tok:nth-child(3) { top: 22px;  left: -10%; animation-delay: 2s; }
+.area-visual--compiler .av__cc-tok:nth-child(4) { top: 62px;  left: -10%; animation-delay: 3s; }
+.area-visual--compiler .av__cc-tok:nth-child(5) { top: 14px;  left: -10%; animation-delay: 4s; }
+.area-visual--compiler .av__cc-tok:nth-child(6) { top: 70px;  left: -10%; animation-delay: 5s; }
+
+@keyframes cc-tok-drift {
+  0%   { transform: translateX(0);     opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateX(120vw); opacity: 0; }
+}
+
+.area-visual--compiler .av__cc-packet {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00843D;
+  box-shadow: 0 0 10px rgba(0, 132, 61, 0.55);
+  transform: translateY(-50%);
+  animation: cc-packet-flow 4s ease-in-out infinite;
+  z-index: 3;
+}
+
+@keyframes cc-packet-flow {
+  0%   { left: 8%;   opacity: 0;   background: #00843D;  }
+  10%  { opacity: 1; background: #00843D; }
+  30%  { left: 32%;  background: #2aa198; }
+  55%  { left: 55%;  background: #c08300; }
+  80%  { left: 78%;  background: #6c63ff; }
+  95%  { left: 92%;  opacity: 1; background: #6c63ff; }
+  100% { left: 92%;  opacity: 0; }
+}
+
 @media (max-width: 768px) {
   .areas__grid { grid-template-columns: 1fr; }
   .area-card__directions { grid-template-columns: 1fr; }
@@ -1464,4 +1567,7 @@
   .area-card--expanded .area-card__icon {
     margin-bottom: var(--space-3);
   }
+
+  .area-visual--compiler .av__cc-pipeline { font-size: 9px; gap: 4px; }
+  .area-visual--compiler .av__cc-stage { padding: 3px 6px; }
 }

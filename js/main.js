@@ -583,6 +583,29 @@ function renderAreas() {
         <div class="av__attn-line"></div>
       </div>
     </div>`,
+    // 9: Compilers — Compilation pipeline + flowing tokens
+    `<div class="area-card__visual area-visual--compiler">
+      <div class="av__cc-tokens">
+        <span class="av__cc-tok">{ }</span>
+        <span class="av__cc-tok">if</span>
+        <span class="av__cc-tok">for</span>
+        <span class="av__cc-tok">%rax</span>
+        <span class="av__cc-tok">mov</span>
+        <span class="av__cc-tok">.text</span>
+      </div>
+      <div class="av__cc-pipeline">
+        <span class="av__cc-stage">LEX</span>
+        <span class="av__cc-arrow">›</span>
+        <span class="av__cc-stage av__cc-stage--parse">PARSE</span>
+        <span class="av__cc-arrow">›</span>
+        <span class="av__cc-stage av__cc-stage--ir">IR</span>
+        <span class="av__cc-arrow">›</span>
+        <span class="av__cc-stage av__cc-stage--opt">OPT</span>
+        <span class="av__cc-arrow">›</span>
+        <span class="av__cc-stage av__cc-stage--bin">BIN</span>
+      </div>
+      <div class="av__cc-packet"></div>
+    </div>`,
   ];
 
   grid.innerHTML = RESEARCH_AREAS.map((area, i) => `
