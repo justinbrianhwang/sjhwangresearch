@@ -5,7 +5,7 @@
 
 const TIMELINE_EVENTS = [
   {
-    date: "2026 Sep – 2027 Apr",
+    date: "2026 Sep – 2027 Feb",
     logo: "assets/logos/schools/ilsc.png",
     title: { en: "Language Study Abroad — ILSC Vancouver, Canada", ko: "어학연수 — ILSC 밴쿠버, 캐나다", ja: "語学研修 — ILSCバンクーバー、カナダ", es: "Estudios de idioma en ILSC Vancouver, Canadá" },
     description: {
