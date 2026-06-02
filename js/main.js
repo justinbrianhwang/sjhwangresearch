@@ -147,18 +147,19 @@ function renderResearchMap() {
   if (centerLabel) centerLabel.textContent = ui('rmapCenter');
   if (!nodesContainer || !svg) return;
 
-  // Node positions (%) — 9 nodes evenly spaced on a circle (r=45, center=50,50)
-  // Starting from top (270°), going clockwise at 40° intervals
+  // Node positions (%) — 10 nodes evenly spaced on a circle (r=45, center=50,50)
+  // Starting from top (270°), going clockwise at 36° intervals
   const R = 45, CX = 50, CY = 50;
-  const nodeOrder = [4, 0, 1, 6, 3, 2, 8, 5, 7];
+  const nodeOrder = [4, 0, 1, 6, 3, 9, 2, 8, 5, 7];
   // 4:Medical(top) → 0:AISec(upper-right) → 1:AutoDriv(right) → 6:CV(lower-right)
-  // → 3:AISemi(bottom) → 2:Quantum(lower-left) → 8:LLM(left) → 5:NetSec(upper-left) → 7:Robotics(top-left)
+  // → 3:AISemi(lower) → 9:Compiler(bottom) → 2:Quantum(lower-left) → 8:LLM(left)
+  // → 5:NetSec(upper-left) → 7:Robotics(top-left)
   const allPos = nodeOrder.map((_, i) => {
-    const angle = (270 + i * 40) * Math.PI / 180;
+    const angle = (270 + i * 36) * Math.PI / 180;
     return { x: Math.round(CX + R * Math.cos(angle)), y: Math.round(CY + R * Math.sin(angle)) };
   });
   // Map back: positions[areaIndex] = coordinate
-  const positions = new Array(9);
+  const positions = new Array(RESEARCH_AREAS.length);
   nodeOrder.forEach((areaIdx, i) => { positions[areaIdx] = allPos[i]; });
 
   // Connections between areas: [fromIndex, toIndex, label, tooltip description]
@@ -179,6 +180,10 @@ function renderResearchMap() {
     [8, 4, "Med-NLP", { en: "LLM-based medical text analysis and clinical decision support", ko: "LLM 기반 의료 텍스트 분석 및 임상 의사결정 지원", ja: "LLMベースの医療テキスト分析と臨床意思決定支援", es: "Análisis de texto médico basado en LLM y soporte de decisiones clínicas" }],
     [8, 6, "VLM", { en: "Vision-language models combining visual and textual understanding", ko: "시각과 텍스트 이해를 결합한 비전-언어 모델", ja: "視覚とテキスト理解を統合するビジョン言語モデル", es: "Modelos de visión-lenguaje que combinan comprensión visual y textual" }],
     [8, 0, "Alignment", { en: "LLM safety and alignment for trustworthy AI systems", ko: "신뢰할 수 있는 AI 시스템을 위한 LLM 안전성 및 정렬", ja: "信頼性の高いAIシステムのためのLLM安全性とアラインメント", es: "Seguridad y alineación de LLM para sistemas de IA confiables" }],
+    [9, 3, "HW-aware", { en: "Hardware-aware compilation lowering ML graphs to FPGA/GPU/NPU", ko: "ML 그래프를 FPGA/GPU/NPU로 내리는 하드웨어 인식 컴파일", ja: "MLグラフをFPGA/GPU/NPUに落とすハードウェア対応コンパイル", es: "Compilación consciente del hardware reduciendo grafos ML a FPGA/GPU/NPU" }],
+    [9, 2, "Q-Transpile", { en: "Quantum circuit optimization and noise-aware transpilation for NISQ", ko: "NISQ를 위한 양자 회로 최적화 및 노이즈 인식 트랜스파일", ja: "NISQ向け量子回路最適化とノイズ対応トランスパイル", es: "Optimización de circuitos y transpilación consciente del ruido para NISQ" }],
+    [9, 8, "ML-Compile", { en: "TVM/XLA/MLIR graph rewrites that drive LLM inference performance", ko: "LLM 추론 성능을 좌우하는 TVM/XLA/MLIR 그래프 재작성", ja: "LLM推論性能を左右するTVM/XLA/MLIRグラフ書き換え", es: "Reescrituras de grafos TVM/XLA/MLIR que impulsan inferencia LLM" }],
+    [9, 0, "Static-Analysis", { en: "LLVM-based static analysis underpinning AI safety guarantees", ko: "AI 안전 보장을 뒷받침하는 LLVM 기반 정적 분석", ja: "AI安全保証を支えるLLVMベースの静的解析", es: "Análisis estático basado en LLVM que sustenta las garantías de seguridad de IA" }],
   ];
 
   // Track active (clicked) node
