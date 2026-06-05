@@ -6,6 +6,20 @@
 
 const PROJECTS = [
   {
+    title: { en: "AI Moral Reasoning and Value Alignment Research", ko: "AI 도덕적 추론 및 가치 정렬 연구", ja: "AI道徳的推論と価値整合性研究", es: "Investigación en razonamiento moral de IA y alineación de valores" },
+    description: {
+      en: "Research on computational models of moral reasoning, ethical decision-making, and value alignment for advanced AI systems. Exploring how intelligent agents can make socially acceptable and ethically aligned decisions in complex environments.",
+      ko: "고도화된 AI 시스템을 위한 도덕적 추론, 윤리적 의사결정, 가치 정렬의 계산 모델 연구. 지능형 에이전트가 복잡한 환경에서 사회적으로 수용 가능하고 윤리적으로 정렬된 의사결정을 내릴 수 있는 방법을 탐구.",
+      ja: "高度化されたAIシステムのための道徳的推論、倫理的意思決定、価値整合性の計算モデル研究。知能エージェントが複雑な環境で社会的に受容可能で倫理的に整合された意思決定を下す方法を探求する。",
+      es: "Investigación sobre modelos computacionales de razonamiento moral, toma de decisiones éticas y alineación de valores para sistemas de IA avanzados. Explorando cómo los agentes inteligentes pueden tomar decisiones socialmente aceptables y éticamente alineadas en entornos complejos."
+    },
+    progress: 30,
+    status: "active",
+    startDate: "2026-03",
+    teamLogos: ["assets/logos/sjjb logos.png"],
+    tags: ["AI Safety", "Value Alignment", "Moral Reasoning", "Ethics", "Agent Decision-Making"],
+  },
+  {
     title: { en: "Fault Injection Research", ko: "Fault Injection 연구", ja: "Fault Injection研究", es: "Investigación de inyección de fallos" },
     description: {
       en: "Research on software fault injection in deep neural networks and functional recovery via logit-based external calibration techniques.",
