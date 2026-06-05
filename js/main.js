@@ -884,7 +884,7 @@ function renderPublications() {
       <span class="publication-item__year">${pub.year}</span>
       <div class="publication-item__content">
         <h4 class="publication-item__title">${typeBadge(pub.type)}${pub.title}</h4>
-        <p class="publication-item__authors">${pub.authors}</p>
+        <p class="publication-item__authors">${pub.authors.replace(/Sunjun Hwang/g, '<strong>Sunjun Hwang</strong>')}</p>
         <p class="publication-item__venue">${pub.venue} ${pub.status ? `<span class="tag tag--success" style="font-style: normal; margin-left: 8px;">${pub.status}</span>` : ''}</p>
         <div class="publication-item__links">
           ${pub.links.map(link => `
