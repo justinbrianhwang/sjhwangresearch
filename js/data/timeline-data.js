@@ -17,6 +17,17 @@ const TIMELINE_EVENTS = [
     tags: ["Education", "Language Study", "ILSC", "Vancouver"],
   },
   {
+    date: "2026 Jun",
+    title: { en: "IEEE COINS 2026 Paper Accepted — H2C (Persistent Homology Pan-Cancer Gene Panel)", ko: "IEEE COINS 2026 논문 채택 — H2C (지속성 호몰로지 기반 범암종 유전자 패널)", ja: "IEEE COINS 2026論文採択 — H2C（パーシステントホモロジー汎癌遺伝子パネル）", es: "Artículo IEEE COINS 2026 aceptado — H2C (panel de genes pan-cáncer mediante homología persistente)" },
+    description: {
+      en: "\"H2C: A Pan-Cancer Gene Panel Discovered via Persistent Homology in Topological Autoencoder Latent Space\" accepted at IEEE COINS 2026 (IEEE International Conference on Omni-Layer Intelligent Systems).",
+      ko: "「H2C: A Pan-Cancer Gene Panel Discovered via Persistent Homology in Topological Autoencoder Latent Space」 논문이 IEEE COINS 2026 (IEEE International Conference on Omni-Layer Intelligent Systems)에 채택되었습니다.",
+      ja: "「H2C: A Pan-Cancer Gene Panel Discovered via Persistent Homology in Topological Autoencoder Latent Space」がIEEE COINS 2026 (IEEE International Conference on Omni-Layer Intelligent Systems)に採択されました。",
+      es: "\"H2C: A Pan-Cancer Gene Panel Discovered via Persistent Homology in Topological Autoencoder Latent Space\" aceptado en IEEE COINS 2026 (IEEE International Conference on Omni-Layer Intelligent Systems)."
+    },
+    tags: ["Publication", "IEEE COINS", "Persistent Homology", "TDA", "Cancer Genomics"],
+  },
+  {
     date: "2026 May",
     title: { en: "ICUFN 2026 Paper Accepted — AdaFed (FL for Autonomous Driving)", ko: "ICUFN 2026 논문 채택 — AdaFed (자율주행 연합학습)", ja: "ICUFN 2026論文採択 — AdaFed（自動運転連合学習）", es: "Artículo ICUFN 2026 aceptado — AdaFed (FL para conducción autónoma)" },
     description: {

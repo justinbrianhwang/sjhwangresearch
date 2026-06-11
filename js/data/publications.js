@@ -6,6 +6,15 @@
 const PUBLICATIONS = [
   {
     year: "2026",
+    title: "H2C: A Pan-Cancer Gene Panel Discovered via Persistent Homology in Topological Autoencoder Latent Space",
+    authors: "Sunjun Hwang, Dohyun Hwang, Eunho Choi",
+    venue: "IEEE COINS 2026",
+    type: "Conference",
+    status: "Accepted",
+    links: [],
+  },
+  {
+    year: "2026",
     title: "AdaFed: Adaptive Selective Aggregation for Heterogeneous Federated Learning in Autonomous Driving",
     authors: "Sunjun Hwang, Dohyun Hwang",
     venue: "ICUFN 2026",
