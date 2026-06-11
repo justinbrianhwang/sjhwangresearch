@@ -7,13 +7,13 @@ const PAST_PROJECTS = [
   {
     title: { en: "TDA for Medical Data Analysis", ko: "TDA 기반 의료 데이터 분석", ja: "TDA基盤医療データ分析", es: "TDA para análisis de datos médicos" },
     description: {
-      en: "Applied Topological Data Analysis (TDA) to BRCA breast cancer datasets to discover novel variables and hidden topological structures. Identified new biomarker candidates and feature patterns in breast cancer genomic data that conventional statistical methods could not capture. Paper submitted (review pending).",
-      ko: "위상적 데이터 분석(TDA)을 BRCA 유방암 데이터셋에 적용하여 새로운 변수와 숨겨진 위상적 구조를 발견. 기존 통계 방법으로 포착하지 못한 유방암 유전체 데이터의 새로운 바이오마커 후보와 특징 패턴을 식별. 논문 제출 완료(심사 진행 중).",
-      ja: "位相的データ分析(TDA)をBRCA乳がんデータセットに適用し、新たな変数と隠れた位相的構造を発見。従来の統計手法では捉えられなかった乳がんゲノムデータの新しいバイオマーカー候補と特徴パターンを同定。論文提出済み(査読中)。",
-      es: "Aplicación de análisis topológico de datos (TDA) a conjuntos de datos de cáncer de mama BRCA para descubrir nuevas variables y estructuras topológicas ocultas. Identificación de nuevos biomarcadores candidatos y patrones de características en datos genómicos. Artículo enviado (revisión pendiente)."
+      en: "Applied Topological Data Analysis (TDA) to pan-cancer genomic datasets to discover novel variables and hidden topological structures. Used persistent homology over a topological autoencoder latent space to identify a compact pan-cancer gene panel and biomarker candidates that conventional statistical methods could not capture. Resulted in the H2C paper accepted at IEEE COINS 2026.",
+      ko: "위상적 데이터 분석(TDA)을 범암종(pan-cancer) 유전체 데이터셋에 적용하여 새로운 변수와 숨겨진 위상적 구조를 발견. 위상 오토인코더(topological autoencoder) 잠재공간에서 지속성 호몰로지(persistent homology)를 활용해 기존 통계 방법으로 포착하지 못한 컴팩트한 범암종 유전자 패널과 바이오마커 후보를 식별. H2C 논문이 IEEE COINS 2026에 채택됨.",
+      ja: "位相的データ分析(TDA)を汎癌(pan-cancer)ゲノムデータセットに適用し、新たな変数と隠れた位相的構造を発見。位相的オートエンコーダの潜在空間でパーシステントホモロジーを用い、従来の統計手法では捉えられなかったコンパクトな汎癌遺伝子パネルとバイオマーカー候補を同定。H2C論文がIEEE COINS 2026に採択。",
+      es: "Aplicación de análisis topológico de datos (TDA) a conjuntos de datos genómicos pan-cáncer para descubrir nuevas variables y estructuras topológicas ocultas. Uso de homología persistente sobre el espacio latente de un autoencoder topológico para identificar un panel compacto de genes pan-cáncer y biomarcadores candidatos. Resultó en el artículo H2C aceptado en IEEE COINS 2026."
     },
     year: "2026",
-    outcome: { en: "Completed · Paper submitted (under review)", ko: "완료 · 논문 제출 (심사 중)", ja: "完了 · 論文提出（査読中）", es: "Completado · Artículo enviado (en revisión)" },
+    outcome: { en: "Accepted at IEEE COINS 2026 (H2C)", ko: "IEEE COINS 2026 채택 (H2C)", ja: "IEEE COINS 2026採択（H2C）", es: "Aceptado en IEEE COINS 2026 (H2C)" },
     teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/Permillion Logos.png"],
     tags: ["TDA", "Medical Data", "Topological Analysis", "Healthcare", "Cancer Data", "Biosignal"],
   },
