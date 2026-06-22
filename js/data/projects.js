@@ -48,6 +48,20 @@ const PROJECTS = [
     tags: ["LLM", "Autonomous Driving", "Decision Making", "OpenEMMA", "Multimodal"],
   },
   {
+    title: { en: "MARSHAL: LLM Autonomous Driving Benchmark", ko: "MARSHAL: LLM 자율주행 벤치마크", ja: "MARSHAL: LLM自動運転ベンチマーク", es: "MARSHAL: Benchmark de conducción autónoma con LLM" },
+    description: {
+      en: "MARSHAL (Modeling Authority Recognition for Safe Human-directed Autonomous Locomotion) is a benchmark for evaluating how well LLM-based autonomous driving models recognize and respond to human-directed authority — such as traffic police gestures, hand signals, and on-the-spot verbal directions — in order to ensure safe locomotion. Conducted jointly with MPS Lab and RAISE Lab.",
+      ko: "MARSHAL(Modeling Authority Recognition for Safe Human-directed Autonomous Locomotion)은 LLM 기반 자율주행 모델이 교통 경찰의 수신호, 손짓, 현장 음성 지시 등 사람이 지시하는 권위(authority)를 얼마나 잘 인식하고 안전하게 반응하는지 평가하는 벤치마크입니다. MPS Lab과 RAISE Lab이 공동으로 진행합니다.",
+      ja: "MARSHAL(Modeling Authority Recognition for Safe Human-directed Autonomous Locomotion)は、LLMベースの自動運転モデルが交通警察の手信号、ジェスチャー、現場での口頭指示など、人間が指示する権限をどれだけ正確に認識し安全に反応できるかを評価するベンチマークです。MPS LabとRAISE Labが共同で進めています。",
+      es: "MARSHAL (Modeling Authority Recognition for Safe Human-directed Autonomous Locomotion) es un benchmark para evaluar qué tan bien los modelos de conducción autónoma basados en LLM reconocen y responden a la autoridad dirigida por humanos —como gestos de la policía de tránsito, señales con las manos e indicaciones verbales en el momento— para garantizar una locomoción segura. Realizado conjuntamente con MPS Lab y RAISE Lab."
+    },
+    progress: 60,
+    status: "active",
+    startDate: "2026",
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/RAISE LAB_current research.png", "assets/logos/MPS LAB_current research.webp"],
+    tags: ["LLM", "Autonomous Driving", "Benchmark", "Authority Recognition", "Safety"],
+  },
+  {
     title: { en: "Quantum AI", ko: "양자 인공지능 (Quantum AI)", ja: "量子AI", es: "IA cuántica" },
     description: {
       en: "Quantum-classical hybrid neural networks, quantum noise-based adversarial attacks, and classification models utilizing Variational Quantum Circuits (VQC).",
