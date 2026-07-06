@@ -62,6 +62,20 @@ const PROJECTS = [
     tags: ["LLM", "Autonomous Driving", "Benchmark", "Authority Recognition", "Safety"],
   },
   {
+    title: { en: "𝒮𝒟-2: System Deviation Diagnosis", ko: "𝒮𝒟-2: 시스템 편차 진단", ja: "𝒮𝒟-2: システム偏差診断", es: "𝒮𝒟-2: Diagnóstico de desviación del sistema" },
+    description: {
+      en: "𝒮𝒟-2 (System Deviation Diagnosis) is a robustness diagnosis framework for vision-language autonomous driving. It measures stage-wise deviation across the functional pipeline — vision → semantic → reasoning → planning → control — traces how errors propagate through the stages, and pinpoints the primary failure stage responsible for degraded driving behavior.",
+      ko: "𝒮𝒟-2(System Deviation Diagnosis)는 비전-언어 자율주행을 위한 강건성 진단 프레임워크입니다. 기능적 파이프라인(vision → semantic → reasoning → planning → control) 전반에 걸쳐 단계별 편차(stage-wise deviation)를 측정하고, 오류가 각 단계로 전파되는 과정을 추적하여, 주행 성능 저하를 유발하는 주요 실패 단계를 정확히 짚어냅니다.",
+      ja: "𝒮𝒟-2(System Deviation Diagnosis)は、視覚-言語自動運転のためのロバスト性診断フレームワークです。機能パイプライン(vision → semantic → reasoning → planning → control)全体にわたる段階ごとの偏差を測定し、エラーが各段階へ伝播する過程を追跡して、走行性能の低下を引き起こす主要な失敗段階を特定します。",
+      es: "𝒮𝒟-2 (System Deviation Diagnosis) es un marco de diagnóstico de robustez para la conducción autónoma de visión-lenguaje. Mide la desviación por etapas a lo largo del pipeline funcional —visión → semántica → razonamiento → planificación → control—, rastrea cómo se propagan los errores a través de las etapas e identifica la etapa de fallo principal responsable del deterioro del comportamiento de conducción."
+    },
+    progress: 5,
+    status: "active",
+    startDate: "2026",
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/RAISE LAB_current research.png"],
+    tags: ["Vision-Language", "Autonomous Driving", "Robustness", "Error Propagation", "Diagnosis"],
+  },
+  {
     title: { en: "Quantum AI", ko: "양자 인공지능 (Quantum AI)", ja: "量子AI", es: "IA cuántica" },
     description: {
       en: "Quantum-classical hybrid neural networks, quantum noise-based adversarial attacks, and classification models utilizing Variational Quantum Circuits (VQC).",
