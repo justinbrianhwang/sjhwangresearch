@@ -59,6 +59,24 @@ const COLLABORATIONS = [
     ],
     topics: ["TDA", "Medical Data", "Data Analysis", "Federated Learning"],
   },
+  {
+    name: "Co-Researcher",
+    status: "current",
+    logo: "assets/logos/Co-Researcher.png",
+    type: "Co-Researchers",
+    description: {
+      en: "Fellow researchers collaborating with me on ongoing research projects and joint work.",
+      ko: "진행 중인 연구 프로젝트와 공동 작업을 함께 수행하는 공동 연구자들.",
+      ja: "進行中の研究プロジェクトと共同作業を共に遂行する共同研究者たち。",
+      es: "Investigadores que colaboran conmigo en proyectos de investigación en curso y trabajos conjuntos."
+    },
+    members: [
+      { name: { en: "Dohyun Hwang", ko: "황도현" }, role: { en: "Co-Researcher", ko: "공동 연구자", ja: "共同研究者", es: "Co-investigador" } },
+      { name: { en: "Raffaele Sassone", ko: "Raffaele Sassone" }, role: { en: "Co-Researcher", ko: "공동 연구자", ja: "共同研究者", es: "Co-investigador" } },
+      { name: { en: "Pablo Lipa", ko: "Pablo Lipa" }, role: { en: "Co-Researcher", ko: "공동 연구자", ja: "共同研究者", es: "Co-investigador" } },
+    ],
+    topics: ["Research Collaboration", "Joint Projects"],
+  },
 
   // ── Past Collaborations ──
   {
