@@ -74,6 +74,7 @@ const COLLABORATIONS = [
       { name: { en: "Dohyun Hwang", ko: "황도현" }, role: { en: "Co-Researcher", ko: "공동 연구자", ja: "共同研究者", es: "Co-investigador" } },
       { name: { en: "Raffaele Sassone", ko: "Raffaele Sassone" }, role: { en: "Co-Researcher", ko: "공동 연구자", ja: "共同研究者", es: "Co-investigador" } },
       { name: { en: "Pablo Lipa", ko: "Pablo Lipa" }, role: { en: "Co-Researcher", ko: "공동 연구자", ja: "共同研究者", es: "Co-investigador" } },
+      { name: { en: "Eunna Lee", ko: "이우나" }, role: { en: "Co-Researcher", ko: "공동 연구자", ja: "共同研究者", es: "Co-investigador" } },
     ],
     topics: ["Research Collaboration", "Joint Projects"],
   },
