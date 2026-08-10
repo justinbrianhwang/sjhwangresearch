@@ -74,12 +74,27 @@ const COLLABORATIONS = [
       { name: { en: "Dohyun Hwang", ko: "황도현" }, role: { en: "Co-Researcher", ko: "공동 연구자", ja: "共同研究者", es: "Co-investigador" } },
       { name: { en: "Raffaele Sassone", ko: "Raffaele Sassone" }, role: { en: "Co-Researcher", ko: "공동 연구자", ja: "共同研究者", es: "Co-investigador" } },
       { name: { en: "Pablo Lipa", ko: "Pablo Lipa" }, role: { en: "Co-Researcher", ko: "공동 연구자", ja: "共同研究者", es: "Co-investigador" } },
-      { name: { en: "Eunna Lee", ko: "이우나" }, role: { en: "Co-Researcher", ko: "공동 연구자", ja: "共同研究者", es: "Co-investigador" } },
     ],
     topics: ["Research Collaboration", "Joint Projects"],
   },
 
   // ── Past Collaborations ──
+  {
+    name: "Co-Researcher",
+    status: "past",
+    logo: "assets/logos/Co-Researcher.png",
+    type: "Co-Researchers",
+    description: {
+      en: "Past co-researchers on completed research projects and joint work.",
+      ko: "완료된 연구 프로젝트와 공동 작업을 함께했던 과거 공동 연구자.",
+      ja: "完了した研究プロジェクトと共同作業を共にした過去の共同研究者。",
+      es: "Antiguos co-investigadores en proyectos de investigación y trabajos conjuntos ya finalizados."
+    },
+    members: [
+      { name: { en: "Eunna Lee", ko: "이우나" }, role: { en: "Co-Researcher", ko: "공동 연구자", ja: "共同研究者", es: "Co-investigador" } },
+    ],
+    topics: ["Research Collaboration", "Joint Projects"],
+  },
   {
     name: "DH Soft",
     status: "past",
