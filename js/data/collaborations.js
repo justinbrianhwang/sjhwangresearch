@@ -43,7 +43,7 @@ const COLLABORATIONS = [
   },
   {
     name: "Permillion",
-    status: "current",
+    status: "past",
     logo: "assets/logos/Permillion Logos.png",
     darkBg: true,
     type: "Industry Partner",
