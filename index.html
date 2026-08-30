@@ -35,8 +35,58 @@
 
   <!-- Favicon -->
   <link rel="icon" href="assets/logos/sjjb logos.png" type="image/png">
+
+  <!-- Intro splash (first entry only, per session) -->
+  <style>
+    .rp-intro {
+      position: fixed; inset: 0; z-index: 9999;
+      display: flex; align-items: center; justify-content: center;
+      background: radial-gradient(circle at 50% 40%, #0f2340 0%, #0A1628 70%);
+      transition: opacity .6s ease, visibility .6s ease;
+    }
+    .rp-intro.hidden { opacity: 0; visibility: hidden; }
+    .rp-intro__inner { text-align: center; }
+    .rp-intro__logo { width: 72px; height: 72px; object-fit: contain; opacity: 0; animation: rpFade .7s ease .1s forwards; }
+    .rp-intro__name {
+      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 2.4rem;
+      color: #fff; margin-top: 18px; letter-spacing: .02em; opacity: 0; animation: rpUp .7s ease .35s forwards;
+    }
+    .rp-intro__sub {
+      font-family: 'JetBrains Mono', monospace; font-size: .82rem; letter-spacing: .35em; text-transform: uppercase;
+      color: rgba(255,255,255,.6); margin-top: 10px; opacity: 0; animation: rpUp .7s ease .6s forwards;
+    }
+    .rp-intro__sub span { color: #FF6C0C; }
+    .rp-intro__bar { width: 0; height: 2px; margin: 22px auto 0; border-radius: 2px; background: linear-gradient(90deg, #FF6C0C, #FF8A3D); animation: rpBar 1.7s ease .5s forwards; }
+    @keyframes rpFade { to { opacity: 1; } }
+    @keyframes rpUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes rpBar { to { width: 180px; } }
+  </style>
 </head>
 <body>
+
+  <!-- Intro splash -->
+  <div class="rp-intro" id="rpIntro">
+    <div class="rp-intro__inner">
+      <img src="assets/logos/sjjb logos.png" alt="" class="rp-intro__logo">
+      <div class="rp-intro__name">Sunjun Hwang</div>
+      <div class="rp-intro__sub">Research<span>Portal</span></div>
+      <div class="rp-intro__bar"></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var el = document.getElementById('rpIntro');
+      if (!el) return;
+      if (sessionStorage.getItem('rpIntroSeen')) { el.parentNode.removeChild(el); return; }
+      document.documentElement.style.overflow = 'hidden';
+      setTimeout(function () {
+        el.classList.add('hidden');
+        document.documentElement.style.overflow = '';
+        sessionStorage.setItem('rpIntroSeen', 'true');
+        setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 700);
+      }, 2000);
+    })();
+  </script>
 
   <!-- Navigation -->
   <nav class="nav">
