@@ -5,6 +5,19 @@
 
 const PAST_PROJECTS = [
   {
+    title: { en: "Cache-inspired Federated Learning", ko: "캐시 메모리 기반 연합학습", ja: "キャッシュメモリ着想の連合学習", es: "Aprendizaje federado inspirado en caché" },
+    description: {
+      en: "A federated learning framework inspired by cache memory hierarchy. Borrowed locality and replacement policy concepts from cache systems to optimize client selection, model aggregation, and communication efficiency — forwarding only the client updates that matter. Resulted in the CI-FL paper accepted at TrustFL-SIS 2026, co-located with IEEE ICDM 2026.",
+      ko: "캐시 메모리 계층 구조에서 영감을 받은 연합학습 프레임워크. 캐시 시스템의 지역성과 교체 정책 개념을 차용해 클라이언트 선택, 모델 집계, 통신 효율성을 최적화 — 의미 있는 클라이언트 업데이트만 선택적으로 전달. CI-FL 논문이 IEEE ICDM 2026과 공동 개최되는 TrustFL-SIS 2026에 채택됨.",
+      ja: "キャッシュメモリ階層構造に着想を得た連合学習フレームワーク。キャッシュの局所性と置換ポリシーの概念を借用し、クライアント選択・モデル集約・通信効率を最適化。CI-FL論文がIEEE ICDM 2026併催のTrustFL-SIS 2026に採択。",
+      es: "Marco de aprendizaje federado inspirado en la jerarquía de memoria caché. Conceptos de localidad y políticas de reemplazo para optimizar la selección de clientes, la agregación y la eficiencia de comunicación. Resultó en el artículo CI-FL aceptado en TrustFL-SIS 2026, coubicado con IEEE ICDM 2026."
+    },
+    year: "2026",
+    outcome: { en: "Accepted at TrustFL-SIS 2026 @ IEEE ICDM 2026 (CI-FL)", ko: "TrustFL-SIS 2026 @ IEEE ICDM 2026 채택 (CI-FL)", ja: "TrustFL-SIS 2026 @ IEEE ICDM 2026採択（CI-FL）", es: "Aceptado en TrustFL-SIS 2026 @ IEEE ICDM 2026 (CI-FL)" },
+    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/Permillion Logos.png"],
+    tags: ["Federated Learning", "Cache Memory", "Client Selection", "Communication Efficiency", "IEEE ICDM 2026"],
+  },
+  {
     title: { en: "TDA for Medical Data Analysis", ko: "TDA 기반 의료 데이터 분석", ja: "TDA基盤医療データ分析", es: "TDA para análisis de datos médicos" },
     description: {
       en: "Applied Topological Data Analysis (TDA) to pan-cancer genomic datasets to discover novel variables and hidden topological structures. Used persistent homology over a topological autoencoder latent space to identify a compact pan-cancer gene panel and biomarker candidates that conventional statistical methods could not capture. Resulted in the H2C paper accepted at IEEE COINS 2026.",

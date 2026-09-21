@@ -6,6 +6,24 @@
 const PUBLICATIONS = [
   {
     year: "2026",
+    title: "CI-FL: Cache-Inspired Federated Learning — Communication Reduction via Selective Update Forwarding",
+    authors: "Sunjun Hwang, Dohyun Hwang, Raffaele Sassone",
+    venue: "TrustFL-SIS 2026 @ IEEE ICDM 2026",
+    type: "Conference",
+    status: "Accepted",
+    links: [],
+  },
+  {
+    year: "2026",
+    title: "Simple Pseudobulk Outperforms Topological and Quantum-Geometric Readouts of Single-Nucleus Chromatin and Transcriptomes for Donor-Level Alzheimer's Classification: A Rigorous Benchmark in a Powered Multiome Cohort",
+    authors: "Sunjun Hwang, Dohyun Hwang",
+    venue: "CKAIA 2026 (Poster)",
+    type: "Conference",
+    status: "Accepted",
+    links: [],
+  },
+  {
+    year: "2026",
     title: "H2C: A Pan-Cancer Gene Panel Discovered via Persistent Homology in Topological Autoencoder Latent Space",
     authors: "Sunjun Hwang, Dohyun Hwang, Eunho Choi",
     venue: "IEEE COINS 2026",

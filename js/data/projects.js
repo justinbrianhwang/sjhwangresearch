@@ -90,20 +90,6 @@ const PROJECTS = [
     tags: ["Quantum ML", "VQC", "Hybrid Network", "PennyLane"],
   },
   {
-    title: { en: "Cache-inspired Federated Learning", ko: "캐시 메모리 기반 연합학습", ja: "キャッシュメモリ着想の連合学習", es: "Aprendizaje federado inspirado en caché" },
-    description: {
-      en: "A novel federated learning framework inspired by cache memory hierarchy. Borrowing locality and replacement policy concepts from cache systems to optimize client selection, model aggregation, and communication efficiency in FL.",
-      ko: "캐시 메모리 계층 구조에서 영감을 받은 새로운 연합학습 프레임워크. 캐시 시스템의 지역성(locality)과 교체 정책(replacement policy) 개념을 차용하여 FL에서의 클라이언트 선택, 모델 집계, 통신 효율성을 최적화합니다.",
-      ja: "キャッシュメモリ階層構造から着想を得た新しい連合学習フレームワーク。キャッシュシステムの局所性と置換ポリシーの概念を借用し、FLにおけるクライアント選択、モデル集約、通信効率を最適化。",
-      es: "Un marco de aprendizaje federado novedoso inspirado en la jerarquía de memoria caché. Tomando prestados conceptos de localidad y políticas de reemplazo de sistemas de caché para optimizar la selección de clientes, agregación de modelos y eficiencia de comunicación en FL."
-    },
-    progress: 95,
-    status: "active",
-    startDate: "2026",
-    teamLogos: ["assets/logos/sjjb logos.png", "assets/logos/Permillion Logos.png"],
-    tags: ["Federated Learning", "Cache Memory", "Client Selection", "Aggregation"],
-  },
-  {
     title: { en: "Mamba-based Autonomous Vehicle", ko: "Mamba 기반 자율주행", ja: "Mambaベースの自動運転", es: "Vehículo autónomo basado en Mamba" },
     description: {
       en: "Exploring the Mamba (State Space Model) architecture for autonomous driving perception and decision-making. Leveraging Mamba's linear-time sequence modeling to replace Transformer-based backbones in end-to-end autonomous driving pipelines, aiming for improved efficiency and long-range temporal reasoning.",

@@ -17,6 +17,28 @@ const TIMELINE_EVENTS = [
     tags: ["Education", "Language Study", "ILSC", "Vancouver"],
   },
   {
+    date: "2026 Sep",
+    title: { en: "IEEE ICDM 2026 Workshop Paper Accepted — CI-FL (Cache-Inspired FL)", ko: "IEEE ICDM 2026 워크숍 논문 채택 — CI-FL (캐시 기반 연합학습)", ja: "IEEE ICDM 2026ワークショップ論文採択 — CI-FL（キャッシュ着想連合学習）", es: "Artículo aceptado en taller IEEE ICDM 2026 — CI-FL (FL inspirado en caché)" },
+    description: {
+      en: "\"CI-FL: Cache-Inspired Federated Learning — Communication Reduction via Selective Update Forwarding\" accepted at TrustFL-SIS 2026 (Trustworthy Federated Learning for Smart Industrial Systems), co-located with IEEE ICDM 2026.",
+      ko: "「CI-FL: Cache-Inspired Federated Learning — Communication Reduction via Selective Update Forwarding」 논문이 IEEE ICDM 2026과 공동 개최되는 TrustFL-SIS 2026 (Trustworthy Federated Learning for Smart Industrial Systems) 워크숍에 채택되었습니다.",
+      ja: "「CI-FL: Cache-Inspired Federated Learning — Communication Reduction via Selective Update Forwarding」がIEEE ICDM 2026と併催のTrustFL-SIS 2026 (Trustworthy Federated Learning for Smart Industrial Systems)に採択されました。",
+      es: "\"CI-FL: Cache-Inspired Federated Learning — Communication Reduction via Selective Update Forwarding\" aceptado en TrustFL-SIS 2026 (Trustworthy Federated Learning for Smart Industrial Systems), coubicado con IEEE ICDM 2026."
+    },
+    tags: ["Publication", "IEEE ICDM", "Federated Learning", "Cache Memory", "Communication Efficiency"],
+  },
+  {
+    date: "2026 Jul",
+    title: { en: "CKAIA 2026 Paper Accepted — Pseudobulk Benchmark for Alzheimer's Classification", ko: "CKAIA 2026 논문 채택 — 알츠하이머 분류 Pseudobulk 벤치마크", ja: "CKAIA 2026論文採択 — アルツハイマー分類Pseudobulkベンチマーク", es: "Artículo CKAIA 2026 aceptado — benchmark pseudobulk para clasificación de Alzheimer" },
+    description: {
+      en: "\"Simple Pseudobulk Outperforms Topological and Quantum-Geometric Readouts of Single-Nucleus Chromatin and Transcriptomes for Donor-Level Alzheimer's Classification: A Rigorous Benchmark in a Powered Multiome Cohort\" accepted at CKAIA 2026 (poster presentation).",
+      ko: "「Simple Pseudobulk Outperforms Topological and Quantum-Geometric Readouts of Single-Nucleus Chromatin and Transcriptomes for Donor-Level Alzheimer's Classification: A Rigorous Benchmark in a Powered Multiome Cohort」 논문이 CKAIA 2026에 채택되었습니다 (포스터 발표).",
+      ja: "「Simple Pseudobulk Outperforms Topological and Quantum-Geometric Readouts of Single-Nucleus Chromatin and Transcriptomes for Donor-Level Alzheimer's Classification: A Rigorous Benchmark in a Powered Multiome Cohort」がCKAIA 2026に採択されました（ポスター発表）。",
+      es: "\"Simple Pseudobulk Outperforms Topological and Quantum-Geometric Readouts of Single-Nucleus Chromatin and Transcriptomes for Donor-Level Alzheimer's Classification: A Rigorous Benchmark in a Powered Multiome Cohort\" aceptado en CKAIA 2026 (presentación de póster)."
+    },
+    tags: ["Publication", "CKAIA", "Single-Cell", "Alzheimer's", "TDA", "Quantum Geometry"],
+  },
+  {
     date: "2026 Jun",
     title: { en: "IEEE COINS 2026 Paper Accepted — H2C (Persistent Homology Pan-Cancer Gene Panel)", ko: "IEEE COINS 2026 논문 채택 — H2C (지속성 호몰로지 기반 범암종 유전자 패널)", ja: "IEEE COINS 2026論文採択 — H2C（パーシステントホモロジー汎癌遺伝子パネル）", es: "Artículo IEEE COINS 2026 aceptado — H2C (panel de genes pan-cáncer mediante homología persistente)" },
     description: {
