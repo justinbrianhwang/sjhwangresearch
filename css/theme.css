@@ -425,3 +425,7 @@ a:hover { color: var(--ink); }
   .area-card { padding-top: 0; }
   .area-card__visual { width: calc(100% + var(--space-6) * 2); margin-left: calc(-1 * var(--space-6)); }
 }
+/* Expanded card: show the whole film frame instead of a thin slice */
+.area-card--expanded .area-card__visual--film { height: auto; aspect-ratio: 960 / 350; max-height: 380px; }
+/* Direction rows: one gold rule for every area */
+.area-card .area-card__direction { border-left-color: var(--gold) !important; }
