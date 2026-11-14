@@ -615,7 +615,9 @@ function renderAreas() {
     </div>`,
   ];
 
-  grid.innerHTML = RESEARCH_AREAS.map((area, i) => `
+  // Display order: Quantum first, then the rest as listed (indices stay tied to the data)
+  const order = [2, ...RESEARCH_AREAS.keys()].filter((v, k, a) => a.indexOf(v) === k);
+  grid.innerHTML = order.map(i => [RESEARCH_AREAS[i], i]).map(([area, i]) => `
     <div class="area-card fade-in" data-area="${i}">
       <button class="area-card__close" aria-label="Close">&times;</button>
       ${AREA_FILMS[i] ? `<div class="area-card__visual area-card__visual--film"><video ${matchMedia('(prefers-reduced-motion: reduce)').matches ? '' : 'autoplay'} muted loop playsinline preload="auto" poster="${BASE_PATH}/assets/video/areas/${AREA_FILMS[i]}.jpg" aria-hidden="true"><source src="${BASE_PATH}/assets/video/areas/${AREA_FILMS[i]}.mp4" type="video/mp4"></video></div>` : (visuals[i] || '')}
@@ -648,6 +650,8 @@ function renderAreas() {
       </div>
     </div>
   `).join('');
+  // Card films play slower than recorded, for a calmer pace
+  grid.querySelectorAll('.area-card__visual--film video').forEach(v => { v.defaultPlaybackRate = v.playbackRate = 0.6; });
 
   // Click-to-expand interaction
   const cards = grid.querySelectorAll('.area-card');
