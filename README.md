@@ -4,7 +4,7 @@ Personal research portfolio website showcasing ongoing and completed work in AI 
 
 **Live site:** [sjhwangresearch.com](https://sjhwangresearch.com)
 
-<img width="1907" height="909" alt="image" src="https://github.com/user-attachments/assets/693a835a-25f5-400b-b485-ef0c438a47ed" />
+<img width="1600" alt="Research Portal" src="assets/readme-banner.png" />
 
 
 
