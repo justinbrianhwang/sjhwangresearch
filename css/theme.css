@@ -239,6 +239,34 @@ a:hover { color: var(--ink); }
 .hero__link:hover { color: var(--bronze); border-bottom-color: var(--gold); }
 .hero__link-sep { color: var(--gold); }
 
+/* Film hero: a slow background loop under a warm dark veil, ivory type on top */
+.hero--film { background: #0e0d0c; border-bottom: none; isolation: isolate; }
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #0e0d0c url(../assets/video/hero-quantum.jpg) center / cover no-repeat;
+}
+.hero__video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(18, 15, 12, 0.48) 0%, rgba(18, 15, 12, 0.78) 75%),
+    linear-gradient(rgba(18, 15, 12, 0.25), rgba(18, 15, 12, 0.25));
+}
+.hero--film::before { border-color: rgba(var(--gold-rgb), 0.6); }
+.hero--film::after { border-color: rgba(var(--gold-rgb), 0.28); }
+.hero--film .hero__badge { color: #d9bf8c; }
+.hero--film .hero__affiliation { color: rgba(247, 243, 236, 0.72); }
+.hero--film .hero__title-accent { color: #f7f3ec; }
+.hero--film .hero__role { color: #d9bf8c; }
+.hero--film .hero__description { color: rgba(247, 243, 236, 0.86); }
+.hero--film .hero__link { color: #f7f3ec; }
+.hero--film .hero__link:hover { color: #d9bf8c; }
+@media (prefers-reduced-motion: reduce) { .hero__video { display: none; } }
+
 /* ── Shared components ── */
 .card, .area-card, .project-card, .experiment-card, .publication-item,
 .talk-card, .future-card, .collab-card, .timeline__content, .overview__stat-card,
@@ -382,3 +410,8 @@ a:hover { color: var(--ink); }
 /* Map labels live in small boxes: keep the small caps but tighten them */
 .rmap__node-tag { font-size: 0.55rem !important; letter-spacing: 0.05em !important; padding: 2px 5px !important; line-height: 1.4; }
 .rmap__node-inner:not(.rmap__node-inner--center) { height: auto !important; min-height: 130px; }
+@media (max-width: 768px) { .rmap__node-inner:not(.rmap__node-inner--center) { min-height: 90px; } }
+@media (max-width: 480px) {
+  .rmap__node-inner:not(.rmap__node-inner--center) { min-height: 72px; padding: 4px; }
+  .rmap__node-label { font-size: 8.5px; line-height: 1.2; }
+}
