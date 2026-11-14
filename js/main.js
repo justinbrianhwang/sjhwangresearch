@@ -474,6 +474,8 @@ function renderResearchMap() {
 }
 
 /* ── Research Areas 렌더링 ── */
+// Short film loop per area (same order as RESEARCH_AREAS); areas without one keep the CSS visual
+const AREA_FILMS = ['01-ai-security', '02-autonomous', '03-quantum', '04-semiconductors', '05-medical', '06-network', '07-vision', '08-robotics', '09-llm', '10-compilers'];
 function renderAreas() {
   const grid = document.getElementById('areas-grid');
   const title = document.querySelector('#areas .section__title');
@@ -616,7 +618,7 @@ function renderAreas() {
   grid.innerHTML = RESEARCH_AREAS.map((area, i) => `
     <div class="area-card fade-in" data-area="${i}">
       <button class="area-card__close" aria-label="Close">&times;</button>
-      ${visuals[i] || ''}
+      ${AREA_FILMS[i] ? `<div class="area-card__visual area-card__visual--film"><video ${matchMedia('(prefers-reduced-motion: reduce)').matches ? '' : 'autoplay'} muted loop playsinline preload="auto" poster="${BASE_PATH}/assets/video/areas/${AREA_FILMS[i]}.jpg" aria-hidden="true"><source src="${BASE_PATH}/assets/video/areas/${AREA_FILMS[i]}.mp4" type="video/mp4"></video></div>` : (visuals[i] || '')}
       <div class="area-card__header">
         <div class="area-card__icon"><img src="${BASE_PATH}/${area.icon}" alt="${area.title.en}" /></div>
         <h3 class="area-card__title">${t(area.title)}</h3>

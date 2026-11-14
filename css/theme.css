@@ -415,3 +415,13 @@ a:hover { color: var(--ink); }
   .rmap__node-inner:not(.rmap__node-inner--center) { min-height: 72px; padding: 4px; }
   .rmap__node-label { font-size: 8.5px; line-height: 1.2; }
 }
+
+/* Area cards: short film loops, toned to sit together */
+.area-card__visual--film { height: 140px; filter: sepia(0.2) saturate(0.85); background: #0e0d0c; border-bottom: 1px solid var(--hair); }
+.area-card__visual--film video { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 768px) { .area-card__visual--film { height: 120px; } }
+/* Phones: the card padding shrinks, so the visual must too, flush with the card top */
+@media (max-width: 768px) {
+  .area-card { padding-top: 0; }
+  .area-card__visual { width: calc(100% + var(--space-6) * 2); margin-left: calc(-1 * var(--space-6)); }
+}
